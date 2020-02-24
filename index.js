@@ -30,7 +30,7 @@ bot.on('ready', () => {
 })
 
 bot.on('ready', () => {
-  bot.channels.get("681248976590209034").fetchMessage("681282214365102130").then((message) => {
+  bot.channels.get("681248976590209034").fetchMessage("681540364926320644").then((message) => {
     var interval = setInterval (function () {
       var idk69 = fs.readFileSync(`${process.cwd()}/Trainings.txt`, 'utf8');
       if (idk69) {
@@ -512,6 +512,8 @@ bot.on('message', message => {
                         fs.writeFileSync(`${process.cwd()}/Trainings.txt`, '')
                         message.channel.sendMessage('Cleared the Schedule!')
                         }break;
+                      case 'Barcelo12':
+                        message.channel.sendMessage('h')
         } 
                       
                       
