@@ -209,8 +209,10 @@ bot.on('message', message => {
 
         switch (args[0]) {
         case 'ping':
-            message.channel.sendMessage('pong!');
-            break;
+          message.channel.send("Pinging ...") // Placeholder for pinging ... 
+          .then((msg4) => { // Resolve promise
+            msg4.edit("Ping: " + (Date.now() - msg4.createdTimestamp)) // Edits message with current timestamp minus timestamp of message
+          });
         case 'time':
             const time = new Discord.RichEmbed()
 	          .setColor('#ff0000')
@@ -293,8 +295,8 @@ bot.on('message', message => {
                           .setTimestamp()
                           .setFooter('This message will be deleted after 5 minutes. Ended: ');
                         message5.edit(trainingaaa).then(mesasge7 => {
-                          mesasge7.delete();
-                          }, 5 * 60 * 1000);
+                          mesasge7.delete(5 * 60 * 1000);
+                          });
                       } else {
                           if (reaction.emoji.name === '❎') {
                             bot.channels.get("661290395216379914").send('*Tryout cancelled due to no-one showing*\nhosted by ' + user60)
