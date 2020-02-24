@@ -36,9 +36,9 @@ bot.on('ready', () => {
       if (idk69) {
         const surrvival = new Discord.RichEmbed()
       .setColor('#00ff00')
-      .setTitle('Trainings/tryouts!')
+      .setTitle('Trainings!')
       .setAuthor(botname, logo)
-      .setDescription('Hello and welcome to the channel to see next trainings and tryouts.\n:warning: **ALL TIMES ARE GMT**')
+      .setDescription('Hello and welcome to the channel to see next trainings.\n:warning: **ALL TIMES ARE GMT**')
       .addField("**Next trainings/tryouts:** \n", idk69)
       .setThumbnail(logo)
       .setTimestamp()
@@ -48,10 +48,10 @@ bot.on('ready', () => {
       } else {
       const surrvival = new Discord.RichEmbed()
       .setColor('#00ff00')
-      .setTitle('Trainings/tryouts!')
+      .setTitle('Trainings!')
       .setAuthor(botname, logo)
       .addField("**Next trainings/tryouts:** \n\n", ':x: Nothing currently scheduled.')
-      .setDescription('Hello and welcome to the channel to see next trainings and tryouts.\n:warning: **ALL TIMES ARE GMT**')
+      .setDescription('Hello and welcome to the channel to see next trainings.\n:warning: **ALL TIMES ARE GMT**')
       .setThumbnail(logo)
       .setTimestamp()
       .setFooter('Update every 2 minutes. Last update at: ');
@@ -79,9 +79,9 @@ bot.on('ready', () => {
       } else {
       const surrvival = new Discord.RichEmbed()
       .setColor('#00ff00')
-      .setTitle('Trainings/tryouts!')
+      .setTitle('Shifts!')
       .setAuthor(botname, logo)
-      .addField("**Next trainings/tryouts:** \n\n", ':x: Nothing currently scheduled.')
+      .addField("**Next shifts:** \n\n", ':x: Nothing currently scheduled.')
       .setDescription('Hello and welcome to this channel to see next shifts!.\nsenior staff do !claim-shift [the time you want to do **include am/pm**]\nAll Times are wiped at the end of the day! (around 9 or 10)\n:warning: **ALL TIMES ARE GMT**')
       .setThumbnail(logo)
       .setTimestamp()
@@ -535,7 +535,7 @@ bot.on('message', message => {
                           fs.writeFileSync(`${process.cwd()}/Shifts.txt`, (idk699 + `\n` + 'Shift at ' + (args[1]) + `. Hosted by ${message.guild.members.get(message.author.id).displayName}.`))
                           message.channel.sendMessage('Scheduled!')
                           }break;
-                      case 'clear-schedule':
+                      case 'clear-shifts':
                         if(message.member.roles.has("681588492802850837")) {
                         var Talll = ':Managingdirector:'
                         fs.writeFileSync(`${process.cwd()}/Trainings.txt`, '')
