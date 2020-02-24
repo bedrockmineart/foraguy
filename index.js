@@ -60,6 +60,37 @@ bot.on('ready', () => {
     }, 120 * 1000); 
 })
 })
+bot.on('ready', () => {
+  bot.channels.get("661290402816458762").fetchMessage("681600346220789917").then((message) => {
+    var interval = setInterval (function () {
+      var idk6999 = fs.readFileSync(`${process.cwd()}/Shifts.txt`, 'utf8');
+      if (idk6999) {
+        const surrvival = new Discord.RichEmbed()
+      .setColor('#00ff00')
+      .setTitle('Trainings/tryouts!')
+      .setAuthor(botname, logo)
+      .setDescription('Hello and welcome to this channel to see next shifts!.\nS enior staff do !claim-shift [the time you want to do **include am/pm**]\nAll Times are wiped at the end of the day! (around 9 or 10)\n:warning: **ALL TIMES ARE GMT**')
+      .addField("**Next Shifts:** \n", idk6999)
+      .setThumbnail(logo)
+      .setTimestamp()
+      .setFooter('Update every 2 minutes. Last update at: ');
+      message.edit(surrvival)
+        .catch(console.error);
+      } else {
+      const surrvival = new Discord.RichEmbed()
+      .setColor('#00ff00')
+      .setTitle('Trainings/tryouts!')
+      .setAuthor(botname, logo)
+      .addField("**Next trainings/tryouts:** \n\n", ':x: Nothing currently scheduled.')
+      .setDescription('Hello and welcome to this channel to see next shifts!.\nsenior staff do !claim-shift [the time you want to do **include am/pm**]\nAll Times are wiped at the end of the day! (around 9 or 10)\n:warning: **ALL TIMES ARE GMT**')
+      .setThumbnail(logo)
+      .setTimestamp()
+      .setFooter('Update every 2 minutes. Last update at: ');
+      message.edit(surrvival)
+        .catch(console.error);}
+    }, 120 * 1000); 
+})
+})
 
 bot.on('ready', () => {
   let myGuild = bot.guilds.get('661271791636971520');
@@ -72,12 +103,6 @@ bot.on('ready', () => {
 
 bot.on('guildMemberAdd', member => {
   member6 = member;
-  let rolee69999 = message.guild.roles.find(r => r.name === "--------------Main Roles-----------------");
-  let rolee6999 = message.guild.roles.find(r => r.name === "------------ Other Roles ------------");
-  let rolee699 = message.guild.roles.find(r => r.name === "------------ Ping Roles ------------");
-  member5.addRole(rolee69999).catch(console.error);
-  member5.addRole(rolee6999).catch(console.error);
-  member5.addRole(rolee699).catch(console.error);
     let myGuild = bot.guilds.get('661271791636971520');
   let membercount = myGuild.memberCount;
   let memberCountChannel = myGuild.channels.get('681249520251699214');
@@ -158,7 +183,7 @@ bot.on('messageDelete', async (message) => {
           let user123 = message.author;
           const question = message.content.slice (4);
           message.author.sendMessage('Your question has been submited to the staffing team!')
-          bot.channels.get("678003091995361300").send('New question from ' + user123 + ': ' + s1 + question + s1)
+          bot.channels.get("681558326781149301").send('New question from ' + user123 + ': ' + s1 + question + s1)
         }
       });
         bot.on('message', message => {
@@ -166,13 +191,13 @@ bot.on('messageDelete', async (message) => {
             let user123 = message.author;
             const complaint = message.content.slice (4);
             message.author.sendMessage('Your complaint has been submited to the staffing team!')
-            bot.channels.get("678003091995361300").send('New complaint from ' + user123 + ': ' + s1 + complaint + s1)  
+            bot.channels.get("681558326781149301").send('New complaint from ' + user123 + ': ' + s1 + complaint + s1)  
           }});
         bot.on('message', message => {
           if (message.content.startsWith('642')) {
             const com = message.content.slice (4);
             message.author.sendMessage('Your reply has been submited to the staffing team!')
-            bot.channels.get("678003091995361300").send('Reply to a reply ' + s1 + com + s1)  
+            bot.channels.get("681558326781149301").send('Reply to a reply ' + s1 + com + s1)  
           }});
 
 
@@ -405,7 +430,7 @@ bot.on('message', message => {
                               }break;
                       case 'shout': 
                       if(message.channel.name == undefined)  { return }
-                      if(message.member.roles.has(admin)) {
+                      if(message.member.roles.has("676206157815218177")) {
                             const msg = message;
                               ShoutMessage = message.content.slice(7)
                               if (ShoutMessage) {
@@ -414,7 +439,7 @@ bot.on('message', message => {
                               }} break;
                       case 'promote':
                         if(message.channel.name == undefined)  { return }
-                      if(message.member.roles.has(admin)) {
+                      if(message.member.roles.has("676206157815218177")) {
                         var username2 = args[1]
                         if (username2){
                           message.channel.send(`Checking ROBLOX for ${username2}`)
@@ -439,7 +464,7 @@ bot.on('message', message => {
                         break;;
                       case 'demote':
                         if(message.channel.name == undefined)  { return }
-                      if(message.member.roles.has(admin)) {
+                      if(message.member.roles.has("676206157815218177")) {
                         var username1 = args[1]
                         if (username1){
                           message.channel.send(`Checking ROBLOX for ${username1}`)
@@ -474,7 +499,7 @@ bot.on('message', message => {
                         })
                        break;
                       case 'accept':
-                        if(message.member.roles.has(admin)) {
+                        if(message.member.roles.has("676206157815218177")) {
                         roblox.getIdFromUsername(args[1])
                         .then(function(id){roblox.handleJoinRequest(GroupId, id, 1)
                         message.channel.sendMessage(`Succesfully accepted user ${args[1]}`)})
@@ -503,6 +528,19 @@ bot.on('message', message => {
                         }break;
                       case 'Barcelo12':
                         message.channel.sendMessage('h')
+                        break;
+                      case 'claim-shift':
+                        if(message.member.roles.has(admin)) {
+                          var idk699 = fs.readFileSync(`${process.cwd()}/Shifts.txt`, 'utf8');
+                          fs.writeFileSync(`${process.cwd()}/Shifts.txt`, (idk699 + `\n` + 'Shift at ' + (args[1]) + `. Hosted by ${message.guild.members.get(message.author.id).displayName}.`))
+                          message.channel.sendMessage('Scheduled!')
+                          }break;
+                      case 'clear-schedule':
+                        if(message.member.roles.has("681588492802850837")) {
+                        var Talll = ':Managingdirector:'
+                        fs.writeFileSync(`${process.cwd()}/Trainings.txt`, '')
+                        message.channel.sendMessage('Cleared the Schedule!')
+                        }break;
         } 
                       
                       
