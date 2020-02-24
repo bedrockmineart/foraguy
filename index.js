@@ -224,17 +224,26 @@ bot.on('message', message => {
                 } else {
                   message.channel.sendMessage('You do not have the permission to do this command') 
                   }break;
-                    case 'train5654':
+                    case 'train':
                       if(message.channel.name == undefined)  { return }
                       if(message.member.roles.has(admin)) {
                       let member4 = message.member;
                       const user60 = message.guild.members.get(message.author.id).displayName;
                       let role69 = message.guild.roles.find(r => r.name === "Hosting");
+                      const trainingaa = new Discord.RichEmbed()
+                        .setColor('#00ff00')
+                        .setTitle('Trainings!')
+                          .setAuthor(botname, logo)
+                          .setDescription(`Training has started!\n Hop along to the training centre (link in <#661290395216379914>)\nThis might be last one for a while so hop along!\nHosted by ${user60}`)
+                          .setThumbnail(logo)
+                          .setTimestamp()
+                          .setFooter('Training started: ');
                       member4.addRole(role69).catch(console.error);
-                      bot.channels.get("649756880314302464").send('@here');
-                      bot.channels.get("649756880314302464").send('Subway Security Trainings!! \n Are you still awaiting tryout? Then come along to this training.\n (Slock in 10-15 minutes)\n https://www.roblox.com/games/4582202027/Subway-Security-Tryout-Centre\n https://discord.gg/bvYgmDe');
-                      bot.channels.get("649756880314302464").send('Training underway, hosted by ' + user60);
-                      roblox.shout({group: GroupId, message: 'Subway security trainings are right now! Hop along whith others to get trained! Host: ' + user60})
+                      bot.channels.get("661290395216379914").send('@here');
+                      bot.channels.get("661290395216379914").send('Barcelo Trainings!! \n Are you still awaiting Training? Then come along to this training.\n (Slock in 10-15 minutes)\n https://www.roblox.com/games/897546096/Barcelo-Training-Center-V1');
+                      bot.channels.get("661290395216379914").send('More info in <#681248976590209034>');
+                      bot.channels.get("681248976590209034").send(trainingaa).then((message5) => {
+                      roblox.shout({group: GroupId, message: 'Barcelo trainings are right now! Hop along whith others to get trained! Host: ' + user60})
                       message.author.send('Tell me when you have finished(React to this message with ✅.)\nIf training is cancelled press the ❎').then(sentMessage => {
                         sentMessage.react('✅').then(() => sentMessage.react('❎'));
                 
@@ -247,14 +256,36 @@ bot.on('message', message => {
                       const reaction1 = collected.first();
                 
                       if (reaction1.emoji.name === '✅') {
-                        bot.channels.get("649756880314302464").send('Training finished, hosted by ' + user60)
+                        bot.channels.get("661290395216379914").send('Training finished, hosted by ' + user60)
                         sentMessage.edit('Chose: ✅');
                         roblox.shout({group: GroupId, message: 'Everyone who passed the training has been ranked! Congratulations'})
+                        const trainingaaa = new Discord.RichEmbed()
+                        .setColor('#ff0000')
+                        .setTitle('Trainings!')
+                          .setAuthor(botname, logo)
+                          .setDescription(`Training has finished! everyone who passed has been ranked!\nHosted by ${user60}`)
+                          .setThumbnail(logo)
+                          .setTimestamp()
+                          .setFooter('This message will be deleted after 5 minutes. Ended: ');
+                        message5.edit(trainingaaa).then(mesasge7 => {
+                          mesasge7.delete();
+                          }, 5 * 60 * 1000);
                       } else {
                           if (reaction.emoji.name === '❎') {
-                            bot.channels.get("649756880314302464").send('*Tryout cancelled due to no-one showing*\nhosted by ' + user60)
+                            bot.channels.get("661290395216379914").send('*Tryout cancelled due to no-one showing*\nhosted by ' + user60)
                             sentMessage.edit('Chose: ❎');
                             roblox.shout({group: GroupId, message: 'Tryout has been cancelled.'})
+                            const trainingaaa = new Discord.RichEmbed()
+                            .setColor('#ff0000')
+                            .setTitle('Trainings!')
+                            .setAuthor(botname, logo)
+                            .setDescription(`Due to unforseen circumstances the training has been cancelled. :(\nHosted by ${user60}`)
+                            .setThumbnail(logo)
+                            .setTimestamp()
+                            .setFooter('This message will be deleted after 5 minutes. Ended: ');
+                        message5.edit(trainingaaa).then(mesasge6 => {
+                          mesasge6.delete();
+                          }, 5 * 60 * 1000);
                           } else {
                           message.channel.sendMessage('Did not react with the right')
                         }}
@@ -263,52 +294,10 @@ bot.on('message', message => {
                       .catch(collected => {
                         message.author.sendMessage('You took to long to react.');
                       });})
-                     }
+                      })}
                        else {
                         message.channel.sendMessage('You do not have the permission to do this command')   
                     }break;
-
-                    case 'tryouts5554':
-                      if(message.channel.name == undefined)  { return }
-                      let member3 = message.member;
-                      if(message.member.roles.has(admin)) {
-                      const user61 = message.guild.members.get(message.author.id).displayName;
-                      let role96 = message.guild.roles.find(r => r.name === "Hosting");
-                      member3.addRole(role96).catch(console.error);
-                      bot.channels.get("649756880314302464").send('@here \nSubway Security Tryouts!!\n Want to protect the subway game, keep the trollers, exploiters away and make the game better in general? Then the Security Department is for you!\n (Slock in 10-15 minutes)\n https://www.roblox.com/games/4582202027/Subway-Security-Tryout-Centre \n https://discord.gg/bvYgmDe');
-                          bot.channels.get("649756880314302464").send('Hosted by ' + user61 + '! Let ' + user61 + ' get set up and ready!');
-                          roblox.shout({group: GroupId, message: 'Subway security tryout are right now! Hop along whith others to get tryouted! Host: ' + user61})
-                          message.author.send('Tell me when you have finished(React to this message with ✅.)\nIf training is cancelled press the ❎').then(sentMessage => {
-                            sentMessage.react('✅').then(() => sentMessage.react('❎'));
-                    
-                          const filter = (reaction, user) => {
-                          return ['✅', '❎'].includes(reaction.emoji.name) && user.id === message.author.id;
-                          };
-                    
-                          sentMessage.awaitReactions(filter, { max: 1, time: 60000000, errors: ['time'] })
-                          .then(collected => {
-                          const reaction = collected.first();
-                    
-                          if (reaction.emoji.name === '✅') {
-                            bot.channels.get("649756880314302464").send('Tryout finished, hosted by ' + user61)
-                            sentMessage.edit('Chose: ✅');
-                            roblox.shout({group: GroupId, message: 'Everyone who passed the tryout has been ranked! Congratulations'})
-                          } else {
-                            if (reaction.emoji.name === '❎') {
-                              bot.channels.get("649756880314302464").send('*Tryout cancelled due to no-one showing*\nhosted by ' + user61)
-                              sentMessage.edit('Chose: ❎');
-                              roblox.shout({group: GroupId, message: 'Tryout has been cancelled.'})
-                            } else {
-                              message.channel.sendMessage('Did not react with the right')
-                            }}
-                          
-                          })
-                          .catch(collected => {
-                            message.author.sendMessage('You took to long to react.');
-                          });})
-                        } else {
-                          message.channel.sendMessage('You do not have the permission to do this command')  
-                        }break;
                     case 'me':
                       const user59 = message.guild.members.get(message.author.id).displayName
                       message.channel.sendMessage(user59)
