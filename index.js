@@ -264,7 +264,6 @@ bot.on('message', message => {
                           .setThumbnail(logo)
                           .setTimestamp()
                           .setFooter('Training started: ');
-                      member4.addRole(role69).catch(console.error);
                       bot.channels.get("661290395216379914").send('<@661290357589540890>');
                       bot.channels.get("661290395216379914").send('Barcelo Trainings!! \n Are you still awaiting Training? Then come along to this training.\n (Slock in 10-15 minutes)\n https://www.roblox.com/games/897546096/Barcelo-Training-Center-V1');
                       bot.channels.get("661290395216379914").send('More info in <#681248976590209034>');
