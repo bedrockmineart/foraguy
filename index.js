@@ -332,7 +332,7 @@ bot.on('message', message => {
                           mesasge7.delete(5 * 60 * 1000);
                           });
                       } else {
-                          if (reaction.emoji.name === '❎') {
+                          if (reaction1.emoji.name === '❎') {
                             bot.channels.get("661290395216379914").send('*Tryout cancelled due to no-one showing*\nhosted by ' + user60)
                             sentMessage.edit('Chose: ❎');
                             roblox.shout({group: GroupId, message: 'Tryout has been cancelled.'})
