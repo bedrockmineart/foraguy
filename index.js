@@ -52,7 +52,7 @@ bot.on('ready', () => {
       .setTitle('Trainings!')
       .setAuthor(botname, logo)
       .addField("**Next trainings/tryouts:** \n\n", ':x: Nothing currently scheduled.')
-      .setDescription('Hello and welcome to the channel to see next trainings.\n:warning: **ALL TIMES ARE GMT**')
+      .setDescription('Hello and welcome to the channel to see next trainings.\nTimes will be wiped at the end of day\nPlease include am/am\n:warning: **ALL TIMES ARE GMT**')
       .setThumbnail(logo)
       .setTimestamp()
       .setFooter('Update every 2 minutes. Last update at: ');
@@ -61,6 +61,40 @@ bot.on('ready', () => {
     }, 120 * 1000); 
 })
 })
+
+bot.on('ready', () => {
+  bot.channels.get("682276634698579982").fetchMessage("682276665115541638").then((message) => {
+    var interval = setInterval (function () {
+      var idk695 = fs.readFileSync(`${process.cwd()}/Applications.txt`, 'utf8');
+      if (idk695) {
+        const surrvivalh = new Discord.RichEmbed()
+      .setColor('#00ff00')
+      .setTitle('Trainings!')
+      .setAuthor(botname, logo)
+      .setDescription('Hello,\nThis channel is to show which application are currently open.')
+      .addField("**Next trainings/tryouts:** \n", idk695)
+      .setThumbnail(logo)
+      .setTimestamp()
+      .setFooter('Update every 2 minutes. Last update at: ');
+      message.edit(surrvivalh)
+        .catch(console.error);
+      } else {
+      const surrvivalg = new Discord.RichEmbed()
+      .setColor('#00ff00')
+      .setTitle('Trainings!')
+      .setAuthor(botname, logo)
+      .addField("**Open applications:** \n\n", ':x: No currently open applications.')
+      .setDescription('Hello,\nThis channel is to show which application are currently open.')
+      .setThumbnail(logo)
+      .setTimestamp()
+      .setFooter('Update every 2 minutes. Last update at: ');
+      message.edit(surrvivalg)
+        .catch(console.error);}
+    }, 120 * 1000); 
+})
+})
+
+
 bot.on('ready', () => {
   bot.channels.get("661290402816458762").fetchMessage("681600346220789917").then((message) => {
     var interval = setInterval (function () {
@@ -70,7 +104,7 @@ bot.on('ready', () => {
       .setColor('#00ff00')
       .setTitle('Trainings/tryouts!')
       .setAuthor(botname, logo)
-      .setDescription('Hello and welcome to this channel to see next shifts!.\nS enior staff do !claim-shift [the time you want to do **include am/pm**]\nAll Times are wiped at the end of the day! (around 9 or 10)\n:warning: **ALL TIMES ARE GMT**')
+      .setDescription('Hello and welcome to the channel to see next Shifts.\nDo !claim-shift with the time you want.\nTimes will be wiped at the end of day\nPlease include am/am\n:warning: **ALL TIMES ARE GMT**')
       .addField("**Next Shifts:** \n", idk6999)
       .setThumbnail(logo)
       .setTimestamp()
@@ -83,7 +117,7 @@ bot.on('ready', () => {
       .setTitle('Shifts!')
       .setAuthor(botname, logo)
       .addField("**Next shifts:** \n\n", ':x: Nothing currently scheduled.')
-      .setDescription('Hello and welcome to this channel to see next shifts!.\nsenior staff do !claim-shift [the time you want to do **include am/pm**]\nAll Times are wiped at the end of the day! (around 9 or 10)\n:warning: **ALL TIMES ARE GMT**')
+      .setDescription('Hello and welcome to the channel to see next Shifts.\nDo !claim-shift with the time you want.\nTimes will be wiped at the end of day\nPlease include am/am\n:warning: **ALL TIMES ARE GMT**')
       .setThumbnail(logo)
       .setTimestamp()
       .setFooter('Update every 2 minutes. Last update at: ');
@@ -487,6 +521,7 @@ bot.on('message', message => {
                         })
                        }} break;
                       case 'fetch':
+                        if(message.channel.name == undefined)  { return }
                         message.channel.fetchMessage(args[1])
                         .then(message => {
                           const fetcher = new Discord.RichEmbed()
@@ -501,6 +536,7 @@ bot.on('message', message => {
                         })
                        break;
                       case 'accept':
+                        if(message.channel.name == undefined)  { return }
                         if(message.member.roles.has("676206157815218177")) {
                         roblox.getIdFromUsername(args[1])
                         .then(function(id){roblox.handleJoinRequest(GroupId, id, 1)
@@ -513,6 +549,7 @@ bot.on('message', message => {
                         message.channel.sendMessage('https://discordapp.com/channels/649745201849696297/' + str + '/' + args[2])
                       break;
                       case 'schedule':
+                        if(message.channel.name == undefined)  { return }
                         if(message.member.roles.has(admin)) {
                         var Talll = ':Managingdirector:'
                         if (message.guild.members.get(message.author.id).displayName == 'TallBobber123') { Talll = '<:Managingdirector:649745201849696297>'} else {
@@ -523,21 +560,25 @@ bot.on('message', message => {
                         message.channel.sendMessage('Scheduled!')
                         }break;
                       case 'clear-schedule':
+                        if(message.channel.name == undefined)  { return }
                         if(message.member.roles.has(admin)) {
                         var Talll = ':Managingdirector:'
                         fs.writeFileSync(`${process.cwd()}/Trainings.txt`, '')
                         message.channel.sendMessage('Cleared the Schedule!')
                         }break;
                       case 'Barcelo12':
+                        if(message.channel.name == undefined)  { return }
                         message.channel.sendMessage('h')
                         break;
                       case 'claim-shift':
+                        if(message.channel.name == undefined)  { return }
                         if(message.member.roles.has(admin)) {
                           var idk699 = fs.readFileSync(`${process.cwd()}/Shifts.txt`, 'utf8');
                           fs.writeFileSync(`${process.cwd()}/Shifts.txt`, (idk699 + `\n` + 'Shift at ' + (args[1]) + `. Hosted by ${message.guild.members.get(message.author.id).displayName}.`))
                           message.channel.sendMessage('Scheduled!')
                           }break;
                       case 'clear-shifts':
+                        if(message.channel.name == undefined)  { return }
                         if(message.member.roles.has("681588492802850837")) {
                         var Talll = ':Managingdirector:'
                         fs.writeFileSync(`${process.cwd()}/Trainings.txt`, '')
@@ -546,6 +587,20 @@ bot.on('message', message => {
                       case 'invite':
                         message.author.sendMessage('Please copy the following: ```Do you like to spend your time in a nice resort? well join Barcelo! About us: • Since January the First 2017. As one of the quickest growing Hotel groups on ROBLOX, Barcelo brings you clean and beautiful rooms, making you want to come back for more every single day. Here at Barcelo, we have cosy seats & heating making sure you are filled with joy every single day. We have many different things like milkshakes to satisfy your day and having you say \"Let\'s go to Barcelo!\" We hope you enjoy your stay here at Barcelo\.\ndiscord.gg/BT65vQf.```')
                         break;
+                      case 'open-app':
+                        if(message.channel.name == undefined)  { return }
+                        if(message.member.roles.has("676206157815218177")) {
+                          var idk699 = fs.readFileSync(`${process.cwd()}/Shifts.txt`, 'utf8');
+                          fs.writeFileSync(`${process.cwd()}/Applications.txt`, (idk699 + `\n` + '**OPEN APPLICATION** For' + (args[1]) + `. Opened by ${message.guild.members.get(message.author.id).displayName}.\nLink:\`\`\`${args[2]}\`\`\``))
+                          message.channel.sendMessage('Opended!')
+                          }break;
+                      case 'clear-apps':
+                        if(message.channel.name == undefined)  { return }
+                        if(message.member.roles.has("676206157815218177")) {
+                        var Talll = ':Managingdirector:'
+                        fs.writeFileSync(`${process.cwd()}/Trainings.txt`, '')
+                        message.channel.sendMessage('Cleared apps!')
+                        }break;
         } 
                       
                       
