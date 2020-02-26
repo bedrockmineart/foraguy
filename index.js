@@ -17,6 +17,7 @@ let GroupId = 3049111;
 var cookie = require('./config.json').Cookie11
 var maximumRank = 'SR | Vice Chairperson';
 const admin = "681250688008716464"
+var trainer = "0"
 
 roblox.cookieLogin(cookie).catch(() => {console.log("Sorry, it failed.");});
 
@@ -38,7 +39,7 @@ bot.on('ready', () => {
       .setColor('#00ff00')
       .setTitle('Trainings!')
       .setAuthor(botname, logo)
-      .setDescription('Hello and welcome to the channel to see next trainings.\n:warning: **ALL TIMES ARE GMT**')
+      .setDescription('Hello and welcome to the channel to see next trainings.\nTimes will be wiped at the end of day\nPlease include am/am\n:warning: **ALL TIMES ARE GMT**')
       .addField("**Next trainings/tryouts:** \n", idk69)
       .setThumbnail(logo)
       .setTimestamp()
@@ -142,7 +143,7 @@ bot.on('messageDelete', async (message) => {
 	            .setColor('#ff0000')
 	            .setTitle('A message was deleted!')
                 .setAuthor(botname, logo)
-                .setDescription(`A message was deleted in #${message.channel.name} made by ${user}`)
+                .setDescription(`A message was deleted in <#${message.channel}> made by ${user}`)
                 .setThumbnail(logo)
 	            .setTimestamp()
 	            .setFooter('Bot made by bedrockminecart.');
@@ -212,7 +213,7 @@ bot.on('message', message => {
           message.channel.send("Pinging ...") // Placeholder for pinging ... 
           .then((msg4) => { // Resolve promise
             msg4.edit("Ping: " + (Date.now() - msg4.createdTimestamp)) // Edits message with current timestamp minus timestamp of message
-          });
+          }); break;
         case 'time':
             const time = new Discord.RichEmbed()
 	          .setColor('#ff0000')
@@ -256,6 +257,7 @@ bot.on('message', message => {
                       if(message.member.roles.has(admin)) {
                       let member4 = message.member;
                       const user60 = message.guild.members.get(message.author.id).displayName;
+                      trainer = user60
                       const trainingaa = new Discord.RichEmbed()
                         .setColor('#00ff00')
                         .setTitle('Trainings!')
@@ -541,6 +543,9 @@ bot.on('message', message => {
                         fs.writeFileSync(`${process.cwd()}/Trainings.txt`, '')
                         message.channel.sendMessage('Cleared the Schedule!')
                         }break;
+                      case 'invite':
+                        message.author.sendMessage('Please copy the following: ```Do you like to spend your time in a nice resort? well join Barcelo! About us: • Since January the First 2017. As one of the quickest growing Hotel groups on ROBLOX, Barcelo brings you clean and beautiful rooms, making you want to come back for more every single day. Here at Barcelo, we have cosy seats & heating making sure you are filled with joy every single day. We have many different things like milkshakes to satisfy your day and having you say \"Let\'s go to Barcelo!\" We hope you enjoy your stay here at Barcelo\.\ndiscord.gg/BT65vQf.```')
+                        break;
         } 
                       
                       
