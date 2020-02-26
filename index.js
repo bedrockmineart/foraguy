@@ -300,7 +300,7 @@ bot.on('message', message => {
                           .setThumbnail(logo)
                           .setTimestamp()
                           .setFooter('Training started: ');
-                      bot.channels.get("661290395216379914").send('<@661290357589540890>');
+                      bot.channels.get("661290395216379914").send('<@&661290357589540890>');
                       bot.channels.get("661290395216379914").send('Barcelo Trainings!! \n Are you still awaiting Training? Then come along to this training.\n (Slock in 10-15 minutes)\n https://www.roblox.com/games/897546096/Barcelo-Training-Center-V1');
                       bot.channels.get("661290395216379914").send('More info in <#681248976590209034>');
                       bot.channels.get("681248976590209034").send(trainingaa).then((message5) => {
@@ -345,8 +345,8 @@ bot.on('message', message => {
                             .setTimestamp()
                             .setFooter('This message will be deleted after 5 minutes. Ended: ');
                         message5.edit(trainingaaa).then(mesasge6 => {
-                          mesasge6.delete();
-                          }, 5 * 60 * 1000);
+                          mesasge6.delete(5 *60 *1000);
+                          });
                           } else {
                           message.channel.sendMessage('Did not react with the right')
                         }}
