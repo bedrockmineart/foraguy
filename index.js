@@ -590,7 +590,7 @@ bot.on('message', message => {
                       case 'open-app':
                         if(message.channel.name == undefined)  { return }
                         if(message.member.roles.has("676206157815218177")) {
-                          var idk699 = fs.readFileSync(`${process.cwd()}/Shifts.txt`, 'utf8');
+                          var idk699 = fs.readFileSync(`${process.cwd()}/Applications.txt`, 'utf8');
                           fs.writeFileSync(`${process.cwd()}/Applications.txt`, (idk699 + `\n` + '**OPEN APPLICATION** For' + (args[1]) + `. Opened by ${message.guild.members.get(message.author.id).displayName}.\nLink:\`\`\`${args[2]}\`\`\``))
                           message.channel.sendMessage('Opended!')
                           }break;
@@ -598,7 +598,7 @@ bot.on('message', message => {
                         if(message.channel.name == undefined)  { return }
                         if(message.member.roles.has("676206157815218177")) {
                         var Talll = ':Managingdirector:'
-                        fs.writeFileSync(`${process.cwd()}/Trainings.txt`, '')
+                        fs.writeFileSync(`${process.cwd()}/Applications.txt`, '')
                         message.channel.sendMessage('Cleared apps!')
                         }break;
         } 
