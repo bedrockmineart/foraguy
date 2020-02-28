@@ -72,7 +72,7 @@ bot.on('ready', () => {
       } else {
       roblox.shout('Sorry everyone but there is not trainings scheduled.')
         .catch(console.error);}
-    }, 1800 * 1000); 
+    }, 18 * 1000); 
 })
 
 bot.on('ready', () => {
@@ -229,7 +229,7 @@ bot.on('messageDelete', async (message) => {
       .addField("**MR**", "This role consitists of MR | Supervisor and more! \'Meduim rank\'")
       .addField("**HR**", "Commonly known as \'High rank\' And can pretty much do anything BUT promote someone (can still log it but not actually do it) can stil do promotions at training.")
       .addField("**SHR**", "SHR stands for \'Super high rank\'. Have a super high role. They can tell people if they can do a promo at trainign or not.")
-      .addField("**SR***", "These people ,\'Special rank\', Can actually rank people.")
+      .addField("**SR**", "These people ,\'Special rank\', Can actually rank people.")
       .addField("**Higher**", "These people are the highest of all and consist of 3 roles, Development, co-founder and founder.")
       .setThumbnail(logo)
       .setTimestamp()
