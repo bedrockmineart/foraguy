@@ -72,7 +72,7 @@ bot.on('ready', () => {
       .setTitle('Trainings!')
       .setAuthor(botname, logo)
       .setDescription('Hello,\nThis channel is to show which application are currently open.')
-      .addField("**Next trainings/tryouts:** \n", idk695)
+      .addField("**Open applications:** \n", idk695)
       .setThumbnail(logo)
       .setTimestamp()
       .setFooter('Update every 2 minutes. Last update at: ');
@@ -335,7 +335,7 @@ bot.on('message', message => {
                           if (reaction1.emoji.name === '❎') {
                             bot.channels.get("661290395216379914").send('*Tryout cancelled due to no-one showing*\nhosted by ' + user60)
                             sentMessage.edit('Chose: ❎');
-                            roblox.shout({group: GroupId, message: 'Tryout has been cancelled.'})
+                            roblox.shout({group: GroupId, message: 'Training has been cancelled.'})
                             const trainingaaa = new Discord.RichEmbed()
                             .setColor('#ff0000')
                             .setTitle('Trainings!')
