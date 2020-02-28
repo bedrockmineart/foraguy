@@ -63,14 +63,14 @@ bot.on('ready', () => {
 })
 
 bot.on('ready', () => {
-  roblox.shout('Loading functions.')
+  roblox.shout({group: GroupId, message: 'Loading functions'})
     var interval = setInterval (function () {
       var idk697 = fs.readFileSync(`${process.cwd()}/Trainings.txt`, 'utf8');
       if (idk697) {
         roblox.shout({group: GroupId, message: 'Training: ' + idk697})
         .catch(console.error);
       } else {
-      roblox.shout('Sorry everyone but there is not trainings scheduled.')
+      roblox.shout({group: GroupId, message: 'Sorry everyone, but there is not trainings scheduled.'})
         .catch(console.error);}
     }, 18 * 1000); 
 })
