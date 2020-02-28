@@ -67,7 +67,7 @@ bot.on('ready', () => {
     var interval = setInterval (function () {
       var idk697 = fs.readFileSync(`${process.cwd()}/Trainings.txt`, 'utf8');
       if (idk697) {
-        roblox.shout('Training: ' + idk697)
+        roblox.shout({group: GroupId, message: 'Training: ' + idk697})
         .catch(console.error);
       } else {
       roblox.shout('Sorry everyone but there is not trainings scheduled.')
