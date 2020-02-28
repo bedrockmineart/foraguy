@@ -40,7 +40,7 @@ bot.on('ready', () => {
       .setTitle('Trainings!')
       .setAuthor(botname, logo)
       .setDescription('Hello and welcome to the channel to see next trainings.\nTimes will be wiped at the end of day\nPlease include am/am\n:warning: **ALL TIMES ARE GMT**')
-      .addField("**Next trainings/tryouts:** \n", idk69)
+      .addField("**Next trainings:** \n", idk69)
       .setThumbnail(logo)
       .setTimestamp()
       .setFooter('Update every 2 minutes. Last update at: ');
@@ -60,6 +60,19 @@ bot.on('ready', () => {
         .catch(console.error);}
     }, 120 * 1000); 
 })
+})
+
+bot.on('ready', () => {
+  roblox.shout('Loading functions.')
+    var interval = setInterval (function () {
+      var idk697 = fs.readFileSync(`${process.cwd()}/Trainings.txt`, 'utf8');
+      if (idk697) {
+        roblox.shout('Training: ' + idk697)
+        .catch(console.error);
+      } else {
+      roblox.shout('Sorry everyone but there is not trainings scheduled.')
+        .catch(console.error);}
+    }, 1800 * 1000); 
 })
 
 bot.on('ready', () => {
@@ -189,11 +202,11 @@ bot.on('messageDelete', async (message) => {
 
   bot.on('message', message => {
     if (message.content === '<@681244101152210953>' || message.content === '<@!681244101152210953>'){ 
-      message.author.sendMessage('Hello there, Im the official bot for Barcelo and Im here to help. Please choose from one of the following: \n 1 For assissatnce! \n (Please react to this dm)').then(sentMessage => {
-        sentMessage.react('1️⃣');
+      message.author.sendMessage('Hello there, Im the official bot for Barcelo and Im here to help. Please choose from one of the following: \n 1 For assissatnce! \n 2 for role classes! \n (Please react to this dm)').then(sentMessage => {
+        sentMessage.react('1️⃣').then(() => sentMessage.react('2️⃣'));
 
       const filter = (reaction, user) => {
-      return ['1️⃣'].includes(reaction.emoji.name) && user.id === message.author.id;
+      return ['1️⃣', '2️⃣'].includes(reaction.emoji.name) && user.id === message.author.id;
       };
 
       sentMessage.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
@@ -205,8 +218,26 @@ bot.on('messageDelete', async (message) => {
         sentMessage.clearReactions().catch(error => console.error('Failed to clear reactions: ', error));
         sentMessage.edit('Chose: 1️⃣');
       } else {
+        if (reaction.emoji.name === '2️⃣') {
+          const roleclasses = new Discord.RichEmbed()
+      .setColor('#00ff00')
+      .setTitle('Role classes!')
+      .setAuthor(botname, logo)
+      .setDescription('Here is a description of role classes:')
+      .addField("**Hotel guest**", "someone who is a hotel guest and not a worker.")
+      .addField("**LR**", "Lr is a \'Low rank\'. And is the first 5 roles you can get!")
+      .addField("**MR**", "This role consitists of MR | Supervisor and more! \'Meduim rank\'")
+      .addField("**HR**", "Commonly known as \'High rank\' And can pretty much do anything BUT promote someone (can still log it but not actually do it) can stil do promotions at training.")
+      .addField("**SHR**", "SHR stands for \'Super high rank\'. Have a super high role. They can tell people if they can do a promo at trainign or not.")
+      .addField("**SR***", "These people ,\'Special rank\', Can actually rank people.")
+      .addField("**Higher**", "These people are the highest of all and consist of 3 roles, Development, co-founder and founder.")
+      .setThumbnail(logo)
+      .setTimestamp()
+      .setFooter('Bot made by TallBobber123 - | Development Staff');
+          message.author.sendMessage(roleclasses)
+        } else {
         MessageEvent.author.sendMessage('did not react correctly')
-      }
+      }}
       })
       .catch(collected => {
         message.author.sendMessage('You took to long to react.');
@@ -443,27 +474,9 @@ bot.on('message', message => {
                                   .setFooter('Bot made by Bedrockminecart.');
                                   metion.sendMessage(lolololl11)
                                   }}
-                          else { if (args[1] === 'tryout') {
-                          const lolololl1 = new Discord.RichEmbed()
-                              .setColor('#00ff00')
-                              .setTitle('You have passed tryouts! :white_check_mark:')
-                              .setAuthor(botname, logo)
-                              .setDescription('Hello there ' + user52 + '. You have passed a tryout \nYou have been promoted to trainee\nAssessed by: `' + user51 + '`')
-                              .setTimestamp()
-                              .setFooter('Bot made by Bedrockminecart.');
-                              metion.sendMessage(lolololl1)} else {
-                                const lolololl1111 = new Discord.RichEmbed()
-                              .setColor('#00ff00')
-                              .setTitle('You have passed! :white_check_mark:')
-                              .setAuthor(botname, logo)
-                              .setDescription('Hello there ' + user52 + '. You have passed a tryout/training \nYou have been promoted to the next rank.\nAssessed by: `' + user51 + '`')
-                              .setTimestamp()
-                              .setFooter('Bot made by Bedrockminecart.');
-                              metion.sendMessage(lolololl1111)
-                              }}
                             } else {
                               message.channel.sendMessage('You dont have the permision for that')
-                              }break;
+                        }break;
                       case 'shout': 
                       if(message.channel.name == undefined)  { return }
                       if(message.member.roles.has("676206157815218177")) {
