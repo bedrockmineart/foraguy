@@ -67,8 +67,8 @@ bot.on('ready', () => {
 
 bot.on('ready', () => {
     var interval = setInterval (function () {
-      var idk697 = fs.readFileSync(`${process.cwd()}/Trainings.txt`, 'utf8', (err, data) => {
-      if (idk697) {
+      fs.readFileSync(`${process.cwd()}/Trainings.txt`, 'utf8', (err, data) => {
+      if (data) {
         var ffff = math.round(data.split('\n').length - 1);
         var hhhh = ffff + ' Trainings today! Join our discord server for times!'
         roblox.shout({group: GroupId, message: hhhh})
