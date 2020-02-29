@@ -17,7 +17,8 @@ let GroupId = 3049111;
 var cookie = require('./config.json').Cookie11
 var maximumRank = 'SR | Vice Chairperson';
 const admin = "681250688008716464"
-var trainer = "0"
+var trainer = "0";
+
 
 roblox.cookieLogin(cookie).catch(() => {console.log("Sorry, it failed.");});
 
@@ -62,17 +63,20 @@ bot.on('ready', () => {
 })
 })
 
+
+
 bot.on('ready', () => {
   roblox.shout({group: GroupId, message: 'Loading functions'})
     var interval = setInterval (function () {
-      var idk697 = fs.readFileSync(`${process.cwd()}/Trainings.txt`, 'utf8');
+      var idk697 = fs.readFileSync(`${process.cwd()}/Trainings.txt`, 'utf8', (err, data) => {
       if (idk697) {
-        roblox.shout({group: GroupId, message: 'Training: ' + idk697})
+        var ffff = math.round(data.split('\n').length - 1);
+        roblox.shout({group: GroupId, message: ffff + ' Trainings today! Join our discord server for times!'})
         .catch(console.error);
       } else {
       roblox.shout({group: GroupId, message: 'Sorry everyone, but there is not trainings scheduled.'})
         .catch(console.error);}
-    }, 1800 * 1000); 
+    })}, 18 * 1000); 
 })
 
 bot.on('ready', () => {
