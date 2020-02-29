@@ -66,15 +66,15 @@ bot.on('ready', () => {
 
 
 bot.on('ready', () => {
-  roblox.shout({group: GroupId, message: 'Loading functions'})
     var interval = setInterval (function () {
       var idk697 = fs.readFileSync(`${process.cwd()}/Trainings.txt`, 'utf8', (err, data) => {
       if (idk697) {
         var ffff = math.round(data.split('\n').length - 1);
-        roblox.shout({group: GroupId, message: ffff + ' Trainings today! Join our discord server for times!'})
+        var hhhh = ffff + ' Trainings today! Join our discord server for times!'
+        roblox.shout({group: GroupId, message: hhhh})
         .catch(console.error);
       } else {
-      roblox.shout({group: GroupId, message: 'Sorry everyone, but there is not trainings scheduled.'})
+        roblox.shout({group: GroupId, message: 'Sorry everyone, but there is not trainings scheduled.'})
         .catch(console.error);}
     })}, 18 * 1000); 
 })
