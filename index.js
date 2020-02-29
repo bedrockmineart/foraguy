@@ -194,7 +194,7 @@ bot.on('messageDelete', async (message) => {
 	            .setColor('#ff0000')
 	            .setTitle('A message was deleted!')
                 .setAuthor(botname, logo)
-                .setDescription(`A message was deleted in <#${message.channel}> made by ${user}`)
+                .setDescription(`A message was deleted in ${message.channel} made by ${user}`)
                 .setThumbnail(logo)
 	            .setTimestamp()
 	            .setFooter('Bot made by bedrockminecart.');
@@ -253,7 +253,14 @@ bot.on('messageDelete', async (message) => {
           let user123 = message.author;
           const question = message.content.slice (4);
           message.author.sendMessage('Your question has been submited to the staffing team!')
-          bot.channels.get("681558326781149301").send('New question from ' + user123 + ': ' + s1 + question + s1)
+          const questionnn = new Discord.RichEmbed()
+                        .setColor('#ff0000')
+                        .setTitle('New question from ' + user123)
+                        .setAuthor(botname, logo)
+                        .setDescription(question)
+                        .setTimestamp()
+                        .setFooter('Average response it 5-10 minutes');
+          bot.channels.get("681558326781149301").send(questionnn)
         }
       });
         bot.on('message', message => {
@@ -261,13 +268,28 @@ bot.on('messageDelete', async (message) => {
             let user123 = message.author;
             const complaint = message.content.slice (4);
             message.author.sendMessage('Your complaint has been submited to the staffing team!')
-            bot.channels.get("681558326781149301").send('New complaint from ' + user123 + ': ' + s1 + complaint + s1)  
+            const commm = new Discord.RichEmbed()
+                        .setColor('#ff0000')
+                        .setTitle('New complaint from ' + user123)
+                        .setAuthor(botname, logo)
+                        .setDescription(complaint)
+                        .setTimestamp()
+                        .setFooter('Average response it 5-10 minutes');
+            bot.channels.get("681558326781149301").send(commm)  
           }});
         bot.on('message', message => {
           if (message.content.startsWith('642')) {
+            let user123 = message.author;
             const com = message.content.slice (4);
             message.author.sendMessage('Your reply has been submited to the staffing team!')
-            bot.channels.get("681558326781149301").send('Reply to a reply ' + s1 + com + s1)  
+            const repllll = new Discord.RichEmbed()
+                        .setColor('#ff0000')
+                        .setTitle('Reply to a reply from ' + user123)
+                        .setAuthor(botname, logo)
+                        .setDescription(com)
+                        .setTimestamp()
+                        .setFooter('Average response it 5-10 minutes');
+            bot.channels.get("681558326781149301").send(repllll)  
           }});
 
 
@@ -448,7 +470,14 @@ bot.on('message', message => {
                         const user54 = message.author.username
                         message.delete();
                         mentionMessage = message.content.slice (7 + lol1);
-                        mention.sendMessage ('Reply has been sent from ' + user54 + s1 + mentionMessage + s1 + '\n And as always If you think you have not been answered correctly please Submit it with 642 at the start.');
+                        const lolololl1115 = new Discord.RichEmbed()
+                                  .setColor('#00ff00')
+                                  .setTitle('Reply has been sent from ' + user54)
+                                  .setAuthor(botname, logo)
+                                  .setDescription(mentionMessage + '\n And as always If you think you have not been answered correctly please Submit it with 642 at the start.')
+                                  .setTimestamp()
+                                  .setFooter('Bot made by Bedrockminecart.');
+                        mention.sendMessage (lolololl1115);
                         message.channel.sendMessage('Reply sent!')
                       }break;
                       case 'pass':
