@@ -255,12 +255,13 @@ bot.on('messageDelete', async (message) => {
           message.author.sendMessage('Your question has been submited to the staffing team!')
           const questionnn = new Discord.RichEmbed()
                         .setColor('#ff0000')
-                        .setTitle('New question from ' + user123)
+                        .setTitle('New question')
                         .setAuthor(botname, logo)
                         .setDescription(question)
                         .setTimestamp()
                         .setFooter('Average response it 5-10 minutes');
           bot.channels.get("681558326781149301").send(questionnn)
+          bot.channels.get("681558326781149301").send('From ' + user123)
         }
       });
         bot.on('message', message => {
@@ -270,12 +271,13 @@ bot.on('messageDelete', async (message) => {
             message.author.sendMessage('Your complaint has been submited to the staffing team!')
             const commm = new Discord.RichEmbed()
                         .setColor('#ff0000')
-                        .setTitle('New complaint from ' + user123)
+                        .setTitle('New complaint')
                         .setAuthor(botname, logo)
                         .setDescription(complaint)
                         .setTimestamp()
                         .setFooter('Average response it 5-10 minutes');
-            bot.channels.get("681558326781149301").send(commm)  
+            bot.channels.get("681558326781149301").send(commm)
+            bot.channels.get("681558326781149301").send('From ' + user123)
           }});
         bot.on('message', message => {
           if (message.content.startsWith('642')) {
@@ -284,12 +286,13 @@ bot.on('messageDelete', async (message) => {
             message.author.sendMessage('Your reply has been submited to the staffing team!')
             const repllll = new Discord.RichEmbed()
                         .setColor('#ff0000')
-                        .setTitle('Reply to a reply from ' + user123)
+                        .setTitle('Reply to a reply from')
                         .setAuthor(botname, logo)
                         .setDescription(com)
                         .setTimestamp()
                         .setFooter('Average response it 5-10 minutes');
             bot.channels.get("681558326781149301").send(repllll)  
+            bot.channels.get("681558326781149301").send('From ' + user123)
           }});
 
 
@@ -474,7 +477,8 @@ bot.on('message', message => {
                                   .setColor('#00ff00')
                                   .setTitle('Reply has been sent from ' + user54)
                                   .setAuthor(botname, logo)
-                                  .setDescription(mentionMessage + '\n And as always If you think you have not been answered correctly please Submit it with 642 at the start.')
+                                  .setDescription(mentionMessage)
+                                  .addField('**Answered incorectly?**', 'And as always If you think you have not been answered correctly please Submit it with 642 at the start.')
                                   .setTimestamp()
                                   .setFooter('Bot made by Bedrockminecart.');
                         mention.sendMessage (lolololl1115);
@@ -494,7 +498,7 @@ bot.on('message', message => {
                                   .setColor('#00ff00')
                                   .setTitle('You have passed training! :white_check_mark:')
                                   .setAuthor(botname, logo)
-                                  .setDescription('Hello there ' + user52 + '. You have passed a training \nYou have been promoted\nAssessed by: `' + user51 + '`')
+                                  .setDescription('Hello there ' + user52 + '. You have passed a training \nYou have been ranked\nAssessed by: `' + user51 + '`')
                                   .setTimestamp()
                                   .setFooter('Bot made by Bedrockminecart.');
                                   metion.sendMessage(lolololl111) } else {
@@ -502,11 +506,31 @@ bot.on('message', message => {
                                   .setColor('#00ff00')
                                   .setTitle('You have passed training! :white_check_mark:')
                                   .setAuthor(botname, logo)
-                                  .setDescription('Hello there ' + user52 + '. You have passed a training \nYou have been promoted to ' + args[3] + '\nAssessed by: `' + user51 + '`')
+                                  .setDescription('Hello there ' + user52 + '. You have passed a training \nYou have been ranked to ' + args[3] + '\nAssessed by: `' + user51 + '`')
                                   .setTimestamp()
-                                  .setFooter('Bot made by Bedrockminecart.');
+                                  .setFooter('Well done!');
                                   metion.sendMessage(lolololl11)
-                                  }}
+                                  }} else {
+                                     if (args[1] === 'promo') {
+                                      const lolololl1115 = new Discord.RichEmbed()
+                                      .setColor('#00ff00')
+                                      .setTitle('You have been promoted! :white_check_mark:')
+                                      .setAuthor(botname, logo)
+                                      .setDescription('Hello there ' + user52 + '. You have been promoted because you have helped at a training or been a good employee \nYou have been ranked\nAssessed by: `' + user51 + '`')
+                                      .setTimestamp()
+                                      .setFooter('You must have worked hard!');
+                                      metion.sendMessage(lolololl1115)
+                                     } else {
+                                      const lolololl116 = new Discord.RichEmbed()
+                                      .setColor('#00ff00')
+                                      .setTitle('You have passed training/been promoted! :white_check_mark:')
+                                      .setAuthor(botname, logo)
+                                      .setDescription('Hello there ' + user52 + '. You have passed a training or been promoted, I am not sure. \nYou have been ranked\nAssessed by: `' + user51 + '`')
+                                      .setTimestamp()
+                                      .setFooter('Good job, keep it up!');
+                                      metion.sendMessage(lolololl1116)
+                                     }
+                                  }
                             } else {
                               message.channel.sendMessage('You dont have the permision for that')
                         }break;
