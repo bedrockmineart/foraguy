@@ -76,7 +76,7 @@ bot.on('ready', () => {
       })} else {
       roblox.shout({group: GroupId, message: 'Sorry everyone, but there is not trainings scheduled.'})
         .catch(console.error);}
-    }, 1800 * 1000); 
+    }, 18 * 1000); 
 })
 
 bot.on('ready', () => {
