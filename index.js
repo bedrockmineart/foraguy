@@ -195,6 +195,7 @@ bot.on('messageDelete', async (message) => {
 	            .setTitle('A message was deleted!')
                 .setAuthor(botname, logo)
                 .setDescription(`A message was deleted in ${message.channel} made by ${user}`)
+                .addField('Content', message.content)
                 .setThumbnail(logo)
 	            .setTimestamp()
 	            .setFooter('Bot made by bedrockminecart.');
@@ -304,11 +305,13 @@ bot.on('message', message => {
 
         switch (args[0]) {
         case 'ping':
+          if(message.channel.name == 'chat-logs')  { return }
           message.channel.send("Pinging ...") // Placeholder for pinging ... 
           .then((msg4) => { // Resolve promise
             msg4.edit("Ping: " + (Date.now() - msg4.createdTimestamp)) // Edits message with current timestamp minus timestamp of message
           }); break;
         case 'time':
+          if(message.channel.name == 'chat-logs')  { return }
             const time = new Discord.RichEmbed()
 	          .setColor('#ff0000')
               .setTitle('Time')
@@ -318,6 +321,7 @@ bot.on('message', message => {
               message.channel.sendMessage(time);
               break;
              case 'delete':
+              if(message.channel.name == 'chat-logs')  { return }
               if(message.channel.name == undefined)  { return }
               if(message.member.roles.has(admin)) {
               message.delete();
@@ -327,6 +331,7 @@ bot.on('message', message => {
               message.channel.sendMessage('badboy') 
             }break;
               case 'talk':
+                if(message.channel.name == 'chat-logs')  { return }
                 if(message.channel.name == undefined)  { return }
                 if(message.member.roles.has(admin)) {
                   if (!args[1]) { return }
@@ -347,6 +352,7 @@ bot.on('message', message => {
                   message.channel.sendMessage('You do not have the permission to do this command') 
                   }break;
                     case 'train':
+                      if(message.channel.name == 'chat-logs')  { return }
                       if(message.channel.name == undefined)  { return }
                       if(message.member.roles.has(admin)) {
                       let member4 = message.member;
@@ -396,16 +402,16 @@ bot.on('message', message => {
                             bot.channels.get("661290395216379914").send('*Tryout cancelled due to no-one showing*\nhosted by ' + user60)
                             sentMessage.edit('Chose: ❎');
                             roblox.shout({group: GroupId, message: 'Training has been cancelled.'})
-                            const trainingaaa = new Discord.RichEmbed()
+                            const trainingaaaa = new Discord.RichEmbed()
                             .setColor('#ff0000')
                             .setTitle('Trainings!')
-                            .setAuthor(botname, logo)
+                            .setAuthor(botname, logo) 
                             .setDescription(`Due to unforseen circumstances the training has been cancelled. :(\nHosted by ${user60}`)
                             .setThumbnail(logo)
                             .setTimestamp()
                             .setFooter('This message will be deleted after 5 minutes. Ended: ');
-                        message5.edit(trainingaaa).then(mesasge6 => {
-                          mesasge6.delete(5 *60 *1000);
+                        message5.edit(trainingaaaa).then(mesasge6 => {
+                          mesasge6.delete(5 * 60 * 1000);
                           });
                           } else {
                           message.channel.sendMessage('Did not react with the right')
@@ -420,10 +426,12 @@ bot.on('message', message => {
                         message.channel.sendMessage('You do not have the permission to do this command')   
                     }break;
                     case 'me':
+                      if(message.channel.name == 'chat-logs')  { return }
                       const user59 = message.guild.members.get(message.author.id).displayName
                       message.channel.sendMessage(user59)
                       break;
                     case 'important':
+                      if(message.channel.name == 'chat-logs')  { return }
                       if(message.channel.name == undefined)  { return }
                       if(message.member.roles.has(admin)) {
                         if (!args[1]) { return }
@@ -443,28 +451,15 @@ bot.on('message', message => {
                         message.channel.sendMessage('You do not have the permission to do this command') 
                         }break;
                       case 'release':
+                        if(message.channel.name == 'chat-logs')  { return }
                         message.channel.sendMessage(release)
                         break;
                       case 'version':
+                        if(message.channel.name == 'chat-logs')  { return }
                         message.channel.sendMessage('This bot is on ' + version)
                         break;
-                      case 'shutdown':
-                        if(message.channel.name == undefined)  { return }
-                        if(message.member.roles.has(admin)) {
-                          message.channel.bulkDelete(2)
-                          bot.channels.get("675696521857073165").send('Bot is going offline! :(')
-                            } else {
-                              message.channel.sendMessage('You do not have the permission to do this command')  
-                            }break;
-                      case 'online':
-                        if(message.channel.name == undefined)  { return }
-                        if(message.member.roles.has(admin)) {
-                          message.channel.bulkDelete(2)
-                          bot.channels.get("675696521857073165").send('The bot is online!')
-                            } else {
-                               message.channel.sendMessage('You do not have the permission to do this command')  
-                            }break;
                       case 'reply':
+                        if(message.channel.name == 'chat-logs')  { return }
                         if(message.channel.name == undefined)  { return }
                         if(message.member.roles.has(admin)) {
                         var mention = message.mentions.users.first();
@@ -485,6 +480,7 @@ bot.on('message', message => {
                         message.channel.sendMessage('Reply sent!')
                       }break;
                       case 'pass':
+                        if(message.channel.name == 'chat-logs')  { return }
                         if(message.channel.name == undefined)  { return }
                         if(message.member.roles.has(admin)) {
                           message.delete();
@@ -516,16 +512,16 @@ bot.on('message', message => {
                                       .setColor('#00ff00')
                                       .setTitle('You have been promoted! :white_check_mark:')
                                       .setAuthor(botname, logo)
-                                      .setDescription('Hello there ' + user52 + '. You have been promoted because you have helped at a training or been a good employee \nYou have been ranked\nAssessed by: `' + user51 + '`')
+                                      .setDescription('Hello there ' + user52 + '. You have been promoted because you have helped at a training or been a good employee \nYou have been ranked\nPromoted by: `' + user51 + '`')
                                       .setTimestamp()
                                       .setFooter('You must have worked hard!');
                                       metion.sendMessage(lolololl1115)
                                      } else {
-                                      const lolololl116 = new Discord.RichEmbed()
+                                      const lolololl1116 = new Discord.RichEmbed()
                                       .setColor('#00ff00')
                                       .setTitle('You have passed training/been promoted! :white_check_mark:')
                                       .setAuthor(botname, logo)
-                                      .setDescription('Hello there ' + user52 + '. You have passed a training or been promoted, I am not sure. \nYou have been ranked\nAssessed by: `' + user51 + '`')
+                                      .setDescription('Hello there ' + user52 + '. You have passed a training or been promoted, I am not sure. \nYou have been ranked\nRanked by: `' + user51 + '`')
                                       .setTimestamp()
                                       .setFooter('Good job, keep it up!');
                                       metion.sendMessage(lolololl1116)
@@ -535,6 +531,7 @@ bot.on('message', message => {
                               message.channel.sendMessage('You dont have the permision for that')
                         }break;
                       case 'shout': 
+                      if(message.channel.name == 'chat-logs')  { return }
                       if(message.channel.name == undefined)  { return }
                       if(message.member.roles.has("676206157815218177")) {
                             const msg = message;
@@ -544,6 +541,7 @@ bot.on('message', message => {
                                 message.channel.sendMessage('Sucessfully shouted to the Group!\n\nMessage: `' + ShoutMessage + '`');
                               }} break;
                       case 'promote':
+                        if(message.channel.name == 'chat-logs')  { return }
                         if(message.channel.name == undefined)  { return }
                       if(message.member.roles.has("676206157815218177")) {
                         var username2 = args[1]
@@ -569,6 +567,7 @@ bot.on('message', message => {
                         }}
                         break;;
                       case 'demote':
+                        if(message.channel.name == 'chat-logs')  { return }
                         if(message.channel.name == undefined)  { return }
                       if(message.member.roles.has("676206157815218177")) {
                         var username1 = args[1]
@@ -591,6 +590,7 @@ bot.on('message', message => {
                         })
                        }} break;
                       case 'fetch':
+                        if(message.channel.name == 'chat-logs')  { return }
                         if(message.channel.name == undefined)  { return }
                         message.channel.fetchMessage(args[1])
                         .then(message => {
@@ -606,6 +606,7 @@ bot.on('message', message => {
                         })
                        break;
                       case 'accept':
+                        if(message.channel.name == 'chat-logs')  { return }
                         if(message.channel.name == undefined)  { return }
                         if(message.member.roles.has("676206157815218177")) {
                         roblox.getIdFromUsername(args[1])
@@ -613,12 +614,14 @@ bot.on('message', message => {
                         message.channel.sendMessage(`Succesfully accepted user ${args[1]}`)})
                         }break;
                       case 'link':
+                        if(message.channel.name == 'chat-logs')  { return }
                         let str = args[1];
                         str = str.substring(0, str.length - 1);
                         str = str.substring(2, str.length, 0);
                         message.channel.sendMessage('https://discordapp.com/channels/649745201849696297/' + str + '/' + args[2])
                       break;
                       case 'schedule':
+                        if(message.channel.name == 'chat-logs')  { return }
                         if(message.channel.name == undefined)  { return }
                         if(message.member.roles.has(admin)) {
                         var Talll = ':Managingdirector:'
@@ -630,6 +633,7 @@ bot.on('message', message => {
                         message.channel.sendMessage('Scheduled!')
                         }break;
                       case 'clear-schedule':
+                        if(message.channel.name == 'chat-logs')  { return }
                         if(message.channel.name == undefined)  { return }
                         if(message.member.roles.has(admin)) {
                         var Talll = ':Managingdirector:'
@@ -637,10 +641,12 @@ bot.on('message', message => {
                         message.channel.sendMessage('Cleared the Schedule!')
                         }break;
                       case 'Barcelo12':
+                        if(message.channel.name == 'chat-logs')  { return }
                         if(message.channel.name == undefined)  { return }
                         message.channel.sendMessage('h')
                         break;
                       case 'claim-shift':
+                        if(message.channel.name == 'chat-logs')  { return }
                         if(message.channel.name == undefined)  { return }
                         if(message.member.roles.has(admin)) {
                           var idk699 = fs.readFileSync(`${process.cwd()}/Shifts.txt`, 'utf8');
@@ -648,6 +654,7 @@ bot.on('message', message => {
                           message.channel.sendMessage('Scheduled!')
                           }break;
                       case 'clear-shifts':
+                        if(message.channel.name == 'chat-logs')  { return }
                         if(message.channel.name == undefined)  { return }
                         if(message.member.roles.has("681588492802850837")) {
                         var Talll = ':Managingdirector:'
@@ -655,9 +662,11 @@ bot.on('message', message => {
                         message.channel.sendMessage('Cleared the Schedule!')
                         }break;
                       case 'invite':
+                        if(message.channel.name == 'chat-logs')  { return }
                         message.author.sendMessage('Please copy the following: ```Do you like to spend your time in a nice resort? well join Barcelo! About us: • Since January the First 2017. As one of the quickest growing Hotel groups on ROBLOX, Barcelo brings you clean and beautiful rooms, making you want to come back for more every single day. Here at Barcelo, we have cosy seats & heating making sure you are filled with joy every single day. We have many different things like milkshakes to satisfy your day and having you say \"Let\'s go to Barcelo!\" We hope you enjoy your stay here at Barcelo\.\ndiscord.gg/BT65vQf.```')
                         break;
                       case 'open-app':
+                        if(message.channel.name == 'chat-logs')  { return }
                         if(message.channel.name == undefined)  { return }
                         if(message.member.roles.has("676206157815218177")) {
                           var idk699 = fs.readFileSync(`${process.cwd()}/Applications.txt`, 'utf8');
@@ -665,6 +674,7 @@ bot.on('message', message => {
                           message.channel.sendMessage('Opended!')
                           }break;
                       case 'clear-apps':
+                        if(message.channel.name == 'chat-logs')  { return }
                         if(message.channel.name == undefined)  { return }
                         if(message.member.roles.has("676206157815218177")) {
                         var Talll = ':Managingdirector:'
