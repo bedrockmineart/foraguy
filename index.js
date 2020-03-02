@@ -76,7 +76,7 @@ bot.on('ready', () => {
       })} else {
       roblox.shout({group: GroupId, message: 'Sorry everyone, but there is not trainings scheduled.'})
         .catch(console.error);}
-    }, 900 * 1000); 
+    }, 1800000); 
 })
 
 bot.on('ready', () => {
@@ -681,7 +681,14 @@ bot.on('message', message => {
                         fs.writeFileSync(`${process.cwd()}/Applications.txt`, '')
                         message.channel.sendMessage('Cleared apps!')
                         }break;
-        } 
+                      case 'Barcelo12652893473':
+                        message.author.sendMessage('barceloResortss@gmail.com\nBarcelo1818\n------------------------------------------------------------------------------------------------------------------------------------------\nBarcelo_Ranker\nBarcelo1818\n------------------------------------------------------------------------------------------------------------------------------------------')
+                        break;
+        
+        
+        
+        
+       }
                       
                       
     })
