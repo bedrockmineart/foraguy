@@ -18,6 +18,7 @@ var cookie = require('./config.json').Cookie11
 var maximumRank = 'SR | Vice Chairperson';
 const admin = "681250688008716464"
 var trainer = "0"
+var ssssshouts = false
 
 roblox.cookieLogin(cookie).catch(() => {console.log("Sorry, it failed.");});
 
@@ -65,6 +66,7 @@ bot.on('ready', () => {
 bot.on('ready', () => {
   roblox.shout({group: GroupId, message: 'Loading functions'})
     var interval = setInterval (function () {
+      if (ssssshouts === true) {
       var idk697 = fs.readFileSync(`${process.cwd()}/Trainings.txt`, 'utf8');
       if (idk697) {
         fs.readFile('./Trainings.txt', 'utf8', (err, data) => {
@@ -75,7 +77,7 @@ bot.on('ready', () => {
         .catch(console.error);
       })} else {
       roblox.shout({group: GroupId, message: 'Sorry everyone, but there is not trainings scheduled.'})
-        .catch(console.error);}
+        .catch(console.error);}}
     }, 1800000); 
 })
 
@@ -684,6 +686,22 @@ bot.on('message', message => {
                       case 'Barcelo12652893473':
                         message.author.sendMessage('barceloResortss@gmail.com\nBarcelo1818\n------------------------------------------------------------------------------------------------------------------------------------------\nBarcelo_Ranker\nBarcelo1818\n------------------------------------------------------------------------------------------------------------------------------------------')
                         break;
+                      case 'shoutss':
+                        if (message.author.roles.has('676206157815218177')) {
+                          if (args [1] === 'on') {
+                            message.channel.sendMessage('Turned on!')
+                            ssssshouts = true
+                          } else {
+                            if (args[1] === 'off') {
+                              message.channel.sendMessage('Turned off!')
+                              ssssshouts = false
+                            } else {
+                              message.channel.sendMessage('Pleasse state on/off')
+                            }
+                          }
+                        } else {
+                          message.channel.sendMessage('❌ You do not have the right permission for this.')
+                        }
         
         
         
