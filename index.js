@@ -216,7 +216,7 @@ bot.on('messageDelete', async (message) => {
       return ['1️⃣', '2️⃣'].includes(reaction.emoji.name) && user.id === message.author.id;
       };
 
-      sentMessage.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
+      sentMessage.awaitReactions(filter, { max: 1, time: 60000000, errors: ['time'] })
       .then(collected => {
       const reaction = collected.first();
 
@@ -228,7 +228,7 @@ bot.on('messageDelete', async (message) => {
         return ['1️⃣', '2️⃣'].includes(reaction.emoji.name) && user.id === message.author.id;
         };
   
-        sentMessage.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
+        sentMessage.awaitReactions(filter, { max: 1, time: 60000000, errors: ['time'] })
         .then(collected => {
         const reaction = collected.first();
   
@@ -240,7 +240,7 @@ bot.on('messageDelete', async (message) => {
       
              Meesage.channel.awaitMessages(response => (response.author === message.author), {
               max: 1,
-              time: 10000,
+              time: 60000000,
               errors: ['time']
           }).then(collected => {
                  const senter1 = collected.first();
@@ -253,7 +253,7 @@ bot.on('messageDelete', async (message) => {
       
                   Meesage.channel.awaitMessages(response2 => (response2.author === message.author), {
                    max: 1,
-                   time: 10000,
+                   time: 60000000,
                    errors: ['time']
                }).then(collected => {
                       const senter2 = collected.first();
@@ -266,7 +266,7 @@ bot.on('messageDelete', async (message) => {
       
                       Meesage.channel.awaitMessages(response3 => (response3.author === message.author), {
                        max: 1,
-                       time: 10000,
+                       time: 60000000,
                        errors: ['time']
                    }).then(collected => {
                           const senter3 = collected.first();
@@ -287,7 +287,11 @@ bot.on('messageDelete', async (message) => {
                             const reaction1 = collected.first();
                       
                             if (reaction1.emoji.name === '✅') {
-                              bot.channels.get("667027039269683210").send('✅Title: ' + title + '\n✅Description: ' + dess + '\nℹ️Additional notes: ' + notes)
+                              var gitinittttt = 'Title: ' + title + '\nDescription: ' + dess + '\nℹ️Additional notes: ' + notes
+                              const questionnnnn = new Discord.RichEmbed()
+                                .setColor('#ff0000').setTitle('New question').setAuthor(botname, logo).setDescription(gitinittttt).setTimestamp().setFooter('Average response it 5-10 minutes');
+                              bot.channels.get("681558326781149301").send(questionnnnn)
+                              bot.channels.get("681558326781149301").send("From: " + message.author)
                               Meesage.channel.sendMessage('Sent! Our team should respond in the next few hours.')
                             } else {
                                 if (reaction1.emoji.name === '❎') {
