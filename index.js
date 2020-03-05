@@ -209,7 +209,7 @@ bot.on('messageDelete', async (message) => {
 
   bot.on('message', message => {
     if (message.content === '<@681244101152210953>' || message.content === '<@!681244101152210953>'){ 
-      message.author.sendMessage('Hello there, Im the official bot for Barcelo and Im here to help. Please choose from one of the following: \n 1 For assissatnce! \n 2 for role classes! \n (Please react to this dm)').then(sentMessage => {
+      message.author.sendMessage('Hello there, Im the official bot for Barcelo and Im here to help. Please choose from one of the following: \n 1 For question or comaplaint! \n 2 for role classes! \n (Please react to this dm)').then(sentMessage => {
         sentMessage.react('1️⃣').then(() => sentMessage.react('2️⃣'));
 
       const filter = (reaction, user) => {
@@ -221,9 +221,99 @@ bot.on('messageDelete', async (message) => {
       const reaction = collected.first();
 
       if (reaction.emoji.name === '1️⃣') {
-        message.author.sendMessage('Hello there Im The official bot for Barcelo. I hear you need some help with a question or complaint. \nPlease use this format to start: \n-Title: \n-Question/complaint: \n-Additional imforamtion: \nTo ask a question please put the following code at the start of your question: `' + code + '` \nFor complaint use this `' + (code1) + '`')
-        sentMessage.clearReactions().catch(error => console.error('Failed to clear reactions: ', error));
-        sentMessage.edit('Chose: 1️⃣');
+        message.author.sendMessage('1 for a question\n2 for a complaint').then(sentMessage => {
+          sentMessage.react('1️⃣').then(() => sentMessage.react('2️⃣'));
+  
+        const filter = (reaction, user) => {
+        return ['1️⃣', '2️⃣'].includes(reaction.emoji.name) && user.id === message.author.id;
+        };
+  
+        sentMessage.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
+        .then(collected => {
+        const reaction = collected.first();
+  
+        if (reaction.emoji.name === '1️⃣') {
+
+          //question
+          message.author.sendMessage('**You have started a convosation!**').then(Meesage => {
+            message.author.sendMessage('Please tell me a title!').then(tellmetitle => {
+      
+             Meesage.channel.awaitMessages(response => (response.author === message.author), {
+              max: 1,
+              time: 10000,
+              errors: ['time']
+          }).then(collected => {
+                 const senter1 = collected.first();
+              if (senter1) {
+                var title = senter1.content
+                Meesage.edit('**Started a conversation\n✅Title: ' + title + '**')
+                tellmetitle.edit('added title')
+                tellmetitle.delete(3 * 1000)
+                Meesage.channel.sendMessage('Please state description.').then(Meesage5 => {
+      
+                  Meesage.channel.awaitMessages(response2 => (response2.author === message.author), {
+                   max: 1,
+                   time: 10000,
+                   errors: ['time']
+               }).then(collected => {
+                      const senter2 = collected.first();
+                   if (senter2) {
+                     var dess = senter2.content
+                     Meesage.edit('**Started a conversation\n✅Title: ' + title + '\n✅Description: ' + dess + '**')
+                     Meesage5.edit('Added description!')
+                     Meesage5.delete(3 * 1000)
+                     Meesage.channel.sendMessage('Please tell me any additipnal notes.').then(Meesage6 => {
+      
+                      Meesage.channel.awaitMessages(response3 => (response3.author === message.author), {
+                       max: 1,
+                       time: 10000,
+                       errors: ['time']
+                   }).then(collected => {
+                          const senter3 = collected.first();
+                       if (senter3) {
+                         var notes = senter3.content
+                         Meesage.delete();
+                         Meesage.channel.sendMessage('**Started a conversation\n✅Title: ' + title + '\n✅Description: ' + dess + '\nℹ️Additional notes: ' + notes + '**').then(sentMessage => {
+                         Meesage6.edit('Added addidtional notes!')
+                         Meesage6.delete(3 * 1000)
+                          sentMessage.react('✅').then(() => sentMessage.react('❎'));
+              
+                          const filter = (reaction, user) => {
+                            return ['✅', '❎'].includes(reaction.emoji.name) && user.id === message.author.id;
+                            };
+                      
+                            sentMessage.awaitReactions(filter, { max: 1, time: 60000000, errors: ['time'] })
+                            .then(collected => {
+                            const reaction1 = collected.first();
+                      
+                            if (reaction1.emoji.name === '✅') {
+                              bot.channels.get("667027039269683210").send('✅Title: ' + title + '\n✅Description: ' + dess + '\nℹ️Additional notes: ' + notes)
+                              Meesage.channel.sendMessage('Sent! Our team should respond in the next few hours.')
+                            } else {
+                                if (reaction1.emoji.name === '❎') {
+                                  Meesage.channel.sendMessage('Cancelled and deleted.')
+                                } else {
+                                message.channel.sendMessage('Did not react with the right')
+                              }}
+                            
+                            })
+                            .catch(collected => {
+                              message.author.sendMessage('You took to long to react.');
+                            });})}
+                        })
+                       })
+                   }
+                    })
+                   })
+              }
+               })
+              })
+            })
+         } else {
+           message.channel.sendMessage('Tallbobber123 hasnt scripted this yet! :( ')
+         }
+      })})
+        
       } else {
         if (reaction.emoji.name === '2️⃣') {
           const roleclasses = new Discord.RichEmbed()
