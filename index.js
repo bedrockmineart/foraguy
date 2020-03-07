@@ -221,6 +221,7 @@ bot.on('messageDelete', async (message) => {
       const reaction = collected.first();
 
       if (reaction.emoji.name === '1️⃣') {
+        sentMessage.delete();
         message.author.sendMessage('1 for a question\n2 for a complaint').then(sentMessage => {
           sentMessage.react('1️⃣').then(() => sentMessage.react('2️⃣'));
   
@@ -233,10 +234,10 @@ bot.on('messageDelete', async (message) => {
         const reaction = collected.first();
   
         if (reaction.emoji.name === '1️⃣') {
-
+          sentMessage.delete();
           //question
           message.author.sendMessage('**You have started a convosation!**').then(Meesage => {
-            message.author.sendMessage('Please tell me a title!').then(tellmetitle => {
+            message.author.sendMessage('What is you question about?').then(tellmetitle => {
       
              Meesage.channel.awaitMessages(response => (response.author === message.author), {
               max: 1,
@@ -249,7 +250,7 @@ bot.on('messageDelete', async (message) => {
                 Meesage.edit('**Started a conversation\n✅Title: ' + title + '**')
                 tellmetitle.edit('added title')
                 tellmetitle.delete(3 * 1000)
-                Meesage.channel.sendMessage('Please state description.').then(Meesage5 => {
+                Meesage.channel.sendMessage('Please describe your question in full.').then(Meesage5 => {
       
                   Meesage.channel.awaitMessages(response2 => (response2.author === message.author), {
                    max: 1,
@@ -314,7 +315,125 @@ bot.on('messageDelete', async (message) => {
               })
             })
          } else {
-           message.channel.sendMessage('Tallbobber123 hasnt scripted this yet! :( ')
+           if (reaction.emoji.name === "2️⃣") {
+            sentMessage.delete();
+            //complaint
+            message.author.sendMessage("Is this complaint relating to a person or the game?\n1 for a person\n2 for the game").then(persorgame => {
+              persorgame.react('1️⃣').then(() => persorgame.react('2️⃣'));
+
+
+
+            const filter = (reaction, user) => {
+              return ['2️⃣', '1️⃣'].includes(reaction.emoji.name) && user.id === message.author.id;
+              };
+        
+              persorgame.awaitReactions(filter, { max: 1, time: 60000000, errors: ['time'] })
+              .then(collected => {
+              const reaction9 = collected.first();
+        
+              if (reaction9.emoji.name === '1️⃣') {
+                persorgame.delete();
+                message.author.sendMessage('**You have started a convosation!**').then(Meesage => {
+                  message.author.sendMessage('Please tell me who this is about').then(tellmetitle => {
+            
+                   Meesage.channel.awaitMessages(response => (response.author === message.author), {
+                    max: 1,
+                    time: 60000000,
+                    errors: ['time']
+                }).then(collected => {
+                       const senter1 = collected.first();
+                    if (senter1) {
+                      var title = senter1.content
+                      Meesage.edit('**Started a conversation\n✅Person: ' + title + '**')
+                      tellmetitle.edit('added person')
+                      tellmetitle.delete(3 * 1000)
+                      Meesage.channel.sendMessage('Please describe why you are submiting a complaint against this person in full.').then(Meesage5 => {
+            
+                        Meesage.channel.awaitMessages(response2 => (response2.author === message.author), {
+                         max: 1,
+                         time: 60000000,
+                         errors: ['time']
+                     }).then(collected => {
+                            const senter2 = collected.first();
+                         if (senter2) {
+                           var dess = senter2.content
+                           Meesage.edit('**Started a conversation\n✅Person: ' + title + '\n✅Complaint: ' + dess + '**')
+                           Meesage5.edit('Added complaint!')
+                           Meesage5.delete(3 * 1000)
+                           Meesage.channel.sendMessage('Please tell me any additipnal notes.').then(Meesage6 => {
+            
+                            Meesage.channel.awaitMessages(response3 => (response3.author === message.author), {
+                             max: 1,
+                             time: 60000000,
+                             errors: ['time']
+                         }).then(collected => {
+                                const senter3 = collected.first();
+                             if (senter3) {
+                               var notes = senter3.content
+                               Meesage.delete();
+                               Meesage.channel.sendMessage('**Started a conversation\n✅Person: ' + title + '\n✅Complaint: ' + dess + '\nℹ️Additional notes: ' + notes + '**').then(sentMessage => {
+                               Meesage6.edit('Added addidtional notes!')
+                               Meesage6.delete(3 * 1000)
+                                sentMessage.react('✅').then(() => sentMessage.react('❎'));
+                    
+                                const filter = (reaction, user) => {
+                                  return ['✅', '❎'].includes(reaction.emoji.name) && user.id === message.author.id;
+                                  };
+                            
+                                  sentMessage.awaitReactions(filter, { max: 1, time: 60000000, errors: ['time'] })
+                                  .then(collected => {
+                                  const reaction1 = collected.first();
+                            
+                                  if (reaction1.emoji.name === '✅') {
+                                    var gitinittttt = 'Title: ' + title + '\nDescription: ' + dess + '\nℹ️Additional notes: ' + notes
+                                    const questionnnnn = new Discord.RichEmbed()
+                                      .setColor('#ff0000').setTitle('New complaint relating to a **PERSON**').setAuthor(botname, logo).setDescription(gitinittttt).setTimestamp().setFooter('Average response it 5-10 minutes');
+                                    bot.channels.get("681558326781149301").send(questionnnnn)
+                                    bot.channels.get("681558326781149301").send("From: " + message.author)
+                                    Meesage.channel.sendMessage('Sent! Our team should respond in the next few hours.')
+                                  } else {
+                                      if (reaction1.emoji.name === '❎') {
+                                        Meesage.channel.sendMessage('Cancelled and deleted.')
+                                      } else {
+                                      message.channel.sendMessage('Did not react with the right')
+                                    }}
+                                  
+                                  })
+                                  .catch(collected => {
+                                    message.author.sendMessage('You took to long to react.');
+                                  });})}
+                              })
+                             })
+                         }
+                          })
+                         })
+                    }
+                     })
+                    })
+                  })
+
+
+
+
+
+
+
+
+
+
+              } else {
+                  if (reaction9.emoji.name === '2️⃣') {
+                    Meesage.channel.sendMessage('Cancelled and deleted.')
+                  } else {
+                  message.channel.sendMessage('Did not react with the right')
+                }}
+              
+              })
+            })
+              .catch(collected => {
+                message.author.sendMessage('You took to long to react.');
+              });
+           }
          }
       })})
         
