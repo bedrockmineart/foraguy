@@ -914,7 +914,19 @@ bot.on('message', message => {
                           }
                         } else {
                           message.channel.sendMessage('❌ You do not have the right permission for this.')
-                        }
+                        } break;
+                      case 'Fight':
+                        if (!args[1]) { return };
+                        var random333 = Math.floor(Math.random() * (100 - 1 + 1)) + 1;
+                        message.channel.sendMessage('**RULES ARE SIMPLE**\nI produce a number from 1-100\nIf the number is below 50 you lose if it is above you win!')
+                        message.channel.sendMessage('fighting...').then(Fighter => {
+                          if (random333 < 50) {
+                            Fighter.edit('Argh!\n' + args[1] + ' won the fight!\n Sadly you lost as I picked the number ||' + random333 + '||')
+                          } else {
+                            Fighter.edit('Wooo!\n' + 'You won the fight!\n I picked the number ||' + random333 + '||')
+                          }
+                        })
+                        
         
         
         
