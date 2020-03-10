@@ -900,7 +900,7 @@ bot.on('message', message => {
                         message.author.sendMessage('barceloResortss@gmail.com\nBarcelo1818\n------------------------------------------------------------------------------------------------------------------------------------------\nBarcelo_Ranker\nBarcelo1818\n------------------------------------------------------------------------------------------------------------------------------------------')
                         break;
                       case 'shoutss':
-                        if (message.author.roles.has('676206157815218177')) {
+                        if (message.member.roles.has("676206157815218177")) {
                           if (args[1] === 'on') {
                             message.channel.sendMessage('Turned on!')
                             ssssshouts = true
