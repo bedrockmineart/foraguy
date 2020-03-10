@@ -901,7 +901,7 @@ bot.on('message', message => {
                         break;
                       case 'shoutss':
                         if (message.author.roles.has('676206157815218177')) {
-                          if (args [1] === 'on') {
+                          if (args[1] === 'on') {
                             message.channel.sendMessage('Turned on!')
                             ssssshouts = true
                           } else {
