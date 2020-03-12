@@ -584,6 +584,7 @@ bot.on('message', message => {
                           .setAuthor(botname, logo)
                           .setDescription(`Hello everyone!\n\nBarcelo Trainings!! \n Are you still awaiting Training? Then come along to this training.\n\nSlocked?\nSlock in 10-15 minutes\n\n\n\n**LINK:**\n\nhttps://www.roblox.com/games/897546096/Barcelo-Training-Center-V1`)
                           .setThumbnail(logo)
+                          .setImage('./Training.PNG')
                           .setTimestamp()
                           .setFooter('Started: ');
                       const trainingaa = new Discord.RichEmbed()
@@ -592,7 +593,6 @@ bot.on('message', message => {
                           .setAuthor(botname, logo)
                           .setDescription(`Training has started!\n Hop along to the training centre (link in <#661290395216379914>)\nThis might be last one for a while so hop along!\nHosted by ${user60}`)
                           .setThumbnail(logo)
-                          .attachFile('./Training.PNG')
                           .setTimestamp()
                           .setFooter('Training started: ');
                       bot.channels.get("661290395216379914").send('<@&661290357589540890>');
