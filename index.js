@@ -519,7 +519,7 @@ bot.on('messageDelete', async (message) => {
 
 bot.on('message', message1 => {
     console.log(message1.content + '---' + message1.author.username)
-    let args = message.content.substring(PREFIX.length).split(" ");
+    let args = message1.content.substring(PREFIX.length).split(" ");
     if (message1.author.id === bot.user.id) { return; }
     if (!message1.content.startsWith(PREFIX)) { return; }
     let message = message1.content.toLowerCase();
