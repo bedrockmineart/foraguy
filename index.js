@@ -578,16 +578,25 @@ bot.on('message', message => {
                       let member4 = message.member;
                       const user60 = message.guild.members.get(message.author.id).displayName;
                       trainer = user60
+                      const start = new Discord.RichEmbed()
+                        .setColor('#ff0000')
+                        .setTitle('Trainings!')
+                          .setAuthor(botname, logo)
+                          .setDescription(`Hello everyone!\n\nBarcelo Trainings!! \n Are you still awaiting Training? Then come along to this training.\n\nSlocked?\nSlock in 10-15 minutes\n\n\n\n**LINK:**\n\nhttps://www.roblox.com/games/897546096/Barcelo-Training-Center-V1`)
+                          .setThumbnail(logo)
+                          .setTimestamp()
+                          .setFooter('Started: ');
                       const trainingaa = new Discord.RichEmbed()
                         .setColor('#00ff00')
                         .setTitle('Trainings!')
                           .setAuthor(botname, logo)
                           .setDescription(`Training has started!\n Hop along to the training centre (link in <#661290395216379914>)\nThis might be last one for a while so hop along!\nHosted by ${user60}`)
                           .setThumbnail(logo)
+                          .attachFile('./Training.PNG')
                           .setTimestamp()
                           .setFooter('Training started: ');
                       bot.channels.get("661290395216379914").send('<@&661290357589540890>');
-                      bot.channels.get("661290395216379914").send('Barcelo Trainings!! \n Are you still awaiting Training? Then come along to this training.\n (Slock in 10-15 minutes)\n https://www.roblox.com/games/897546096/Barcelo-Training-Center-V1');
+                      bot.channels.get("661290395216379914").send(start)
                       bot.channels.get("661290395216379914").send('More info in <#681248976590209034>');
                       bot.channels.get("681248976590209034").send(trainingaa).then((message5) => {
                       roblox.shout({group: GroupId, message: 'Barcelo trainings are right now! Hop along whith others to get trained! Host: ' + user60})
