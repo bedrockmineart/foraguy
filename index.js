@@ -4,6 +4,9 @@ const bot = new Discord.Client();
 const fs = require("fs");
 bot.msgs = require ("./msgs.json")
 
+
+
+
 const token = require('./config.json').token
 const botname = require('./config.json').Botname1
 const PREFIX = require('./config.json').preefix
@@ -514,9 +517,12 @@ bot.on('messageDelete', async (message) => {
 
 
 
-bot.on('message', message => {
-    console.log(message.content + '---' + message.author.username)
+bot.on('message', message1 => {
+    console.log(message1.content + '---' + message1.author.username)
     let args = message.content.substring(PREFIX.length).split(" ");
+    if (message1.author.id === bot.user.id) { return; }
+    if (!message1.content.startsWith(PREFIX)) { return; }
+    let message = message1.content.toLowerCase();
 
         switch (args[0]) {
         case 'ping':
@@ -924,13 +930,19 @@ bot.on('message', message => {
                           if (args[1] === '<@681244101152210953>' || args[1] === '<@!681244101152210953>') {
                             Fighter.edit("Of course TallBobber scripted me to always win a fight idiot")
                           } else {
-                          if (random333 < 50) {
-                            Fighter.edit('Argh!\n' + args[1] + ' won the fight!\n Sadly you lost as I picked the number ||' + random333 + '||')
-                          } else {
-                            Fighter.edit('Wooo!\n' + 'You won the fight!\n I picked the number ||' + random333 + '||')
+                            if (message.author.username === 'Bedrockminecart' || args[1] === '<@330979731673710592>' || args[1] === '<@!330979731673710592>') {
+                              Fighter.edit("Of course Tall is gonna win. Yes me. I win woo. HEEHHE I scripted it!")
+                            } else {
+                              if (random333 < 50) {
+                                Fighter.edit('Argh!\n' + args[1] + ' won the fight!\n Sadly you lost as I picked the number ||' + random333 + '||')
+                              } else {
+                                Fighter.edit('Wooo!\n' + 'You won the fight!\n I picked the number ||' + random333 + '||')
+                              }
+                            }
                           }
-                          }}, 5000 )
-                      })
+                        }, 5000 )
+                      }
+                      )
                         
         
         
