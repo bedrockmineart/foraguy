@@ -584,7 +584,7 @@ bot.on('message', message => {
                           .setAuthor(botname, logo)
                           .setDescription(`Hello everyone!\n\nBarcelo Trainings!! \n Are you still awaiting Training? Then come along to this training.\n\nSlocked?\nSlock in 10-15 minutes\n\n\n\n**LINK:**\n\nhttps://www.roblox.com/games/897546096/Barcelo-Training-Center-V1`)
                           .setThumbnail(logo)
-                          .setImage('./Training.PNG')
+                          .setImage('https://cdn.discordapp.com/attachments/661290411540742154/687752603219525748/unknown.png')
                           .setTimestamp()
                           .setFooter('Started: ');
                       const trainingaa = new Discord.RichEmbed()
@@ -702,10 +702,56 @@ bot.on('message', message => {
                                   .setTitle('Reply has been sent from ' + user54)
                                   .setAuthor(botname, logo)
                                   .setDescription(mentionMessage)
-                                  .addField('**Answered incorectly?**', 'And as always If you think you have not been answered correctly please Submit it with 642 at the start.')
+                                  .addField('**Answered incorectly?**', 'If you think you have been answered incorrectly please **DO NOT** press the tick, Please press the :x:')
                                   .setTimestamp()
                                   .setFooter('Bot made by Bedrockminecart.');
-                        mention.sendMessage (lolololl1115);
+                        mention.sendMessage (lolololl1115).then(replyyyy => {
+                          replyyyy.react('✅').then(() => sentMessage.react('❎'));
+                
+                          const filter = (reaction, user) => {
+                          return ['✅', '❎'].includes(reaction.emoji.name) && user.id === message.author.id;
+                          };
+                    
+                          sentMessage.awaitReactions(filter, { max: 1, time: 60000000, errors: ['time'] })
+                          .then(collected => {
+                          const reaction1 = collected.first();
+                    
+                          if (reaction1.emoji.name === '✅') {
+                            mention.sendMessage('Ticket has been closed! Tag me again if you need anymore help.')
+                            mention.sendMessage("Ticket closed!")
+                          } else {
+                              if (reaction1.emoji.name === '❎') {
+                                message.channel.sendMessage("The User thinks that user has not answered correct. They are about to send More detailed answer!")
+                                mention.send('Ticket kept open. Please explain in more detail about your problem').then(Meeesage5 => {
+      
+                                  Meeesage5.channel.awaitMessages(response2 => (response2.author === message.author), {
+                                   max: 1,
+                                   time: 60000000,
+                                   errors: ['time']
+                               }).then(collected => {
+                                      const senter2 = collected.first();
+                                   if (senter2) {
+                                     var desss = senter2.content
+                                     message.author.sendMessage('Sent to the staffing team!')
+                                     const repllll = new Discord.RichEmbed()
+                                      .setColor('#ff0000')
+                                      .setTitle('Reply to a reply from')
+                                      .setAuthor(botname, logo)
+                                      .setDescription(desss)
+                                      .setTimestamp()
+                                      .setFooter('Idk');
+                                      message.channel.send(repllll)  
+                                      message.channel.send('From ' + mention)
+                                }})})
+                              } else {
+                              message.channel.sendMessage('Did not react with the right')
+                            }}
+                          
+                          })
+                          .catch(collected => {
+                            message.author.sendMessage('You took to long to react.');
+                          });
+                        })
                         message.channel.sendMessage('Reply sent!')
                       }break;
                       case 'pass':
