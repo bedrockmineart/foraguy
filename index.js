@@ -713,7 +713,7 @@ bot.on('message', message => {
                           return ['✅', '❎'].includes(reaction.emoji.name) && user.id === message.author.id;
                           };
                     
-                          sentMessage.awaitReactions(filter, { max: 1, time: 60000000, errors: ['time'] })
+                          replyyyy.awaitReactions(filter, { max: 1, time: 60000000, errors: ['time'] })
                           .then(collected => {
                           const reaction1 = collected.first();
                     
