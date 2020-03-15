@@ -704,9 +704,10 @@ bot.on('message', message => {
                                   .setDescription(mentionMessage)
                                   .addField('**Answered incorectly?**', 'If you think you have been answered incorrectly please **DO NOT** press the tick, Please press the :x:')
                                   .setTimestamp()
+                                  .addField('**Answered correctly?**', "Then press the tick!")
                                   .setFooter('Bot made by Bedrockminecart.');
                         mention.sendMessage (lolololl1115).then(replyyyy => {
-                          replyyyy.react('✅').then(() => sentMessage.react('❎'));
+                          replyyyy.react('✅').then(() => replyyyy.react('❎'));
                 
                           const filter = (reaction, user) => {
                           return ['✅', '❎'].includes(reaction.emoji.name) && user.id === message.author.id;
@@ -997,6 +998,14 @@ bot.on('message', message => {
                         }, 5000 )
                       }
                       )
+                      break;
+                      case 'fact':
+                        var rando2m333 = Math.floor(Math.random() * (1 - 1 + 1)) + 1;
+                        if (rando2m333 == 1) {
+                          fs.readFile('./index.js', 'utf8', (err, data) => {
+                            var hhhhh = data.split('\n').length
+                          message.channel.sendMessage("This bot runs of " + hhhhh + " lines of code!")
+                        })}
                         
         
         
