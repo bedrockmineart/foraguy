@@ -1000,12 +1000,19 @@ bot.on('message', message => {
                       )
                       break;
                       case 'fact':
-                        var rando2m333 = Math.floor(Math.random() * (1 - 1 + 1)) + 1;
+                        var rando2m333 = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
                         if (rando2m333 == 1) {
                           fs.readFile('./index.js', 'utf8', (err, data) => {
                             var hhhhh = data.split('\n').length
                           message.channel.sendMessage("This bot runs of " + hhhhh + " lines of code!")
-                        })}
+                          })
+                        }
+                        if (rando2m333 == 2) {
+                          message.channel.sendMessage("This bot was made and developed by TallBobber123 (BedrockMinecart)!")
+                        }
+                        if (rando2m333 == 3) {
+                          message.channel.sendMessage("The group is owned by xXMonkey_chapXx!")
+                        }
                         
         
         
