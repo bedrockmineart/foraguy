@@ -22,6 +22,34 @@ var maximumRank = 'SR | Vice Chairperson';
 const admin = "681250688008716464"
 var trainer = "0"
 var ssssshouts = false
+const modapp = '**CLOSED**'
+const adminapp = '**CLOSED**'
+var timeonline = 0
+
+
+bot.on('ready', () => {
+  bot.channels.get("681248976590209034").fetchMessage("681540364926320644").then((message) => {
+    var interval = setInterval (function () {
+      timeonline += 1
+    }, 1 * 1000); 
+})
+})
+
+
+if (modapp === '**CLOSED**' && adminapp === '**CLOSED**') {
+  decider = 4
+} else {
+  if (modapp === '**OPEN**' && adminapp === '**OPEN**') {
+    decider = 1
+  } else {
+    if (modapp === '**OPEN**') {
+      decider = 2
+    } else {
+      decider = 3
+    }
+  }
+}
+
 
 roblox.cookieLogin(cookie).catch(() => {console.log("Sorry, it failed.");});
 
@@ -88,12 +116,20 @@ bot.on('ready', () => {
   bot.channels.get("682276634698579982").fetchMessage("682276665115541638").then((message) => {
     var interval = setInterval (function () {
       var idk695 = fs.readFileSync(`${process.cwd()}/Applications.txt`, 'utf8');
-      if (idk695) {
+      if (decider === 1 || decider === 2 || decider === 3) {
+        if (decider === 1) {
+          idk695 = 'Both Moderation and Admin applications are open!'
+        } else {
+          if (decider === 2) {
+            idk695 = 'Mod applications are open!'
+          } else {
+            idk695 = 'Admin applications are open!'
+          }}
         const surrvivalh = new Discord.RichEmbed()
       .setColor('#00ff00')
       .setTitle('Trainings!')
       .setAuthor(botname, logo)
-      .setDescription('Hello,\nThis channel is to show which application are currently open.')
+      .setDescription('Hello,\nThis channel is to show which application are currently open.\nYou can also check by tagging the bot and picking 3️⃣\nTo apply please use the same function')
       .addField("**Open applications:** \n", idk695)
       .setThumbnail(logo)
       .setTimestamp()
@@ -106,7 +142,7 @@ bot.on('ready', () => {
       .setTitle('Trainings!')
       .setAuthor(botname, logo)
       .addField("**Open applications:** \n\n", ':x: No currently open applications.')
-      .setDescription('Hello,\nThis channel is to show which application are currently open.')
+      .setDescription('Hello,\nThis channel is to show which application are currently open.\nYou can also check by tagging the bot and picking 3️⃣\nTo apply please use the same function')
       .setThumbnail(logo)
       .setTimestamp()
       .setFooter('Update every 2 minutes. Last update at: ');
@@ -212,11 +248,11 @@ bot.on('messageDelete', async (message) => {
 
   bot.on('message', message => {
     if (message.content === '<@681244101152210953>' || message.content === '<@!681244101152210953>'){ 
-      message.author.sendMessage('Hello there, Im the official bot for Barcelo and Im here to help. Please choose from one of the following: \n 1 For question or comaplaint! \n 2 for role classes! \n (Please react to this dm)').then(sentMessage => {
-        sentMessage.react('1️⃣').then(() => sentMessage.react('2️⃣'));
+      message.author.sendMessage('Hello there, Im the official bot for Barcelo and Im here to help. Please choose from one of the following: \n 1 For question or comaplaint! \n 2 for role classes!\n 3 to apply for a Discord role \n (Please react to this dm)').then(sentMessage => {
+        sentMessage.react('1️⃣').then(() => sentMessage.react('2️⃣').then(() => sentMessage.react('3️⃣')));
 
       const filter = (reaction, user) => {
-      return ['1️⃣', '2️⃣'].includes(reaction.emoji.name) && user.id === message.author.id;
+      return ['1️⃣', '2️⃣', '3️⃣'].includes(reaction.emoji.name) && user.id === message.author.id;
       };
 
       sentMessage.awaitReactions(filter, { max: 1, time: 60000000, errors: ['time'] })
@@ -414,16 +450,6 @@ bot.on('messageDelete', async (message) => {
                      })
                     })
                   })
-
-
-
-
-
-
-
-
-
-
               } else {
                   if (reaction9.emoji.name === '2️⃣') {
                     Meesage.channel.sendMessage('Cancelled and deleted.')
@@ -456,14 +482,657 @@ bot.on('messageDelete', async (message) => {
       .addField("**Higher**", "These people are the highest of all and consist of 3 roles, Development, co-founder and founder.")
       .setThumbnail(logo)
       .setTimestamp()
-      .setFooter('Bot made by TallBobber123 - | Development Staff');
+      .setFooter('Bot made by TallBobber123 - | Co Founder');
           message.author.sendMessage(roleclasses)
         } else {
+          if (reaction.emoji.name === '3️⃣') {
+
+
+            function admind () {
+              message.author.sendMessage('You have picked to apply for admin!\nSome things are multiple choice and others need you to type an answer\n❌1.\n❌2.\n❌3.\n❌4.\n❌5.\n❌6.\n❌7.').then(statrtmessage => {
+              message.author.sendMessage('First question. What is your discord name + roblox name (format: [tag yourself] [roblox username]) If this is not done your application will be deleted.').then(rdgfdcvgfd => {
+                rdgfdcvgfd.channel.awaitMessages(response => (response.author === message.author), {
+                  max: 1,
+                  time: 60000000,
+                  errors: ['time']
+              }).then(collected => {
+                     const senter1 = collected.first();
+                  if (senter1) {
+                    const q1 = senter1.content
+                    rdgfdcvgfd.delete();
+                    statrtmessage.edit(`You have picked to apply for admin!\nSome things are multiple choice and others need you to type an answer\n✅1.${q1}\n❌2.\n❌3.\n❌4.\n❌5.\n❌6.\n❌7.`)
+                    message.author.sendMessage('Second question. What is the role of an admin? (Please type an answer) (300 characters max)').then(rdgfdcvgfd => {
+                      rdgfdcvgfd.channel.awaitMessages(response => (response.author === message.author), {
+                        max: 1,
+                        time: 60000000,
+                        errors: ['time']
+                    }).then(collected => {
+                           const senter1 = collected.first();
+                        if (senter1) {
+                          const q2 = senter1.content
+                          rdgfdcvgfd.delete();
+                          statrtmessage.edit(`You have picked to apply for admin!\nSome things are multiple choice and others need you to type an answer\n✅1.${q1}\n✅2.${q2}\n❌3.\n❌4.\n❌5.\n❌6.\n❌7.\n.`)
+                          message.author.sendMessage('Third question. Why should we pick you to become an admin? (Please type an answer) (300 characters max)').then(rdgfdcvgfd => {
+                            rdgfdcvgfd.channel.awaitMessages(response => (response.author === message.author), {
+                              max: 1,
+                              time: 60000000,
+                              errors: ['time']
+                          }).then(collected => {
+                                 const senter1 = collected.first();
+                              if (senter1) {
+                                const q3 = senter1.content
+                                rdgfdcvgfd.delete();
+                                statrtmessage.edit(`You have picked to apply for admin!\nSome things are multiple choice and others need you to type an answer\n✅1.${q1}\n✅2.${q2}\n✅3.${q3}\n❌4.\n❌5.\n❌6.\n❌7.`)
+                                message.author.sendMessage('Fourth question. What would you do if someone was asking for a training? (Please type an answer) (300 characters max)').then(rdgfdcvgfd => {
+                                  rdgfdcvgfd.channel.awaitMessages(response => (response.author === message.author), {
+                                    max: 1,
+                                    time: 60000000,
+                                    errors: ['time']
+                                }).then(collected => {
+                                       const senter1 = collected.first();
+                                    if (senter1) {
+                                      const q4 = senter1.content
+                                      rdgfdcvgfd.delete();
+                                      statrtmessage.edit(`You have picked to apply for admin!\nSome things are multiple choice and others need you to type an answer\n✅1.${q1}\n✅2.${q2}\n✅3.${q3}\n✅4.${q4}\n❌5.\n❌6.\n❌7.`)
+                                      message.author.sendMessage('Fifth question. What would you do if someone was asking for a promotion over and and over? (Please type an answer) (300 characters max)').then(rdgfdcvgfd => {
+                                        rdgfdcvgfd.channel.awaitMessages(response => (response.author === message.author), {
+                                          max: 1,
+                                          time: 60000000,
+                                          errors: ['time']
+                                      }).then(collected => {
+                                             const senter1 = collected.first();
+                                          if (senter1) {
+                                            const q5 = senter1.content
+                                            rdgfdcvgfd.delete();
+                                            statrtmessage.edit(`You have picked to apply for admin!\nSome things are multiple choice and others need you to type an answer\n✅1.${q1}\n✅2.${q2}\n✅3.${q3}\n✅4.${q4}\n✅5.${q5}\n❌6.\n❌7.`)
+                                            message.author.sendMessage('Sixth question, If someone was spamming, would you mute them?').then(sentMessage => {
+                                              
+                                               sentMessage.react('✅').then(() => sentMessage.react('❎'));
+                                   
+                                               const filter = (reaction, user) => {
+                                                 return ['✅', '❎'].includes(reaction.emoji.name) && user.id === message.author.id;
+                                                 };
+                                           
+                                                 sentMessage.awaitReactions(filter, { max: 1, time: 60000000, errors: ['time'] })
+                                                 .then(collected => {
+                                                 const reaction1 = collected.first();
+                                           
+                                                 if (reaction1.emoji.name === '✅') {
+                                                   q6 = '✅'
+                                                   statrtmessage.edit(`You have picked to apply for admin!\nSome things are multiple choice and others need you to type an answer\n✅1.${q1}\n✅2.${q2}\n✅3.${q3}\n✅4.${q4}\n✅5.${q5}\n6. ${q6}\n❌7.`)
+                                                   message.author.sendMessage('seventh question, if someone was annoying an moderator, Would you Ban them for bad words?').then(sentMessage => {
+                                                  
+                                                    sentMessage.react('✅').then(() => sentMessage.react('❎'));
+                                        
+                                                    const filter = (reaction, user) => {
+                                                      return ['✅', '❎'].includes(reaction.emoji.name) && user.id === message.author.id;
+                                                      };
+                                                
+                                                      sentMessage.awaitReactions(filter, { max: 1, time: 60000000, errors: ['time'] })
+                                                      .then(collected => {
+                                                      const reaction1 = collected.first();
+                                                
+                                                      if (reaction1.emoji.name === '✅') {
+                                                        q7 = '✅'
+                                                        statrtmessage.delete()
+                                                        message.author.sendMessage(`Would you like to submit the following answers?\n✅1.${q1}\n✅2.${q2}\n✅3.${q3}\n✅4.${q4}\n5.${q5}\n6.${q6}\n7.${q7}`).then(idk87654 => {
+                                                          idk87654.react('✅').then(() => idk87654.react('❎'));
+                                                
+                                                            const filter = (reaction, user) => {
+                                                              return ['✅', '❎'].includes(reaction.emoji.name) && user.id === message.author.id;
+                                                              };
+                                                        
+                                                              idk87654.awaitReactions(filter, { max: 1, time: 60000000, errors: ['time'] })
+                                                              .then(collected => {
+                                                              const reaction1 = collected.first();
+                                                        
+                                                              if (reaction1.emoji.name === '✅') {
+                                                                var gitinittttt = `✅1.${q1}\n✅2.${q2}\n✅3.${q3}\n✅4.${q4}\n5.${q5}\n6.${q6}\n7.${q7}`
+                                                                const questionnnnn = new Discord.RichEmbed()
+                                                                  .setColor('#ff0000').setTitle('New application').setAuthor(botname, logo).setDescription(gitinittttt).setTimestamp().setFooter('Application sent:');
+                                                                bot.channels.get("689431057581473845").send(questionnnnn)
+                                                                Meesage.channel.sendMessage('Sent! Our team should respond in the next few hours.')
+                                                              } else {
+                                                                  if (reaction1.emoji.name === '❎') {
+                                                                    Meesage.channel.sendMessage('Cancelled and deleted.')
+                                                                  } else {
+                                                                  message.channel.sendMessage('Did not react with the right')
+                                                                }}
+                                                              
+                                                              })
+                                                              .catch(collected => {
+                                                                message.author.sendMessage('You took to long to react.');
+                                                              });
+                                                        })
+                                                      } else {
+                                                          if (reaction1.emoji.name === '❎') {
+                                                           q7 = '❎'
+                                                           statrtmessage.delete()
+                                                           message.author.sendMessage(`Would you like to submit the following answers?\n✅1.${q1}\n✅2.${q2}\n✅3.${q3}\n✅4.${q4}\n5.${q5}\n6.${q6}\n7.${q7}`).then(idk87654 => {
+                                                            idk87654.react('✅').then(() => idk87654.react('❎'));
+                                                   
+                                                               const filter = (reaction, user) => {
+                                                                 return ['✅', '❎'].includes(reaction.emoji.name) && user.id === message.author.id;
+                                                                 };
+                                                           
+                                                                 idk87654.awaitReactions(filter, { max: 1, time: 60000000, errors: ['time'] })
+                                                                 .then(collected => {
+                                                                 const reaction1 = collected.first();
+                                                           
+                                                                 if (reaction1.emoji.name === '✅') {
+                                                                   var gitinittttt = `✅1.${q1}\n✅2.${q2}\n✅3.${q3}\n✅4.${q4}\n5.${q5}\n6.${q6}\n7.${q7}`
+                                                                   const questionnnnn = new Discord.RichEmbed()
+                                                                     .setColor('#ff0000').setTitle('New application').setAuthor(botname, logo).setDescription(gitinittttt).setTimestamp().setFooter('Application sent:');
+                                                                   bot.channels.get("689431057581473845").send(questionnnnn)
+                                                                   Meesage.channel.sendMessage('Sent! Our team should respond in the next few hours.')
+                                                                 } else {
+                                                                     if (reaction1.emoji.name === '❎') {
+                                                                       Meesage.channel.sendMessage('Cancelled and deleted.')
+                                                                     } else {
+                                                                     message.channel.sendMessage('Did not react with the right')
+                                                                   }}
+                                                                 
+                                                                 })
+                                                                 .catch(collected => {
+                                                                   message.author.sendMessage('You took to long to react.');
+                                                                 });
+                                                           })
+                                                          } else {
+                                                          message.channel.sendMessage('Did not react with the right')
+                                                        }}
+                                                      
+                                                      })
+                                                      .catch(collected => {
+                                                        message.author.sendMessage('You took to long to react.');
+                                                      });})
+                                                 } else {
+                                                     if (reaction1.emoji.name === '❎') {
+                                                       q6 = '❎'
+                                                       statrtmessage.edit(`You have picked to apply for admin!\nSome things are multiple choice and others need you to type an answer\n✅1.${q1}\n✅2.${q2}\n✅3.${q3}\n✅4.${q4}\n✅5.${q5}\n6. chose: ${q6}\n❌7.\n❌8.`)
+                                                       message.author.sendMessage('seventh question, What would you do if someone was annoying an moderator').then(sentMessage => {
+                                                  
+                                                        sentMessage.react('✅').then(() => sentMessage.react('❎'));
+                                            
+                                                        const filter = (reaction, user) => {
+                                                          return ['✅', '❎'].includes(reaction.emoji.name) && user.id === message.author.id;
+                                                          };
+                                                    
+                                                          sentMessage.awaitReactions(filter, { max: 1, time: 60000000, errors: ['time'] })
+                                                          .then(collected => {
+                                                          const reaction1 = collected.first();
+                                                    
+                                                          if (reaction1.emoji.name === '✅') {
+                                                            q7 = '✅'
+                                                            statrtmessage.delete()
+                                                            message.author.sendMessage(`Would you like to submit the following answers?\n✅1.${q1}\n✅2.${q2}\n✅3.${q3}\n✅4.${q4}\n5.${q5}\n6.${q6}\n7.${q7}`).then(idk87654 => {
+                                                              idk87654.react('✅').then(() => idk87654react('❎'));
+                                                    
+                                                                const filter = (reaction, user) => {
+                                                                  return ['✅', '❎'].includes(reaction.emoji.name) && user.id === message.author.id;
+                                                                  };
+                                                            
+                                                                  idk87654.awaitReactions(filter, { max: 1, time: 60000000, errors: ['time'] })
+                                                                  .then(collected => {
+                                                                  const reaction1 = collected.first();
+                                                            
+                                                                  if (reaction1.emoji.name === '✅') {
+                                                                    var gitinittttt = `✅1.${q1}\n✅2.${q2}\n✅3.${q3}\n✅4.${q4}\n5.${q5}\n6.${q6}\n7.${q7}`
+                                                                    const questionnnnn = new Discord.RichEmbed()
+                                                                      .setColor('#ff0000').setTitle('New application').setAuthor(botname, logo).setDescription(gitinittttt).setTimestamp().setFooter('Application sent:');
+                                                                    bot.channels.get("689431057581473845").send(questionnnnn)
+                                                                    Meesage.channel.sendMessage('Sent! Our team should respond in the next few hours.')
+                                                                  } else {
+                                                                      if (reaction1.emoji.name === '❎') {
+                                                                        Meesage.channel.sendMessage('Cancelled and deleted.')
+                                                                      } else {
+                                                                      message.channel.sendMessage('Did not react with the right')
+                                                                    }}
+                                                                  
+                                                                  })
+                                                                  .catch(collected => {
+                                                                    message.author.sendMessage('You took to long to react.');
+                                                                  });
+                                                            })
+                                                          } else {
+                                                              if (reaction1.emoji.name === '❎') {
+                                                               q7 = '❎'
+                                                               statrtmessage.delete()
+                                                               message.author.sendMessage(`Would you like to submit the following answers?\n✅1.${q1}\n✅2.${q2}\n✅3.${q3}\n✅4.${q4}\n5.${q5}\n6.${q6}\n7.${q7}`).then(idk87654 => {
+                                                                idk87654.react('✅').then(() => idk87654.react('❎'));
+                                                       
+                                                                   const filter = (reaction, user) => {
+                                                                     return ['✅', '❎'].includes(reaction.emoji.name) && user.id === message.author.id;
+                                                                     };
+                                                               
+                                                                     idk87654.awaitReactions(filter, { max: 1, time: 60000000, errors: ['time'] })
+                                                                     .then(collected => {
+                                                                     const reaction1 = collected.first();
+                                                               
+                                                                     if (reaction1.emoji.name === '✅') {
+                                                                       var gitinittttt = `✅1.${q1}\n✅2.${q2}\n✅3.${q3}\n✅4.${q4}\n5.${q5}\n6.${q6}\n7.${q7}`
+                                                                       const questionnnnn = new Discord.RichEmbed()
+                                                                         .setColor('#ff0000').setTitle('New application').setAuthor(botname, logo).setDescription(gitinittttt).setTimestamp().setFooter('Application sent:');
+                                                                       bot.channels.get("689431057581473845").send(questionnnnn)
+                                                                       Meesage.channel.sendMessage('Sent! Our team should respond in the next few hours.')
+                                                                     } else {
+                                                                         if (reaction1.emoji.name === '❎') {
+                                                                           Meesage.channel.sendMessage('Cancelled and deleted.')
+                                                                         } else {
+                                                                         message.channel.sendMessage('Did not react with the right')
+                                                                       }}
+                                                                     
+                                                                     })
+                                                                     .catch(collected => {
+                                                                       message.author.sendMessage('You took to long to react.');
+                                                                     });
+                                                               })
+                                                              } else {
+                                                              message.channel.sendMessage('Did not react with the right')
+                                                            }}
+                                                          
+                                                          })
+                                                          .catch(collected => {
+                                                            message.author.sendMessage('You took to long to react.');
+                                                          });})
+                                                     } else {
+                                                     message.channel.sendMessage('Did not react with the right')
+                                                   }}
+                                                 
+                                                 })
+                                                 .catch(collected => {
+                                                   message.author.sendMessage('You took to long to react.');
+                                                 });})
+                                          }
+                                        })
+                                      })
+                                    }
+                                  })
+                                })
+                              }
+                            })
+                          })
+                        }
+                      })
+                    })
+                  }
+                })
+              })
+            })
+          }
+
+          function modd () {
+            message.author.sendMessage('You have picked to apply for mod!\nSome things are multiple choice and others need you to type an answer\n❌1.\n❌2.\n❌3.\n❌4.\n❌5.\n❌6.\n❌7.').then(statrtmessage => {
+            message.author.sendMessage('First question. What is your discord name + roblox name (format: [tag yourself] [roblox username]) If this is not done your application will be deleted.').then(rdgfdcvgfd => {
+              rdgfdcvgfd.channel.awaitMessages(response => (response.author === message.author), {
+                max: 1,
+                time: 60000000,
+                errors: ['time']
+            }).then(collected => {
+                   const senter1 = collected.first();
+                if (senter1) {
+                  const q1 = senter1.content
+                  rdgfdcvgfd.delete();
+                  statrtmessage.edit(`You have picked to apply for mod!\nSome things are multiple choice and others need you to type an answer\n✅1.${q1}\n❌2.\n❌3.\n❌4.\n❌5.\n❌6.\n❌7.`)
+                  message.author.sendMessage('Second question. What is the role of an mod? (Please type an answer) (300 characters max)').then(rdgfdcvgfd => {
+                    rdgfdcvgfd.channel.awaitMessages(response => (response.author === message.author), {
+                      max: 1,
+                      time: 60000000,
+                      errors: ['time']
+                  }).then(collected => {
+                         const senter1 = collected.first();
+                      if (senter1) {
+                        const q2 = senter1.content
+                        rdgfdcvgfd.delete();
+                        statrtmessage.edit(`You have picked to apply for mod!\nSome things are multiple choice and others need you to type an answer\n✅1.${q1}\n✅2.${q2}\n❌3.\n❌4.\n❌5.\n❌6.\n❌7.\n.`)
+                        message.author.sendMessage('Third question. Why should we pick you to become an mod? (Please type an answer) (300 characters max)').then(rdgfdcvgfd => {
+                          rdgfdcvgfd.channel.awaitMessages(response => (response.author === message.author), {
+                            max: 1,
+                            time: 60000000,
+                            errors: ['time']
+                        }).then(collected => {
+                               const senter1 = collected.first();
+                            if (senter1) {
+                              const q3 = senter1.content
+                              rdgfdcvgfd.delete();
+                              statrtmessage.edit(`You have picked to apply for mod!\nSome things are multiple choice and others need you to type an answer\n✅1.${q1}\n✅2.${q2}\n✅3.${q3}\n❌4.\n❌5.\n❌6.\n❌7.`)
+                              message.author.sendMessage('Fourth question. What would you do if someone was asking for a training? (Please type an answer) (300 characters max)').then(rdgfdcvgfd => {
+                                rdgfdcvgfd.channel.awaitMessages(response => (response.author === message.author), {
+                                  max: 1,
+                                  time: 60000000,
+                                  errors: ['time']
+                              }).then(collected => {
+                                     const senter1 = collected.first();
+                                  if (senter1) {
+                                    const q4 = senter1.content
+                                    rdgfdcvgfd.delete();
+                                    statrtmessage.edit(`You have picked to apply for mod!\nSome things are multiple choice and others need you to type an answer\n✅1.${q1}\n✅2.${q2}\n✅3.${q3}\n✅4.${q4}\n❌5.\n❌6.\n❌7.`)
+                                    message.author.sendMessage('Fifth question. What would you do if someone was asking for a promotion over and and over? (Please type an answer) (300 characters max)').then(rdgfdcvgfd => {
+                                      rdgfdcvgfd.channel.awaitMessages(response => (response.author === message.author), {
+                                        max: 1,
+                                        time: 60000000,
+                                        errors: ['time']
+                                    }).then(collected => {
+                                           const senter1 = collected.first();
+                                        if (senter1) {
+                                          const q5 = senter1.content
+                                          rdgfdcvgfd.delete();
+                                          statrtmessage.edit(`You have picked to apply for mod!\nSome things are multiple choice and others need you to type an answer\n✅1.${q1}\n✅2.${q2}\n✅3.${q3}\n✅4.${q4}\n✅5.${q5}\n❌6.\n❌7.`)
+                                          message.author.sendMessage('Sixth question, If someone was spamming, would you mute them?').then(sentMessage => {
+                                            
+                                             sentMessage.react('✅').then(() => sentMessage.react('❎'));
+                                 
+                                             const filter = (reaction, user) => {
+                                               return ['✅', '❎'].includes(reaction.emoji.name) && user.id === message.author.id;
+                                               };
+                                         
+                                               sentMessage.awaitReactions(filter, { max: 1, time: 60000000, errors: ['time'] })
+                                               .then(collected => {
+                                               const reaction1 = collected.first();
+                                         
+                                               if (reaction1.emoji.name === '✅') {
+                                                 q6 = '✅'
+                                                 statrtmessage.edit(`You have picked to apply for mod!\nSome things are multiple choice and others need you to type an answer\n✅1.${q1}\n✅2.${q2}\n✅3.${q3}\n✅4.${q4}\n✅5.${q5}\n6. ${q6}\n❌7.`)
+                                                 message.author.sendMessage('seventh question, if someone was annoying an moderator, Would you Ban them for bad words?').then(sentMessage => {
+                                                
+                                                  sentMessage.react('✅').then(() => sentMessage.react('❎'));
+                                      
+                                                  const filter = (reaction, user) => {
+                                                    return ['✅', '❎'].includes(reaction.emoji.name) && user.id === message.author.id;
+                                                    };
+                                              
+                                                    sentMessage.awaitReactions(filter, { max: 1, time: 60000000, errors: ['time'] })
+                                                    .then(collected => {
+                                                    const reaction1 = collected.first();
+                                              
+                                                    if (reaction1.emoji.name === '✅') {
+                                                      q7 = '✅'
+                                                      statrtmessage.delete()
+                                                      message.author.sendMessage(`Would you like to submit the following answers?\n✅1.${q1}\n✅2.${q2}\n✅3.${q3}\n✅4.${q4}\n5.${q5}\n6.${q6}\n7.${q7}`).then(idk87654 => {
+                                                        idk87654.react('✅').then(() => idk87654.react('❎'));
+                                              
+                                                          const filter = (reaction, user) => {
+                                                            return ['✅', '❎'].includes(reaction.emoji.name) && user.id === message.author.id;
+                                                            };
+                                                      
+                                                            idk87654.awaitReactions(filter, { max: 1, time: 60000000, errors: ['time'] })
+                                                            .then(collected => {
+                                                            const reaction1 = collected.first();
+                                                      
+                                                            if (reaction1.emoji.name === '✅') {
+                                                              var gitinittttt = `✅1.${q1}\n✅2.${q2}\n✅3.${q3}\n✅4.${q4}\n5.${q5}\n6.${q6}\n7.${q7}`
+                                                              const questionnnnn = new Discord.RichEmbed()
+                                                                .setColor('#ff0000').setTitle('New application').setAuthor(botname, logo).setDescription(gitinittttt).setTimestamp().setFooter('Application sent:');
+                                                              bot.channels.get("689431057581473845").send(questionnnnn)
+                                                              Meesage.channel.sendMessage('Sent! Our team should respond in the next few hours.')
+                                                            } else {
+                                                                if (reaction1.emoji.name === '❎') {
+                                                                  Meesage.channel.sendMessage('Cancelled and deleted.')
+                                                                } else {
+                                                                message.channel.sendMessage('Did not react with the right')
+                                                              }}
+                                                            
+                                                            })
+                                                            .catch(collected => {
+                                                              message.author.sendMessage('You took to long to react.');
+                                                            });
+                                                      })
+                                                    } else {
+                                                        if (reaction1.emoji.name === '❎') {
+                                                         q7 = '❎'
+                                                         statrtmessage.delete()
+                                                         message.author.sendMessage(`Would you like to submit the following answers?\n✅1.${q1}\n✅2.${q2}\n✅3.${q3}\n✅4.${q4}\n5.${q5}\n6.${q6}\n7.${q7}`).then(idk87654 => {
+                                                          idk87654.react('✅').then(() => idk87654.react('❎'));
+                                                 
+                                                             const filter = (reaction, user) => {
+                                                               return ['✅', '❎'].includes(reaction.emoji.name) && user.id === message.author.id;
+                                                               };
+                                                         
+                                                               idk87654.awaitReactions(filter, { max: 1, time: 60000000, errors: ['time'] })
+                                                               .then(collected => {
+                                                               const reaction1 = collected.first();
+                                                         
+                                                               if (reaction1.emoji.name === '✅') {
+                                                                 var gitinittttt = `✅1.${q1}\n✅2.${q2}\n✅3.${q3}\n✅4.${q4}\n5.${q5}\n6.${q6}\n7.${q7}`
+                                                                 const questionnnnn = new Discord.RichEmbed()
+                                                                   .setColor('#ff0000').setTitle('New application').setAuthor(botname, logo).setDescription(gitinittttt).setTimestamp().setFooter('Application sent:');
+                                                                 bot.channels.get("689431057581473845").send(questionnnnn)
+                                                                 Meesage.channel.sendMessage('Sent! Our team should respond in the next few hours.')
+                                                               } else {
+                                                                   if (reaction1.emoji.name === '❎') {
+                                                                     Meesage.channel.sendMessage('Cancelled and deleted.')
+                                                                   } else {
+                                                                   message.channel.sendMessage('Did not react with the right')
+                                                                 }}
+                                                               
+                                                               })
+                                                               .catch(collected => {
+                                                                 message.author.sendMessage('You took to long to react.');
+                                                               });
+                                                         })
+                                                        } else {
+                                                        message.channel.sendMessage('Did not react with the right')
+                                                      }}
+                                                    
+                                                    })
+                                                    .catch(collected => {
+                                                      message.author.sendMessage('You took to long to react.');
+                                                    });})
+                                               } else {
+                                                   if (reaction1.emoji.name === '❎') {
+                                                     q6 = '❎'
+                                                     statrtmessage.edit(`You have picked to apply for admin!\nSome things are multiple choice and others need you to type an answer\n✅1.${q1}\n✅2.${q2}\n✅3.${q3}\n✅4.${q4}\n✅5.${q5}\n6. chose: ${q6}\n❌7.\n❌8.`)
+                                                     message.author.sendMessage('seventh question, What would you do if someone was annoying an moderator').then(sentMessage => {
+                                                
+                                                      sentMessage.react('✅').then(() => sentMessage.react('❎'));
+                                          
+                                                      const filter = (reaction, user) => {
+                                                        return ['✅', '❎'].includes(reaction.emoji.name) && user.id === message.author.id;
+                                                        };
+                                                  
+                                                        sentMessage.awaitReactions(filter, { max: 1, time: 60000000, errors: ['time'] })
+                                                        .then(collected => {
+                                                        const reaction1 = collected.first();
+                                                  
+                                                        if (reaction1.emoji.name === '✅') {
+                                                          q7 = '✅'
+                                                          statrtmessage.delete()
+                                                          message.author.sendMessage(`Would you like to submit the following answers?\n✅1.${q1}\n✅2.${q2}\n✅3.${q3}\n✅4.${q4}\n5.${q5}\n6.${q6}\n7.${q7}`).then(idk87654 => {
+                                                            idk87654.react('✅').then(() => idk87654react('❎'));
+                                                  
+                                                              const filter = (reaction, user) => {
+                                                                return ['✅', '❎'].includes(reaction.emoji.name) && user.id === message.author.id;
+                                                                };
+                                                          
+                                                                idk87654.awaitReactions(filter, { max: 1, time: 60000000, errors: ['time'] })
+                                                                .then(collected => {
+                                                                const reaction1 = collected.first();
+                                                          
+                                                                if (reaction1.emoji.name === '✅') {
+                                                                  var gitinittttt = `✅1.${q1}\n✅2.${q2}\n✅3.${q3}\n✅4.${q4}\n5.${q5}\n6.${q6}\n7.${q7}`
+                                                                  const questionnnnn = new Discord.RichEmbed()
+                                                                    .setColor('#ff0000').setTitle('New application').setAuthor(botname, logo).setDescription(gitinittttt).setTimestamp().setFooter('Application sent:');
+                                                                  bot.channels.get("689431057581473845").send(questionnnnn)
+                                                                  Meesage.channel.sendMessage('Sent! Our team should respond in the next few hours.')
+                                                                } else {
+                                                                    if (reaction1.emoji.name === '❎') {
+                                                                      Meesage.channel.sendMessage('Cancelled and deleted.')
+                                                                    } else {
+                                                                    message.channel.sendMessage('Did not react with the right')
+                                                                  }}
+                                                                
+                                                                })
+                                                                .catch(collected => {
+                                                                  message.author.sendMessage('You took to long to react.');
+                                                                });
+                                                          })
+                                                        } else {
+                                                            if (reaction1.emoji.name === '❎') {
+                                                             q7 = '❎'
+                                                             statrtmessage.delete()
+                                                             message.author.sendMessage(`Would you like to submit the following answers?\n✅1.${q1}\n✅2.${q2}\n✅3.${q3}\n✅4.${q4}\n5.${q5}\n6.${q6}\n7.${q7}`).then(idk87654 => {
+                                                              idk87654.react('✅').then(() => idk87654.react('❎'));
+                                                     
+                                                                 const filter = (reaction, user) => {
+                                                                   return ['✅', '❎'].includes(reaction.emoji.name) && user.id === message.author.id;
+                                                                   };
+                                                             
+                                                                   idk87654.awaitReactions(filter, { max: 1, time: 60000000, errors: ['time'] })
+                                                                   .then(collected => {
+                                                                   const reaction1 = collected.first();
+                                                             
+                                                                   if (reaction1.emoji.name === '✅') {
+                                                                     var gitinittttt = `✅1.${q1}\n✅2.${q2}\n✅3.${q3}\n✅4.${q4}\n5.${q5}\n6.${q6}\n7.${q7}`
+                                                                     const questionnnnn = new Discord.RichEmbed()
+                                                                       .setColor('#ff0000').setTitle('New application').setAuthor(botname, logo).setDescription(gitinittttt).setTimestamp().setFooter('Application sent:');
+                                                                     bot.channels.get("689431057581473845").send(questionnnnn)
+                                                                     Meesage.channel.sendMessage('Sent! Our team should respond in the next few hours.')
+                                                                   } else {
+                                                                       if (reaction1.emoji.name === '❎') {
+                                                                         Meesage.channel.sendMessage('Cancelled and deleted.')
+                                                                       } else {
+                                                                       message.channel.sendMessage('Did not react with the right')
+                                                                     }}
+                                                                   
+                                                                   })
+                                                                   .catch(collected => {
+                                                                     message.author.sendMessage('You took to long to react.');
+                                                                   });
+                                                             })
+                                                            } else {
+                                                            message.channel.sendMessage('Did not react with the right')
+                                                          }}
+                                                        
+                                                        })
+                                                        .catch(collected => {
+                                                          message.author.sendMessage('You took to long to react.');
+                                                        });})
+                                                   } else {
+                                                   message.channel.sendMessage('Did not react with the right')
+                                                 }}
+                                               
+                                               })
+                                               .catch(collected => {
+                                                 message.author.sendMessage('You took to long to react.');
+                                               });})
+                                        }
+                                      })
+                                    })
+                                  }
+                                })
+                              })
+                            }
+                          })
+                        })
+                      }
+                    })
+                  })
+                }
+              })
+            })
+          })
+        }
+
+
+            if (decider === 4) {
+              message.author.sendMessage('Sorry but all applications are closed. Please try again soon.')
+              return;
+            }
+            if (decider === 1) {
+              message.author.sendMessage('Both of the applications are open! Please choose from one!\n1 for mod\n2 for admin').then(persorgame1 => {
+                persorgame1.react('1️⃣').then(() => persorgame1.react('2️⃣'));
+
+
+
+            const filter = (reaction, user) => {
+              return ['2️⃣', '1️⃣'].includes(reaction.emoji.name) && user.id === message.author.id;
+              };
+        
+              persorgame1.awaitReactions(filter, { max: 1, time: 60000000, errors: ['time'] })
+              .then(collected => {
+              const reaction9 = collected.first();
+        
+              if (reaction9.emoji.name === '1️⃣') {
+                message.author.sendMessage('So you chose to take the mod quiz!')
+                modd();
+              } else {
+                if (reaction9.emoji.name === '2️⃣') {
+                  message.author.sendMessage('So admin application! Here it is!')
+                  admind();
+                }
+              }
+              })
+              .catch(collected => {
+                console.log("HE TOOK TO LONG NOT MY PROBLEMO")
+              });
+            })
+            }
+            if (decider === 2) {
+              message.author.sendMessage('You are in luck! Mod applications are open! Would you like to continue?').then(persorgame1 => {
+                persorgame1.react('✅').then(() => persorgame1.react('❎'));
+
+
+
+            const filter = (reaction, user) => {
+              return ['✅', '1️⃣'].includes(reaction.emoji.name) && user.id === message.author.id;
+              };
+        
+              persorgame1.awaitReactions(filter, { max: 1, time: 60000000, errors: ['time'] })
+              .then(collected => {
+              const reaction9 = collected.first();
+        
+              if (reaction9.emoji.name === '✅') {
+                message.author.sendMessage('So you chose to carry on with the the mod quiz!')
+                modd();
+              } else {
+                if (reaction9.emoji.name === '❎') {
+                  message.author.sendMessage('Ok, bye!')
+                  return;
+                }
+              }
+              })
+              .catch(collected => {
+                console.log("HE TOOK TO LONG NOT MY PROBLEMO")
+              });
+            })
+            }
+            if (decider === 3) {
+              message.author.sendMessage('You are in luck! Admin applications are open! Would you like to continue?').then(persorgame1 => {
+                persorgame1.react('✅').then(() => persorgame1.react('❎'));
+
+
+
+            const filter = (reaction, user) => {
+              return ['✅', '❎'].includes(reaction.emoji.name) && user.id === message.author.id;
+              };
+        
+              persorgame1.awaitReactions(filter, { max: 1, time: 60000000, errors: ['time'] })
+              .then(collected => {
+              const reaction9 = collected.first();
+        
+              if (reaction9.emoji.name === '✅') {
+                message.author.sendMessage('So you chose to carry on with the the admin quiz!')
+                admind();
+              } else {
+                if (reaction9.emoji.name === '❎') {
+                  message.author.sendMessage('Ok, bye!')
+                  return;
+                }
+              }
+              })
+              .catch(collected => {
+                console.log("HE TOOK TO LONG NOT MY PROBLEMO")
+              });
+            })
+            }
+
+
+
+          }
         MessageEvent.author.sendMessage('did not react correctly')
       }}
       })
       .catch(collected => {
-        message.author.sendMessage('You took to long to react.');
+        console.log("HE TOOK TO LONG NOT MY PROBLEMO")
       });})
     }});
 
@@ -719,7 +1388,7 @@ bot.on('message', message => {
                     
                           if (reaction1.emoji.name === '✅') {
                             mention.sendMessage('Ticket has been closed! Tag me again if you need anymore help.')
-                            mention.sendMessage("Ticket closed!")
+                            message.channel.sendMessage("Ticket closed!")
                           } else {
                               if (reaction1.emoji.name === '❎') {
                                 message.channel.sendMessage("The User thinks that user has not answered correct. They are about to send More detailed answer!")
@@ -1013,6 +1682,11 @@ bot.on('message', message => {
                         if (rando2m333 == 3) {
                           message.channel.sendMessage("The group is owned by xXMonkey_chapXx!")
                         }
+                        if (rando2m333 == 4) {
+                          message.channel.send("Yo fucking hell you cant even get to this part of the script yet")
+                        } break;
+                      case 'uptime':
+                        message.channel.sendMessage('The bots uptime is **' + timeonline + '**s!')
                         
         
         
