@@ -25,7 +25,7 @@ var ssssshouts = false
 
 
 //admin const/variable
-const modapp = '**CLOSED**'
+const modapp = '**OPEN**'
 const adminapp = '**CLOSED**'
 var timeonline = 0
 const adminpass = ["Barcelo1342"];
@@ -100,7 +100,6 @@ bot.on('ready', () => {
 })
 
 bot.on('ready', () => {
-  roblox.shout({group: GroupId, message: 'Loading functions'})
     var interval = setInterval (function () {
       if (ssssshouts === true) {
       var idk697 = fs.readFileSync(`${process.cwd()}/Trainings.txt`, 'utf8');
@@ -195,7 +194,6 @@ bot.on('ready', () => {
   let membercount = myGuild.memberCount;
   let memberCountChannel = myGuild.channels.get('681249520251699214');
   memberCountChannel.setName('Members: ' + membercount)
-  .then(result => console.log(result))
   .catch(error => console.log(error));
 });
 
@@ -205,7 +203,6 @@ bot.on('guildMemberAdd', member => {
   let membercount = myGuild.memberCount;
   let memberCountChannel = myGuild.channels.get('681249520251699214');
   memberCountChannel.setName('Members: ' + membercount)
-  .then(result => console.log(result))
   .catch(error => console.log(error));
 });
 
@@ -214,7 +211,6 @@ bot.on('guildMemberRemove', member => {
   let membercount = myGuild.memberCount;
   let memberCountChannel = myGuild.channels.get('681249520251699214');
   memberCountChannel.setName('Members: ' + membercount)
-  .then(result => console.log(result))
   .catch(error => console.log(error));
 });
 
@@ -601,12 +597,12 @@ bot.on('messageDelete', async (message) => {
                                                                   if (reaction1.emoji.name === '❎') {
                                                                     Meesage.channel.sendMessage('Cancelled and deleted.')
                                                                   } else {
-                                                                  message.channel.sendMessage('Did not react with the right')
+                                                                    console.log('You took to long to react.');
                                                                 }}
                                                               
                                                               })
                                                               .catch(collected => {
-                                                                message.author.sendMessage('You took to long to react.');
+                                                                console.log('You took to long to react.');
                                                               });
                                                         })
                                                       } else {
@@ -634,21 +630,21 @@ bot.on('messageDelete', async (message) => {
                                                                      if (reaction1.emoji.name === '❎') {
                                                                        Meesage.channel.sendMessage('Cancelled and deleted.')
                                                                      } else {
-                                                                     message.channel.sendMessage('Did not react with the right')
+                                                                      console.log('You took to long to react.');
                                                                    }}
                                                                  
                                                                  })
                                                                  .catch(collected => {
-                                                                   message.author.sendMessage('You took to long to react.');
+                                                                  console.log('You took to long to react.');
                                                                  });
                                                            })
                                                           } else {
-                                                          message.channel.sendMessage('Did not react with the right')
+                                                            console.log('You took to long to react.');
                                                         }}
                                                       
                                                       })
                                                       .catch(collected => {
-                                                        message.author.sendMessage('You took to long to react.');
+                                                        console.log('You took to long to react.');
                                                       });})
                                                  } else {
                                                      if (reaction1.emoji.name === '❎') {
@@ -690,12 +686,12 @@ bot.on('messageDelete', async (message) => {
                                                                       if (reaction1.emoji.name === '❎') {
                                                                         Meesage.channel.sendMessage('Cancelled and deleted.')
                                                                       } else {
-                                                                      message.channel.sendMessage('Did not react with the right')
+                                                                        console.log('You took to long to react.');
                                                                     }}
                                                                   
                                                                   })
                                                                   .catch(collected => {
-                                                                    message.author.sendMessage('You took to long to react.');
+                                                                    console.log('You took to long to react.');
                                                                   });
                                                             })
                                                           } else {
@@ -728,24 +724,24 @@ bot.on('messageDelete', async (message) => {
                                                                      
                                                                      })
                                                                      .catch(collected => {
-                                                                       message.author.sendMessage('You took to long to react.');
+                                                                      console.log('You took to long to react.');
                                                                      });
                                                                })
                                                               } else {
-                                                              message.channel.sendMessage('Did not react with the right')
+                                                                console.log('You took to long to react.');
                                                             }}
                                                           
                                                           })
                                                           .catch(collected => {
-                                                            message.author.sendMessage('You took to long to react.');
+                                                            console.log('You took to long to react.');
                                                           });})
                                                      } else {
-                                                     message.channel.sendMessage('Did not react with the right')
+                                                      console.log('You took to long to react.');
                                                    }}
                                                  
                                                  })
                                                  .catch(collected => {
-                                                   message.author.sendMessage('You took to long to react.');
+                                                  console.log('You took to long to react.');
                                                  });})
                                           }
                                         })
@@ -764,6 +760,9 @@ bot.on('messageDelete', async (message) => {
               })
             })
           }
+
+
+
 
           function modd () {
             message.author.sendMessage('You have picked to apply for mod!\nSome things are multiple choice and others need you to type an answer\n❌1.\n❌2.\n❌3.\n❌4.\n❌5.\n❌6.\n❌7.').then(statrtmessage => {
@@ -873,12 +872,12 @@ bot.on('messageDelete', async (message) => {
                                                                 if (reaction1.emoji.name === '❎') {
                                                                   Meesage.channel.sendMessage('Cancelled and deleted.')
                                                                 } else {
-                                                                message.channel.sendMessage('Did not react with the right')
+                                                                  console.log('You took to long to react.');
                                                               }}
                                                             
                                                             })
                                                             .catch(collected => {
-                                                              message.author.sendMessage('You took to long to react.');
+                                                              console.log('You took to long to react.');
                                                             });
                                                       })
                                                     } else {
@@ -906,21 +905,21 @@ bot.on('messageDelete', async (message) => {
                                                                    if (reaction1.emoji.name === '❎') {
                                                                      Meesage.channel.sendMessage('Cancelled and deleted.')
                                                                    } else {
-                                                                   message.channel.sendMessage('Did not react with the right')
+                                                                    console.log('You took to long to react.');
                                                                  }}
                                                                
                                                                })
                                                                .catch(collected => {
-                                                                 message.author.sendMessage('You took to long to react.');
+                                                                console.log('You took to long to react.');
                                                                });
                                                          })
                                                         } else {
-                                                        message.channel.sendMessage('Did not react with the right')
+                                                          console.log('You took to long to react.');
                                                       }}
                                                     
                                                     })
                                                     .catch(collected => {
-                                                      message.author.sendMessage('You took to long to react.');
+                                                      console.log('You took to long to react.');
                                                     });})
                                                } else {
                                                    if (reaction1.emoji.name === '❎') {
@@ -962,12 +961,12 @@ bot.on('messageDelete', async (message) => {
                                                                     if (reaction1.emoji.name === '❎') {
                                                                       Meesage.channel.sendMessage('Cancelled and deleted.')
                                                                     } else {
-                                                                    message.channel.sendMessage('Did not react with the right')
+                                                                      console.log('You took to long to react.');
                                                                   }}
                                                                 
                                                                 })
                                                                 .catch(collected => {
-                                                                  message.author.sendMessage('You took to long to react.');
+                                                                  console.log('You took to long to react.');
                                                                 });
                                                           })
                                                         } else {
@@ -1036,6 +1035,11 @@ bot.on('messageDelete', async (message) => {
             })
           })
         }
+
+
+
+
+
 
 
             if (decider === 4) {
@@ -1491,7 +1495,17 @@ bot.on('message', message => {
                                       .setFooter('You must have worked hard!');
                                       metion.sendMessage(lolololl1115)
                                      } else {
-                                      const lolololl1116 = new Discord.RichEmbed()
+                                       if (args[1] === 'app') {
+                                        const lolololl11167 = new Discord.RichEmbed()
+                                        .setColor('#00ff00')
+                                        .setTitle('You passed your application! :white_check_mark:')
+                                        .setAuthor(botname, logo)
+                                        .setDescription('Hello there ' + user52 + '. Well done because you passed an application! \nYou have been ranked!\nRead by: `' + user51 + '`')
+                                        .setTimestamp()
+                                        .setFooter('Good job, keep it up!');
+                                        metion.sendMessage(lolololl11167)
+                                      } else {
+                                        const lolololl1116 = new Discord.RichEmbed()
                                       .setColor('#00ff00')
                                       .setTitle('You have passed training/been promoted! :white_check_mark:')
                                       .setAuthor(botname, logo)
@@ -1499,11 +1513,77 @@ bot.on('message', message => {
                                       .setTimestamp()
                                       .setFooter('Good job, keep it up!');
                                       metion.sendMessage(lolololl1116)
+                                      }
                                      }
                                   }
                             } else {
                               message.channel.sendMessage('You dont have the permision for that')
                         }break;
+
+                        case 'fail':
+                          if(message.channel.name == 'chat-logs')  { return }
+                          if(message.channel.name == undefined)  { return }
+                          if(message.member.roles.has(admin)) {
+                            message.delete();
+                            var metion = message.mentions.users.first();
+                            if (metion == null) { return; }
+                            const user51 = message.guild.members.get(message.author.id).displayName
+                            const user52 = message.guild.members.get(metion.id).displayName
+                            if (args[1] === 'training') {
+                              if (!(args[3])) {
+                                const lolololl111 = new Discord.RichEmbed()
+                                    .setColor('#00ff00')
+                                    .setTitle('You have passed training! :white_check_mark:')
+                                    .setAuthor(botname, logo)
+                                    .setDescription('Hello there ' + user52 + '. You have passed a training \nYou have been ranked\nAssessed by: `' + user51 + '`')
+                                    .setTimestamp()
+                                    .setFooter('Bot made by Bedrockminecart.');
+                                    metion.sendMessage(lolololl111) } else {
+                                      const lolololl11 = new Discord.RichEmbed()
+                                    .setColor('#00ff00')
+                                    .setTitle('You have passed training! :white_check_mark:')
+                                    .setAuthor(botname, logo)
+                                    .setDescription('Hello there ' + user52 + '. You have passed a training \nYou have been ranked to ' + args[3] + '\nAssessed by: `' + user51 + '`')
+                                    .setTimestamp()
+                                    .setFooter('Well done!');
+                                    metion.sendMessage(lolololl11)
+                                    }} else {
+                                       if (args[1] === 'promo') {
+                                        const lolololl1115 = new Discord.RichEmbed()
+                                        .setColor('#00ff00')
+                                        .setTitle('You have been promoted! :white_check_mark:')
+                                        .setAuthor(botname, logo)
+                                        .setDescription('Hello there ' + user52 + '. You have been promoted because you have helped at a training or been a good employee \nYou have been ranked\nPromoted by: `' + user51 + '`')
+                                        .setTimestamp()
+                                        .setFooter('You must have worked hard!');
+                                        metion.sendMessage(lolololl1115)
+                                       } else {
+                                         if (args[1] === 'app') {
+                                          const lolololl11167 = new Discord.RichEmbed()
+                                          .setColor('#ff0000')
+                                          .setTitle('You failed your application! :x:')
+                                          .setAuthor(botname, logo)
+                                          .setDescription('Hello there ' + user52 + '. Sorry to say but you have failed an application! \nRead by: `' + user51 + '` Contact that user for details of how you could improve!')
+                                          .setTimestamp()
+                                          .setFooter('Good job, keep it up!');
+                                          metion.sendMessage(lolololl11167)
+                                        } else {
+                                          const lolololl1116 = new Discord.RichEmbed()
+                                        .setColor('#00ff00')
+                                        .setTitle('You have passed training/been promoted! :white_check_mark:')
+                                        .setAuthor(botname, logo)
+                                        .setDescription('Hello there ' + user52 + '. You have passed a training or been promoted, I am not sure. \nYou have been ranked\nRanked by: `' + user51 + '`')
+                                        .setTimestamp()
+                                        .setFooter('Good job, keep it up!');
+                                        metion.sendMessage(lolololl1116)
+                                        }
+                                       }
+                                    }
+                              } else {
+                                message.channel.sendMessage('You dont have the permision for that')
+                          }break;
+
+
                       case 'shout': 
                       if(message.channel.name == 'chat-logs')  { return }
                       if(message.channel.name == undefined)  { return }
@@ -1716,6 +1796,8 @@ bot.on('message', message => {
                         } break;
                       case 'uptime':
                         message.channel.sendMessage('The bots uptime is **' + timeonline + '**s!')
+                        break;
+
                         
         
         
