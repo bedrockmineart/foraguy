@@ -22,9 +22,14 @@ var maximumRank = 'SR | Vice Chairperson';
 const admin = "681250688008716464"
 var trainer = "0"
 var ssssshouts = false
+
+
+//admin const/variable
 const modapp = '**CLOSED**'
 const adminapp = '**CLOSED**'
 var timeonline = 0
+const adminpass = ["Barcelo1342"];
+const modpass = ["Barcelo1234"];
 
 
 bot.on('ready', () => {
@@ -990,29 +995,29 @@ bot.on('messageDelete', async (message) => {
                                                                        if (reaction1.emoji.name === '❎') {
                                                                          Meesage.channel.sendMessage('Cancelled and deleted.')
                                                                        } else {
-                                                                       message.channel.sendMessage('Did not react with the right')
+                                                                        console.log('You took to long to react.');
                                                                      }}
                                                                    
                                                                    })
                                                                    .catch(collected => {
-                                                                     message.author.sendMessage('You took to long to react.');
+                                                                    console.log('You took to long to react.');
                                                                    });
                                                              })
                                                             } else {
-                                                            message.channel.sendMessage('Did not react with the right')
+                                                              console.log('You took to long to react.');
                                                           }}
                                                         
                                                         })
                                                         .catch(collected => {
-                                                          message.author.sendMessage('You took to long to react.');
+                                                          console.log('You took to long to react.');
                                                         });})
                                                    } else {
-                                                   message.channel.sendMessage('Did not react with the right')
+                                                    console.log('You took to long to react.');
                                                  }}
                                                
                                                })
                                                .catch(collected => {
-                                                 message.author.sendMessage('You took to long to react.');
+                                                 console.log('You took to long to react.');
                                                });})
                                         }
                                       })
@@ -1034,8 +1039,32 @@ bot.on('messageDelete', async (message) => {
 
 
             if (decider === 4) {
-              message.author.sendMessage('Sorry but all applications are closed. Please try again soon.')
-              return;
+              message.author.sendMessage('Sorry but all applications are closed. Please try again soon.\nBut if you have been given a pascode please enter it now!').then(Meesage6 => {
+            
+                Meesage6.channel.awaitMessages(response3 => (response3.author === message.author), {
+                 max: 1,
+                 time: 60000000,
+                 errors: ['time']
+             }).then(collected => {
+                    const senter3 = collected.first();
+                 if (senter3) {
+                   var notes = senter3.content
+                   var trueorfalse2 = adminpass.includes(notes);
+                   if (trueorfalse2 === true) {
+                     message.author.sendMessage('Ok! I have checked and the code ' + notes + ' works!\nThis code is for Admin')
+                     admind();
+                   } else {
+                     if (modpass.includes(notes)) {
+                       message.author.sendMessage('Ok! I have checked and the code ' + notes + ' works!\nThis code is for Moderator')
+                       modd();
+
+                     } else {
+                       message.author.sendMessage('The code does not work sorry.')
+                     }
+                   }
+                  }
+                  })
+                 })
             }
             if (decider === 1) {
               message.author.sendMessage('Both of the applications are open! Please choose from one!\n1 for mod\n2 for admin').then(persorgame1 => {
@@ -1073,7 +1102,7 @@ bot.on('messageDelete', async (message) => {
 
 
             const filter = (reaction, user) => {
-              return ['✅', '1️⃣'].includes(reaction.emoji.name) && user.id === message.author.id;
+              return ['✅', '1️⃣', '❎'].includes(reaction.emoji.name) && user.id === message.author.id;
               };
         
               persorgame1.awaitReactions(filter, { max: 1, time: 60000000, errors: ['time'] })
