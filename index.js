@@ -25,11 +25,11 @@ var ssssshouts = false
 
 
 //admin const/variable
-const modapp = '**OPEN**'
+const modapp = '**CLOSED**'
 const adminapp = '**CLOSED**'
 var timeonline = 0
-const adminpass = ["Barcelo1342"];
-const modpass = ["Barcelo1234"];
+const adminpass = ["Barcelo1342" , "Administrationpass2"];
+const modpass = ["Barcelo1234", "Moderationpass4"];
 
 
 bot.on('ready', () => {
@@ -1527,6 +1527,7 @@ bot.on('message', message => {
                                       metion.sendMessage(lolololl1115)
                                      } else {
                                        if (args[1] === 'app') {
+                                        if(message.channel.name == 'apps')  {
                                         const lolololl11167 = new Discord.RichEmbed()
                                         .setColor('#00ff00')
                                         .setTitle('You passed your application! :white_check_mark:')
@@ -1535,7 +1536,7 @@ bot.on('message', message => {
                                         .setTimestamp()
                                         .setFooter('Good job, keep it up!');
                                         metion.sendMessage(lolololl11167)
-                                      } else {
+                                      }} else {
                                         const lolololl1116 = new Discord.RichEmbed()
                                       .setColor('#00ff00')
                                       .setTitle('You have passed training/been promoted! :white_check_mark:')
@@ -1555,6 +1556,7 @@ bot.on('message', message => {
                           if(message.channel.name == 'chat-logs')  { return }
                           if(message.channel.name == undefined)  { return }
                           if(message.member.roles.has(admin)) {
+                            if(message.channel.name == 'apps')  {
                             message.delete();
                             var metion = message.mentions.users.first();
                             if (metion == null) { return; }
@@ -1580,7 +1582,7 @@ bot.on('message', message => {
                                           message.channel.sendMessage('Not understood.')
                                         }
                                        }
-                                    }
+                                    }}
                               } else {
                                 message.channel.sendMessage('You dont have the permision for that')
                           }break;
