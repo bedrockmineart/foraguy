@@ -498,7 +498,10 @@ bot.on('messageDelete', async (message) => {
                   errors: ['time']
               }).then(collected => {
                      const senter1 = collected.first();
-                  if (senter1) {
+                     if (senter1.content === 'cancel') {
+                      message.author.sendMessage('Cancelled.')
+                      return;
+                    } else {
                     const q1 = senter1.content
                     rdgfdcvgfd.delete();
                     statrtmessage.edit(`You have picked to apply for admin!\nSome things are multiple choice and others need you to type an answer\n✅1.${q1}\n❌2.\n❌3.\n❌4.\n❌5.\n❌6.\n❌7.`)
@@ -509,7 +512,10 @@ bot.on('messageDelete', async (message) => {
                         errors: ['time']
                     }).then(collected => {
                            const senter1 = collected.first();
-                        if (senter1) {
+                           if (senter1.content === 'cancel') {
+                            message.author.sendMessage('Cancelled.')
+                            return;
+                          } else {
                           const q2 = senter1.content
                           rdgfdcvgfd.delete();
                           statrtmessage.edit(`You have picked to apply for admin!\nSome things are multiple choice and others need you to type an answer\n✅1.${q1}\n✅2.${q2}\n❌3.\n❌4.\n❌5.\n❌6.\n❌7.\n.`)
@@ -520,7 +526,10 @@ bot.on('messageDelete', async (message) => {
                               errors: ['time']
                           }).then(collected => {
                                  const senter1 = collected.first();
-                              if (senter1) {
+                                 if (senter1.content === 'cancel') {
+                                  message.author.sendMessage('Cancelled.')
+                                  return;
+                                } else {
                                 const q3 = senter1.content
                                 rdgfdcvgfd.delete();
                                 statrtmessage.edit(`You have picked to apply for admin!\nSome things are multiple choice and others need you to type an answer\n✅1.${q1}\n✅2.${q2}\n✅3.${q3}\n❌4.\n❌5.\n❌6.\n❌7.`)
@@ -531,7 +540,10 @@ bot.on('messageDelete', async (message) => {
                                     errors: ['time']
                                 }).then(collected => {
                                        const senter1 = collected.first();
-                                    if (senter1) {
+                                       if (senter1.content === 'cancel') {
+                                        message.author.sendMessage('Cancelled.')
+                                        return;
+                                      } else {
                                       const q4 = senter1.content
                                       rdgfdcvgfd.delete();
                                       statrtmessage.edit(`You have picked to apply for admin!\nSome things are multiple choice and others need you to type an answer\n✅1.${q1}\n✅2.${q2}\n✅3.${q3}\n✅4.${q4}\n❌5.\n❌6.\n❌7.`)
@@ -542,7 +554,10 @@ bot.on('messageDelete', async (message) => {
                                           errors: ['time']
                                       }).then(collected => {
                                              const senter1 = collected.first();
-                                          if (senter1) {
+                                             if (senter1.content === 'cancel') {
+                                              message.author.sendMessage('Cancelled.')
+                                              return;
+                                            } else {
                                             const q5 = senter1.content
                                             rdgfdcvgfd.delete();
                                             statrtmessage.edit(`You have picked to apply for admin!\nSome things are multiple choice and others need you to type an answer\n✅1.${q1}\n✅2.${q2}\n✅3.${q3}\n✅4.${q4}\n✅5.${q5}\n❌6.\n❌7.`)
@@ -561,7 +576,7 @@ bot.on('messageDelete', async (message) => {
                                                  if (reaction1.emoji.name === '✅') {
                                                    q6 = '✅'
                                                    statrtmessage.edit(`You have picked to apply for admin!\nSome things are multiple choice and others need you to type an answer\n✅1.${q1}\n✅2.${q2}\n✅3.${q3}\n✅4.${q4}\n✅5.${q5}\n6. ${q6}\n❌7.`)
-                                                   message.author.sendMessage('seventh question, if someone was annoying an moderator, Would you Ban them for bad words?').then(sentMessage => {
+                                                   message.author.sendMessage('Seventh question, if someone was annoying an moderator, Would you Ban them for bad words?').then(sentMessage => {
                                                   
                                                     sentMessage.react('✅').then(() => sentMessage.react('❎'));
                                         
@@ -650,7 +665,7 @@ bot.on('messageDelete', async (message) => {
                                                      if (reaction1.emoji.name === '❎') {
                                                        q6 = '❎'
                                                        statrtmessage.edit(`You have picked to apply for admin!\nSome things are multiple choice and others need you to type an answer\n✅1.${q1}\n✅2.${q2}\n✅3.${q3}\n✅4.${q4}\n✅5.${q5}\n6. chose: ${q6}\n❌7.\n❌8.`)
-                                                       message.author.sendMessage('seventh question, What would you do if someone was annoying an moderator').then(sentMessage => {
+                                                       message.author.sendMessage('Seventh question, if someone was annoying an moderator, Would you Ban them for bad words?').then(sentMessage => {
                                                   
                                                         sentMessage.react('✅').then(() => sentMessage.react('❎'));
                                             
@@ -766,6 +781,7 @@ bot.on('messageDelete', async (message) => {
 
           function modd () {
             message.author.sendMessage('You have picked to apply for mod!\nSome things are multiple choice and others need you to type an answer\n❌1.\n❌2.\n❌3.\n❌4.\n❌5.\n❌6.\n❌7.').then(statrtmessage => {
+            message.author.sendMessage('If at any point you want to cancel the type cancel')
             message.author.sendMessage('First question. What is your discord name + roblox name (format: [tag yourself] [roblox username]) If this is not done your application will be deleted.').then(rdgfdcvgfd => {
               rdgfdcvgfd.channel.awaitMessages(response => (response.author === message.author), {
                 max: 1,
@@ -773,7 +789,10 @@ bot.on('messageDelete', async (message) => {
                 errors: ['time']
             }).then(collected => {
                    const senter1 = collected.first();
-                if (senter1) {
+                if (senter1.content === 'cancel') {
+                  message.author.sendMessage('Cancelled.')
+                  return;
+                } else {
                   const q1 = senter1.content
                   rdgfdcvgfd.delete();
                   statrtmessage.edit(`You have picked to apply for mod!\nSome things are multiple choice and others need you to type an answer\n✅1.${q1}\n❌2.\n❌3.\n❌4.\n❌5.\n❌6.\n❌7.`)
@@ -784,7 +803,10 @@ bot.on('messageDelete', async (message) => {
                       errors: ['time']
                   }).then(collected => {
                          const senter1 = collected.first();
-                      if (senter1) {
+                         if (senter1.content === 'cancel') {
+                          message.author.sendMessage('Cancelled.')
+                          return;
+                        } else {
                         const q2 = senter1.content
                         rdgfdcvgfd.delete();
                         statrtmessage.edit(`You have picked to apply for mod!\nSome things are multiple choice and others need you to type an answer\n✅1.${q1}\n✅2.${q2}\n❌3.\n❌4.\n❌5.\n❌6.\n❌7.\n.`)
@@ -795,7 +817,10 @@ bot.on('messageDelete', async (message) => {
                             errors: ['time']
                         }).then(collected => {
                                const senter1 = collected.first();
-                            if (senter1) {
+                               if (senter1.content === 'cancel') {
+                                message.author.sendMessage('Cancelled.')
+                                return;
+                              } else {
                               const q3 = senter1.content
                               rdgfdcvgfd.delete();
                               statrtmessage.edit(`You have picked to apply for mod!\nSome things are multiple choice and others need you to type an answer\n✅1.${q1}\n✅2.${q2}\n✅3.${q3}\n❌4.\n❌5.\n❌6.\n❌7.`)
@@ -806,7 +831,10 @@ bot.on('messageDelete', async (message) => {
                                   errors: ['time']
                               }).then(collected => {
                                      const senter1 = collected.first();
-                                  if (senter1) {
+                                     if (senter1.content === 'cancel') {
+                                      message.author.sendMessage('Cancelled.')
+                                      return;
+                                    } else {
                                     const q4 = senter1.content
                                     rdgfdcvgfd.delete();
                                     statrtmessage.edit(`You have picked to apply for mod!\nSome things are multiple choice and others need you to type an answer\n✅1.${q1}\n✅2.${q2}\n✅3.${q3}\n✅4.${q4}\n❌5.\n❌6.\n❌7.`)
@@ -817,7 +845,10 @@ bot.on('messageDelete', async (message) => {
                                         errors: ['time']
                                     }).then(collected => {
                                            const senter1 = collected.first();
-                                        if (senter1) {
+                                           if (senter1.content === 'cancel') {
+                                            message.author.sendMessage('Cancelled.')
+                                            return;
+                                          } else {
                                           const q5 = senter1.content
                                           rdgfdcvgfd.delete();
                                           statrtmessage.edit(`You have picked to apply for mod!\nSome things are multiple choice and others need you to type an answer\n✅1.${q1}\n✅2.${q2}\n✅3.${q3}\n✅4.${q4}\n✅5.${q5}\n❌6.\n❌7.`)
@@ -836,7 +867,7 @@ bot.on('messageDelete', async (message) => {
                                                if (reaction1.emoji.name === '✅') {
                                                  q6 = '✅'
                                                  statrtmessage.edit(`You have picked to apply for mod!\nSome things are multiple choice and others need you to type an answer\n✅1.${q1}\n✅2.${q2}\n✅3.${q3}\n✅4.${q4}\n✅5.${q5}\n6. ${q6}\n❌7.`)
-                                                 message.author.sendMessage('seventh question, if someone was annoying an moderator, Would you Ban them for bad words?').then(sentMessage => {
+                                                 message.author.sendMessage('Seventh question, if someone was annoying an moderator, Would you Ban them for bad words?').then(sentMessage => {
                                                 
                                                   sentMessage.react('✅').then(() => sentMessage.react('❎'));
                                       
@@ -925,7 +956,7 @@ bot.on('messageDelete', async (message) => {
                                                    if (reaction1.emoji.name === '❎') {
                                                      q6 = '❎'
                                                      statrtmessage.edit(`You have picked to apply for admin!\nSome things are multiple choice and others need you to type an answer\n✅1.${q1}\n✅2.${q2}\n✅3.${q3}\n✅4.${q4}\n✅5.${q5}\n6. chose: ${q6}\n❌7.\n❌8.`)
-                                                     message.author.sendMessage('seventh question, What would you do if someone was annoying an moderator').then(sentMessage => {
+                                                     message.author.sendMessage('Seventh question, if someone was annoying an moderator, Would you Ban them for bad words?').then(sentMessage => {
                                                 
                                                       sentMessage.react('✅').then(() => sentMessage.react('❎'));
                                           
@@ -1530,52 +1561,23 @@ bot.on('message', message => {
                             const user51 = message.guild.members.get(message.author.id).displayName
                             const user52 = message.guild.members.get(metion.id).displayName
                             if (args[1] === 'training') {
-                              if (!(args[3])) {
-                                const lolololl111 = new Discord.RichEmbed()
-                                    .setColor('#00ff00')
-                                    .setTitle('You have passed training! :white_check_mark:')
-                                    .setAuthor(botname, logo)
-                                    .setDescription('Hello there ' + user52 + '. You have passed a training \nYou have been ranked\nAssessed by: `' + user51 + '`')
-                                    .setTimestamp()
-                                    .setFooter('Bot made by Bedrockminecart.');
-                                    metion.sendMessage(lolololl111) } else {
-                                      const lolololl11 = new Discord.RichEmbed()
-                                    .setColor('#00ff00')
-                                    .setTitle('You have passed training! :white_check_mark:')
-                                    .setAuthor(botname, logo)
-                                    .setDescription('Hello there ' + user52 + '. You have passed a training \nYou have been ranked to ' + args[3] + '\nAssessed by: `' + user51 + '`')
-                                    .setTimestamp()
-                                    .setFooter('Well done!');
-                                    metion.sendMessage(lolololl11)
-                                    }} else {
+                              message.channel.sendMessage('Not understood.')
+                            } else {
                                        if (args[1] === 'promo') {
-                                        const lolololl1115 = new Discord.RichEmbed()
-                                        .setColor('#00ff00')
-                                        .setTitle('You have been promoted! :white_check_mark:')
-                                        .setAuthor(botname, logo)
-                                        .setDescription('Hello there ' + user52 + '. You have been promoted because you have helped at a training or been a good employee \nYou have been ranked\nPromoted by: `' + user51 + '`')
-                                        .setTimestamp()
-                                        .setFooter('You must have worked hard!');
-                                        metion.sendMessage(lolololl1115)
+                                        message.channel.sendMessage('Not understood.')
                                        } else {
                                          if (args[1] === 'app') {
+                                           const ffDfds = message.content.slice(args[0].length + args[1].lenth + args[2].legnth + 3)
                                           const lolololl11167 = new Discord.RichEmbed()
                                           .setColor('#ff0000')
                                           .setTitle('You failed your application! :x:')
                                           .setAuthor(botname, logo)
-                                          .setDescription('Hello there ' + user52 + '. Sorry to say but you have failed an application! \nRead by: `' + user51 + '` Contact that user for details of how you could improve!')
+                                          .setDescription('Hello there ' + user52 + '. Sorry to say but you have failed an application! \nRead by: `' + user51 + '` Contact that user for more details of how you could improve!```' + ffDfds + '```')
                                           .setTimestamp()
-                                          .setFooter('Good job, keep it up!');
+                                          .setFooter('I\'m sorry abou this news. Better luck next time!');
                                           metion.sendMessage(lolololl11167)
                                         } else {
-                                          const lolololl1116 = new Discord.RichEmbed()
-                                        .setColor('#00ff00')
-                                        .setTitle('You have passed training/been promoted! :white_check_mark:')
-                                        .setAuthor(botname, logo)
-                                        .setDescription('Hello there ' + user52 + '. You have passed a training or been promoted, I am not sure. \nYou have been ranked\nRanked by: `' + user51 + '`')
-                                        .setTimestamp()
-                                        .setFooter('Good job, keep it up!');
-                                        metion.sendMessage(lolololl1116)
+                                          message.channel.sendMessage('Not understood.')
                                         }
                                        }
                                     }
