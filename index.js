@@ -1567,7 +1567,7 @@ bot.on('message', message => {
                                         message.channel.sendMessage('Not understood.')
                                        } else {
                                          if (args[1] === 'app') {
-                                           const ffDfds = message.content.slice(30)
+                                           const ffDfds = message.content.slice(32)
                                           const lolololl11167 = new Discord.RichEmbed()
                                           .setColor('#ff0000')
                                           .setTitle('You failed your application! :x:')
