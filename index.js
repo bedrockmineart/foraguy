@@ -1232,19 +1232,9 @@ bot.on('messageDelete', async (message) => {
             bot.channels.get("681558326781149301").send('From ' + user123)
           }});
         bot.on('message', message => {
-          if (message.content.startsWith('642')) {
-            let user123 = message.author;
-            const com = message.content.slice (4);
-            message.author.sendMessage('Your reply has been submited to the staffing team!')
-            const repllll = new Discord.RichEmbed()
-                        .setColor('#ff0000')
-                        .setTitle('Reply to a reply from')
-                        .setAuthor(botname, logo)
-                        .setDescription(com)
-                        .setTimestamp()
-                        .setFooter('Average response it 5-10 minutes');
-            bot.channels.get("681558326781149301").send(repllll)  
-            bot.channels.get("681558326781149301").send('From ' + user123)
+          if (message.guild.id === "685556995381526605")
+          if (message.content.includes(':bread:')) {
+            message.channel.sendMessage(':bread: :bread: **WE LOVE BREAD**')
           }});
 
 
@@ -1782,7 +1772,7 @@ bot.on('message', message => {
                       )
                       break;
                       case 'fact':
-                        if (message.guild === "661271791636971520"){
+                        if (message.guild.id === "661271791636971520"){
                         var rando2m333 = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
                         if (rando2m333 == 1) {
                           fs.readFile('./index.js', 'utf8', (err, data) => {
@@ -1802,6 +1792,7 @@ bot.on('message', message => {
                       case 'uptime':
                         message.channel.sendMessage('The bots uptime is **' + timeonline + '**s!')
                         break;
+                      
 
                         
         
