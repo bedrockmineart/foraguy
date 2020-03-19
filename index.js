@@ -1782,6 +1782,7 @@ bot.on('message', message => {
                       )
                       break;
                       case 'fact':
+                        if (message.guild === "661271791636971520"){
                         var rando2m333 = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
                         if (rando2m333 == 1) {
                           fs.readFile('./index.js', 'utf8', (err, data) => {
@@ -1797,7 +1798,7 @@ bot.on('message', message => {
                         }
                         if (rando2m333 == 4) {
                           message.channel.send("Yo fucking hell you cant even get to this part of the script yet")
-                        } break;
+                        }} break;
                       case 'uptime':
                         message.channel.sendMessage('The bots uptime is **' + timeonline + '**s!')
                         break;
