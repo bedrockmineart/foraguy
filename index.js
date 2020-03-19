@@ -1276,7 +1276,7 @@ bot.on('message', message => {
              case 'delete':
               if(message.channel.name == 'chat-logs')  { return }
               if(message.channel.name == undefined)  { return }
-              if(message.member.roles.has(admin)) {
+              if(message.member.roles.has(admin) || message.member.roles.has("687688446927700011")) {
               message.delete();
               if (!args[1]) return message.reply('Error please define number')
               message.channel.bulkDelete(args[1])
@@ -1286,7 +1286,7 @@ bot.on('message', message => {
               case 'talk':
                 if(message.channel.name == 'chat-logs')  { return }
                 if(message.channel.name == undefined)  { return }
-                if(message.member.roles.has(admin)) {
+                if(message.member.roles.has(admin) || message.member.roles.has("687688446927700011")) {
                   if (!args[1]) { return }
                    else {
                     message.delete();
