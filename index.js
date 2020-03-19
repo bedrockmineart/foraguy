@@ -1244,7 +1244,7 @@ bot.on('messageDelete', async (message) => {
               if (message.member.roles.has("681588492802850837")) {
                 message.author.sendMessage("You had the muted role but because you are a SR+ You get a bypass! I took it of you.")
                 const role = message.guild.roles.find(r => r.name === "Muted");
-                member.removeRole(role).catch(console.error);
+                message.member.removeRole(role).catch(console.error);
               } else {
                 message.delete();
                 message.channel.sendMessage("You cannot send there as you are muted!")
