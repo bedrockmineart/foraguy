@@ -1240,14 +1240,14 @@ bot.on('messageDelete', async (message) => {
 
           bot.on('message', message => {
             if (message.channel === undefined) { return; }
-            if (message.member.roles.has("661290359170793493")) {
+            const role = message.guild.roles.find(r => r.name === "Muted");
+            if (message.member.roles.has(role.id)) {
               if (message.member.roles.has("681588492802850837")) {
                 message.author.sendMessage("You had the muted role but because you are a SR+ You get a bypass! I took it of you.")
-                const role = message.guild.roles.find(r => r.name === "Muted");
                 message.member.removeRole(role).catch(console.error);
               } else {
                 message.delete();
-                message.channel.sendMessage(":x: You cannot send there as you are muted!")
+                message.author.sendMessage(":x: You cannot send there as you are muted!")
               }
           }});
   
