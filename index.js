@@ -1234,6 +1234,7 @@ bot.on('messageDelete', async (message) => {
         bot.on('message', message => {
           if (message.guild.id === "685556995381526605")
           if (message.content.includes('🍞')) {
+          if (message.author.id === "681244101152210953") { return; }
             message.channel.sendMessage('🍞🍞 **WE LOVE BREAD**')
           }});
 
