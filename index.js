@@ -1247,7 +1247,7 @@ bot.on('messageDelete', async (message) => {
                 message.member.removeRole(role).catch(console.error);
               } else {
                 message.delete();
-                message.channel.sendMessage("You cannot send there as you are muted!")
+                message.channel.sendMessage(":x: You cannot send there as you are muted!")
               }
           }});
   
