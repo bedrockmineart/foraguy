@@ -1232,13 +1232,15 @@ bot.on('messageDelete', async (message) => {
             bot.channels.get("681558326781149301").send('From ' + user123)
           }});
         bot.on('message', message => {
+          if (message.channel === undefined) { return; }
+          if (message.author.id === "681244101152210953") { return; }
           if (message.guild.id === "685556995381526605")
           if (message.content.includes('🍞')) {
-          if (message.author.id === "681244101152210953") { return; }
             message.channel.sendMessage('🍞🍞 **WE LOVE BREAD**')
           }});
 
           bot.on('message', message => {
+            if (message.author.id === "681244101152210953") { return; }
             if (message.channel === undefined) { return; }
             const role = message.guild.roles.find(r => r.name === "Muted");
             if (message.member.roles.has(role.id)) {
