@@ -1233,8 +1233,8 @@ bot.on('messageDelete', async (message) => {
           }});
         bot.on('message', message => {
           if (message.guild.id === "685556995381526605")
-          if (message.content.includes(':bread:')) {
-            message.channel.sendMessage(':bread: :bread: **WE LOVE BREAD**')
+          if (message.content.includes('🍞')) {
+            message.channel.sendMessage('🍞🍞 **WE LOVE BREAD**')
           }});
 
 
