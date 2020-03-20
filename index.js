@@ -1828,7 +1828,58 @@ bot.on('message', message => {
                           .addField("Where?", message.channel.name)
                           .addField("By who?", message.author.username)
                           warnchannel.sendMessage(muteembed)
-                        }}
+                        }} break;
+                      case 'report':
+                        message.author.sendMessage("Welcome to the reporting process! Please copy the id of the user and send it to me.").then(Meesage6 => {
+            
+                          Meesage6.channel.awaitMessages(response3 => (response3.author === message.author), {
+                           max: 1,
+                           time: 60000000,
+                           errors: ['time']
+                       }).then(collected => {
+                              const senter3 = collected.first();
+                              Meesage6.edit("Welcome to the reporting process! \nUser reporting: " + message.author + "\nUser id: " + senter3 + "\nPlease tell me why")
+            
+                                Meesage5.channel.awaitMessages(response3 => (response3.author === message.author), {
+                                 max: 1,
+                                 time: 60000000,
+                                 errors: ['time']
+                             }).then(collected => {
+                                    const senter4 = collected.first();
+                                    Meesage6.delete();
+                                    message.author.sendMessage("Welcome to the reporting process!\nUser reporting: " + message.author + "\nUser id: " + senter3 + "\nReason: " + senter4).then(sentMessage => {
+                                      sentMessage.react('✅').then(() => sentMessage.react('❎'));
+                    
+                                const filter = (reaction, user) => {
+                                  return ['✅', '❎'].includes(reaction.emoji.name) && user.id === message.author.id;
+                                  };
+                            
+                                  sentMessage.awaitReactions(filter, { max: 1, time: 60000000, errors: ['time'] })
+                                  .then(collected => {
+                                  const reaction1 = collected.first();
+                            
+                                  if (reaction1.emoji.name === '✅') {
+                                    var gitinittttt = "User reporting: " + message.author + "\nUser id: " + senter3 + "\nReason: " + senter4 + "Proof: Please contact " + message.author + " for proof!"
+                                    const questionnnnn = new Discord.RichEmbed()
+                                      .setColor('#ff0000').setTitle('New report').setAuthor(botname, logo).setDescription(gitinittttt).setTimestamp().setFooter('Average response it 5-10 minutes');
+                                    bot.channels.get("681558326781149301").send(questionnnnn)
+                                    Meesage.channel.sendMessage('Sent! Our team should respond in the next few hours.')
+                                  } else {
+                                      if (reaction1.emoji.name === '❎') {
+                                        Meesage.channel.sendMessage('Cancelled and deleted.')
+                                      } else {
+                                      message.channel.sendMessage('Did not react with the right')
+                                    }}
+                                  
+                                  })
+                                  .catch(collected => {
+                                    message.author.sendMessage('You took to long to react.');
+                                  });
+                                    })
+                             })
+                       })})
+                        
+
 
                       
 
