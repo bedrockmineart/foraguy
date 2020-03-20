@@ -1239,19 +1239,19 @@ bot.on('messageDelete', async (message) => {
             message.channel.sendMessage('🍞🍞 **WE LOVE BREAD**')
         }}});
 
-          bot.on('message', message => {
-            if (message.author.id === "681244101152210953") { return; }
-            if (message.channel === undefined) { return; }
-            let role = message.guild.roles.find(r => r.name === "Muted");
-            if(message.member.roles.some(r=>["Muted"].includes(r.name)) ) {
-              if (message.member.roles.has("681588492802850837")) {
-                message.author.sendMessage("You had the muted role but because you are a SR+ You get a bypass! I took it of you.")
-                message.member.removeRole(role).catch(console.error);
-              } else {
-                message.delete();
-                message.author.sendMessage(":x: You cannot send there as you are muted!")
-              }
-          }});
+         //   bot.on("message", async (message) => {
+         //   if (!Meesage.guild) { return; }
+         //   let role = message.guild.roles.find(r => r.name === "Muted");
+         //   const member = await message.guild.fetchMember(message.author);
+         //   if(member.roles.has(role.id)) {
+         //     if (member.roles.has("681588492802850837")){
+         //       message.author.sendMessage("You had the muted role but because you are a SR+ You get a bypass! I took it of you.")
+         //       member.removeRole(role).catch(console.error);
+         //     } else {
+         //       message.delete();
+         //       message.author.sendMessage(":x: You cannot send there as you are muted!")
+         //     }
+         //}});
   
   
 
