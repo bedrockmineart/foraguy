@@ -1216,28 +1216,6 @@ bot.on('messageDelete', async (message) => {
           bot.channels.get("681558326781149301").send('From ' + user123)
         }
       });
-        bot.on('message', message => {
-          if (message.content.startsWith(code1)) {
-            let user123 = message.author;
-            const complaint = message.content.slice (4);
-            message.author.sendMessage('Your complaint has been submited to the staffing team!')
-            const commm = new Discord.RichEmbed()
-                        .setColor('#ff0000')
-                        .setTitle('New complaint')
-                        .setAuthor(botname, logo)
-                        .setDescription(complaint)
-                        .setTimestamp()
-                        .setFooter('Average response it 5-10 minutes');
-            bot.channels.get("681558326781149301").send(commm)
-            bot.channels.get("681558326781149301").send('From ' + user123)
-          }});
-        bot.on('message', message => {
-          if (message.channel === undefined) { return; }
-          if (message.author.id === "681244101152210953") { return; }
-          if (message.guild.id === "685556995381526605") {
-          if (message.content.includes('🍞')) {
-            message.channel.sendMessage('🍞🍞 **WE LOVE BREAD**')
-        }}});
 
          //   bot.on("message", async (message) => {
          //   if (!Meesage.guild) { return; }
@@ -1840,7 +1818,7 @@ bot.on('message', message => {
                               const senter3 = collected.first();
                               Meesage6.edit("Welcome to the reporting process! \nUser reporting: " + message.author + "\nUser id: " + senter3 + "\nPlease tell me why")
             
-                                Meesage5.channel.awaitMessages(response3 => (response3.author === message.author), {
+                                Meesage6.channel.awaitMessages(response3 => (response3.author === message.author), {
                                  max: 1,
                                  time: 60000000,
                                  errors: ['time']
