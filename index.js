@@ -1234,16 +1234,16 @@ bot.on('messageDelete', async (message) => {
         bot.on('message', message => {
           if (message.channel === undefined) { return; }
           if (message.author.id === "681244101152210953") { return; }
-          if (message.guild.id === "685556995381526605")
+          if (message.guild.id === "685556995381526605") {
           if (message.content.includes('🍞')) {
             message.channel.sendMessage('🍞🍞 **WE LOVE BREAD**')
-          }});
+        }}});
 
           bot.on('message', message => {
             if (message.author.id === "681244101152210953") { return; }
             if (message.channel === undefined) { return; }
-            const role = message.guild.roles.find(r => r.name === "Muted");
-            if (message.member.roles.has(role.id)) {
+            let role = message.guild.roles.find(r => r.name === "Muted");
+            if(message.member.roles.some(r=>["Muted"].includes(r.name)) ) {
               if (message.member.roles.has("681588492802850837")) {
                 message.author.sendMessage("You had the muted role but because you are a SR+ You get a bypass! I took it of you.")
                 message.member.removeRole(role).catch(console.error);
@@ -1810,6 +1810,26 @@ bot.on('message', message => {
                       case 'uptime':
                         message.channel.sendMessage('The bots uptime is **' + timeonline + '**s!')
                         break;
+                      case 'mute':
+                        if(message.channel.name == 'chat-logs')  { return }
+                        if(message.channel.name == undefined)  { return }
+                      if (message.member.roles.has(admin)) {
+                        let member = message.mentions.members.first();
+
+                        if (!member) {
+                          message.channel.sendMessage("Define user")
+                        } else {
+                          const role = message.guild.roles.find(r => r.name === "Muted");
+                          member.addRole(role).catch(console.error);
+                          let warnchannel = bot.channels.get("690496511829737494")
+                          const muteembed = new Discord.RichEmbed()
+                          .setTitle("Someone has been muted")
+                          .addField("Who?", args[1])
+                          .addField("Where?", message.channel.name)
+                          .addField("By who?", message.author.username)
+                          warnchannel.sendMessage(muteembed)
+                        }}
+
                       
 
                         
