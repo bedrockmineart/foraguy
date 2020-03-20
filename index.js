@@ -1857,6 +1857,84 @@ bot.on('message', message => {
                              })
                        })}) 
                        break;
+                      case 'help':
+                        if (!args[1]) {
+                          message.channel.send("```Please do !help and choose one of these to go after:\nhelp\nmute - Admin\nuptime\nfact\nfight\npromote - Ranking perms\ndemote - Ranking perms\nshout - Ranking perms\ntrain - Senior staff\nVersion\nme\ntalk - Admin\ndelete - Admin\ntime\nping\nMention-me```")
+                        } else {
+                          if (args[1] === "help") {
+                            message.channel.send("Help - Brings you to this command!")
+                          } else {
+                            if (args[1] === "mute") {
+                              message.channel.sendMessage("Mutes a member - must have permissions")
+                            } else {
+                              if (args[1] === "uptime") {
+                                message.channel.sendMessage("Shows uptime in seconds")
+                              } else {
+                                if(args[10] === "fact") {
+                                  message.channel.sendMessage("Produces a random fact")
+                                } else {
+                                  if(args[1] === "fight") {
+                                    message.channel.sendMessage("Creates a probility of you winning a fight against this person")
+                                  } else {
+                                    if(args[1] === "promote") {
+                                      message.channel.sendMessage("Promote a user in the roblox group - musts have Ranking perms")
+                                    } else {
+                                      if (args[1] === "demote") {
+                                        message.channel.sendMessage("Demotes a user in the roblox group - must hve Ranking perms")
+                                      } else {
+                                        if(args[1] === "shout") {
+                                          message.channel.sendMessage("Makes a shout in the group - must have Ranking perms")
+                                        } else {
+                                          if (args[1] === "train") {
+                                            message.channel.sendMessage("Starts a training - Must have the senior staff role")
+                                          } else {
+                                            if (args[1] === "train") {
+                                              return;
+                                            } else {
+                                              if(args[1] === "version") {
+                                                message.channel.sendMessage("Displays the version of the bot.")
+                                              } else {
+                                                if(args[1] === "version") {
+                                                  return;
+                                                } else {
+                                                  if(args[1] === "me") {
+                                                    message.channel.sendMessage("Says who you are")
+                                                  } else {
+                                                    if(args[1] === "talk") {
+                                                      message.channel.sendMessage("Make an embed !talk [title (1 word)] [description] -- must have perms")
+                                                    } else {
+                                                      if(args[1] === "delete") {
+                                                        message.channel.sendMessage("deletes messages - must have perms")
+                                                      } else {
+                                                        if(args[1] === "time") {
+                                                          message.channel.sendMessage("Displays the time")
+                                                        } else {
+                                                          if(args[1] === "ping") {
+                                                            message.channel.sendMessage("displays the bot latency")
+                                                          } else {
+                                                            if(args[1] === "mention-me") {
+                                                              message.channel.sendMessage("If you mention me by it's self I will help you with many things!")
+                                                            } else {
+                                                              message.channel.sendMessage("Not understood by \'" + args[1] + "\'. Please refer to !help")
+                                                            }
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
                         
 
 
