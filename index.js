@@ -3,7 +3,7 @@ let roblox = require('noblox.js');
 const bot = new Discord.Client();
 const fs = require("fs");
 bot.msgs = require ("./msgs.json")
-const Canvas = require('canvas');
+const Canvas = require('canvas')
 
 
 
@@ -67,6 +67,17 @@ bot.on('ready', () => {
     console.log('Hello 1 2 1 2, Sub bot is online')
     console.log('We are online')
 })
+
+const applyText = (canvas, text) => {
+	const ctx = canvas.getContext('2d');
+	let fontSize = 70;
+
+	do {
+		ctx.font = `${fontSize -= 10}px sans-serif`;
+	} while (ctx.measureText(text).width > canvas.width - 300);
+
+	return ctx.font;
+};
 
 bot.on('ready', () => {
   bot.channels.get("681248976590209034").fetchMessage("681540364926320644").then((message) => {
@@ -205,24 +216,26 @@ bot.on('guildMemberAdd', member => {
   let memberCountChannel = myGuild.channels.get('681249520251699214');
   memberCountChannel.setName('Members: ' + membercount)
   .catch(error => console.log(error));
-  const channel = member.guild.channels.cache.find(ch => ch.name === 'welcome');
+  
+});
+
+bot.on('guildMemberAdd', async member => {
+	const channel = member.guild.channels.find(ch => ch.name === 'welcome');
 	if (!channel) return;
 
 	const canvas = Canvas.createCanvas(700, 250);
 	const ctx = canvas.getContext('2d');
 
-	const background = Canvas.loadImage('./wallpaper.jpg');
+	const background = await Canvas.loadImage('./wallpaper.jpg');
 	ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
 	ctx.strokeStyle = '#74037b';
 	ctx.strokeRect(0, 0, canvas.width, canvas.height);
 
-	// Slightly smaller text placed above the member's display name
 	ctx.font = '28px sans-serif';
 	ctx.fillStyle = '#ffffff';
 	ctx.fillText('Welcome to the server,', canvas.width / 2.5, canvas.height / 3.5);
 
-	// Add an exclamation point here and below
 	ctx.font = applyText(canvas, `${member.displayName}!`);
 	ctx.fillStyle = '#ffffff';
 	ctx.fillText(`${member.displayName}!`, canvas.width / 2.5, canvas.height / 1.8);
@@ -232,7 +245,7 @@ bot.on('guildMemberAdd', member => {
 	ctx.closePath();
 	ctx.clip();
 
-	const avatar = Canvas.loadImage(member.user.displayAvatarURL({ format: 'jpg' }));
+	const avatar = await Canvas.loadImage(member.user.displayAvatarURL({ format: 'jpg' }));
 	ctx.drawImage(avatar, 25, 25, 200, 200);
 
 	const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'welcome-image.png');
@@ -1069,7 +1082,7 @@ bot.on('messageDelete', async (message) => {
                                                              })
                                                             } else {
                                                               console.log('You took to long to react.');
-                                                           }}
+                                                          }}
                                                         
                                                         })
                                                         .catch(collected => {
