@@ -1301,7 +1301,7 @@ bot.on('message', message => {
                         .setColor('#ff0000')
                         .setTitle('Trainings!')
                           .setAuthor(botname, logo)
-                          .setDescription(`Hello everyone!\n\nBarcelo Trainings!! \n Are you still awaiting Training? Then come along to this training.\nSlocked?\nSlock in 10-15 minutes\n\n**LINK:**\n\nhttps://www.roblox.com/games/897546096/Barcelo-Training-Center-V1`)
+                          .setDescription(`Hello everyone!\n\nBarcelo Trainings!! \n Are you still awaiting Training? Then come along to this training.\n Slocked?\nSlock in 10-15 minutes\n\n**LINK:**\n\nhttps://www.roblox.com/games/897546096/Barcelo-Training-Center-V1`)
                           .setThumbnail(logo)
                           .setImage('https://cdn.discordapp.com/attachments/661290411540742154/687752603219525748/unknown.png')
                           .setTimestamp()
