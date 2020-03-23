@@ -25,7 +25,7 @@ var ssssshouts = false
 
 
 //admin const/variable
-const modapp = '**CLOSED**'
+const modapp = '**OPEN**'
 const adminapp = '**CLOSED**'
 var timeonline = 0
 const adminpass = ["Barcelo1342" , "Administrationpass2"];
@@ -248,7 +248,20 @@ bot.on('messageDelete', async (message) => {
 
 
   bot.on('message', message => {
-    if (message.content === '<@681244101152210953>' || message.content === '<@!681244101152210953>'){ 
+    if (message.content === '<@681244101152210953>' || message.content === '<@!681244101152210953>'){
+      message.author.sendMessage("Please select form the following:\n1 for Barcelo\n2 for Trainsport").then(or12 => {
+        or12.react('1️⃣').then(() => sentMessage.react('2️⃣'));
+
+        const filter = (reaction, user) => {
+        return ['1️⃣', '2️⃣'].includes(reaction.emoji.name) && user.id === message.author.id;
+        };
+  
+        or12.awaitReactions(filter, { max: 1, time: 60000000, errors: ['time'] })
+        .then(collected => {
+        const reaction = collected.first();
+  
+        if (reaction.emoji.name === '1️⃣') {
+
       message.author.sendMessage('Hello there, Im the official bot for Barcelo and Im here to help. Please choose from one of the following: \n 1 For question or comaplaint! \n 2 for role classes!\n 3 to apply for a Discord role \n (Please react to this dm)').then(sentMessage => {
         sentMessage.react('1️⃣').then(() => sentMessage.react('2️⃣').then(() => sentMessage.react('3️⃣')));
 
@@ -1197,7 +1210,10 @@ bot.on('messageDelete', async (message) => {
       })
       .catch(collected => {
         console.log("HE TOOK TO LONG NOT MY PROBLEMO")
-      });})
+      });})} else {
+        message.author.sendMessage('Hello,\nYou shouldn\'t be here. How did you get here?')
+      }
+    })})
     }});
 
       bot.on('message', message => {
@@ -1949,6 +1965,7 @@ bot.on('message', message => {
                       
                       
     })
+
 
 bot.on('error', err => {
   console.log(err)
