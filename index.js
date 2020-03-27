@@ -23,6 +23,8 @@ const admin = "681250688008716464"
 var trainer = "0"
 var ssssshouts = false
 var announcement = '.'
+var loooooool = "681540364926320644"
+var trrrrrrrrrr = 'Sorry but I\'m not quite sure how you got here...'
 
 
 //admin const/variable
@@ -98,6 +100,13 @@ bot.on('ready', () => {
         .catch(console.error);}
     }, 120 * 1000); 
 })
+})
+
+bot.on('messageReactionAdd', async (reaction, user) => {
+  bot.channels.get("681248976590209034").fetchMessage(loooooool).then((messag1e) => {
+    if (reaction.message === messag1e && reaction.emoji.name === "❓") {
+      reaction.users.first().sendMessage(trrrrrrrrrr)
+  }})
 })
 
 bot.on('ready', () => {
@@ -1331,6 +1340,7 @@ bot.on('message', message => {
                       bot.channels.get("681248976590209034").send(trainingaa).then((message5) => {
                       roblox.shout({group: GroupId, message: 'Barcelo trainings are right now! Hop along whith others to get trained! Host: ' + user60})
                       message.author.send('Tell me when you have finished(React to this message with ✅.)\nIf training is cancelled press the ❎').then(sentMessage => {
+                        loooooool = "\"" + message5.id + "\""
                         sentMessage.react('✅').then(() => sentMessage.react('❎'));
                 
                       const filter = (reaction, user) => {
@@ -1354,6 +1364,8 @@ bot.on('message', message => {
                           .setTimestamp()
                           .setFooter('This message will be deleted after 5 minutes. Ended: ');
                         message5.edit(trainingaaa).then(mesasge7 => {
+                          mesasge7.react('❓');
+                          trrrrrrrrrr = 'This training has finished. Sorry if you couldn\'t make it. But if you did and you passed I congratulate you!'
                           mesasge7.delete(5 * 60 * 1000);
                           });
                       } else {
@@ -1370,6 +1382,9 @@ bot.on('message', message => {
                             .setTimestamp()
                             .setFooter('This message will be deleted after 5 minutes. Ended: ');
                         message5.edit(trainingaaaa).then(mesasge6 => {
+                          Meesage6.react('❓')
+
+                          trrrrrrrrrr = 'This training has been cancelled. Sorry if we caused any inconvinience.'
                           mesasge6.delete(5 * 60 * 1000);
                           });
                           } else {
@@ -1951,7 +1966,13 @@ bot.on('message', message => {
                         message.channel.send('Set it to Important anouncement: ' + ur)
                         announcement = 'Important anouncement: ' + ur
                         break;
-
+                      case 'test':
+                        message.channel.sendMessage("Yo").then(message5 => {
+                        message5.edit("lol").then(mesasge7 => {
+                          loooooool = mesasge7.id
+                          mesasge7.delete(5 * 60 * 1000);
+                          });
+                        })
                         
 
 
