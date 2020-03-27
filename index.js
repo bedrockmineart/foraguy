@@ -1340,7 +1340,7 @@ bot.on('message', message => {
                       bot.channels.get("681248976590209034").send(trainingaa).then((message5) => {
                       roblox.shout({group: GroupId, message: 'Barcelo trainings are right now! Hop along whith others to get trained! Host: ' + user60})
                       message.author.send('Tell me when you have finished(React to this message with ✅.)\nIf training is cancelled press the ❎').then(sentMessage => {
-                        loooooool = "\"" + message5.id + "\""
+                        loooooool = message5.id
                         sentMessage.react('✅').then(() => sentMessage.react('❎'));
                 
                       const filter = (reaction, user) => {
