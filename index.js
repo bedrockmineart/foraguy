@@ -22,10 +22,11 @@ var maximumRank = 'SR | Vice Chairperson';
 const admin = "681250688008716464"
 var trainer = "0"
 var ssssshouts = false
+var announcement = '.'
 
 
 //admin const/variable
-const modapp = '**OPEN**'
+const modapp = '**CLOSED**'
 const adminapp = '**CLOSED**'
 var timeonline = 0
 const adminpass = ["Barcelo1342" , "Administrationpass2"];
@@ -103,16 +104,21 @@ bot.on('ready', () => {
     var interval = setInterval (function () {
       if (ssssshouts === true) {
       var idk697 = fs.readFileSync(`${process.cwd()}/Trainings.txt`, 'utf8');
-      if (idk697) {
+      if (idk697 && idk333) {
         fs.readFile('./Trainings.txt', 'utf8', (err, data) => {
         var hhhhh = data.split('\n').length
         hhhhh = Math.round(hhhhh - 1)
+        fs.readFile('./Trainings.txt', 'utf8', (err, data) => {
+          var Ihopeu = data.split('\n').length
+          Ihopeu = Math.round(Ihopeu - 1)
+        })})} else {
+          var Ihopeu = '0'
+          var hhhhh = '0'
+        }
+  
 
-        roblox.shout({group: GroupId, message: hhhhh + ' training scheduled! Please join our Dizzy server (below) for more info!'})
-        .catch(console.error);
-      })} else {
-      roblox.shout({group: GroupId, message: 'Sorry everyone, but there is not trainings scheduled.'})
-        .catch(console.error);}}
+        roblox.shout({group: GroupId, message: 'Training scheduled: ' + hhhhh + ' Shift scheduled: ' + Ihopeu + announcement + '   ALL TIMES ARE GMT!'})
+        .catch(console.error);}
     }, 1800000); 
 })
 
@@ -249,19 +255,6 @@ bot.on('messageDelete', async (message) => {
 
   bot.on('message', message => {
     if (message.content === '<@681244101152210953>' || message.content === '<@!681244101152210953>'){
-      message.author.sendMessage("Please select form the following:\n1 for Barcelo\n2 for Trainsport").then(or12 => {
-        or12.react('1️⃣').then(() => sentMessage.react('2️⃣'));
-
-        const filter = (reaction, user) => {
-        return ['1️⃣', '2️⃣'].includes(reaction.emoji.name) && user.id === message.author.id;
-        };
-  
-        or12.awaitReactions(filter, { max: 1, time: 60000000, errors: ['time'] })
-        .then(collected => {
-        const reaction = collected.first();
-  
-        if (reaction.emoji.name === '1️⃣') {
-
       message.author.sendMessage('Hello there, Im the official bot for Barcelo and Im here to help. Please choose from one of the following: \n 1 For question or comaplaint! \n 2 for role classes!\n 3 to apply for a Discord role \n (Please react to this dm)').then(sentMessage => {
         sentMessage.react('1️⃣').then(() => sentMessage.react('2️⃣').then(() => sentMessage.react('3️⃣')));
 
@@ -1210,10 +1203,8 @@ bot.on('messageDelete', async (message) => {
       })
       .catch(collected => {
         console.log("HE TOOK TO LONG NOT MY PROBLEMO")
-      });})} else {
-        message.author.sendMessage('Hello,\nYou shouldn\'t be here. How did you get here?')
-      }
-    })})
+      });
+    })
     }});
 
       bot.on('message', message => {
@@ -1950,7 +1941,13 @@ bot.on('message', message => {
                               }
                             }
                           }
-                        }
+                        } break;
+                      case 'announce':
+                        const ur = message.content.split(10)
+                        message.channel.send('Set it to Important anouncement: ' + ur)
+                        announcement = 'Important anouncement: ' + ur
+                        break;
+
                         
 
 
