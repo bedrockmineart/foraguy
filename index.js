@@ -112,12 +112,16 @@ bot.on('ready', () => {
           var Ihopeu = data.split('\n').length
           Ihopeu = Math.round(Ihopeu - 1)
         })})} else {
-          var Ihopeu = '0'
-          var hhhhh = '0'
+          if (Idk333) {
+            var hhhhh = '0'
+          } else {
+            var Ihopeu = '0'
+          }
+          
         }
   
 
-        roblox.shout({group: GroupId, message: 'Training scheduled: ' + hhhhh + ' Shift scheduled: ' + Ihopeu + announcement + '   ALL TIMES ARE GMT!'})
+        roblox.shout({group: GroupId, message: 'Training scheduled: ' + hhhhh + ' Shift scheduled: ' + ' ' +  Ihopeu + announcement + '   ALL TIMES ARE GMT!'})
         .catch(console.error);}
     }, 1800000); 
 })
@@ -1943,7 +1947,7 @@ bot.on('message', message => {
                           }
                         } break;
                       case 'announce':
-                        const ur = message.content.split(10)
+                        const ur = message.content.slice(10)
                         message.channel.send('Set it to Important anouncement: ' + ur)
                         announcement = 'Important anouncement: ' + ur
                         break;
