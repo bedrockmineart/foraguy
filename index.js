@@ -1257,11 +1257,7 @@ bot.on('messageDelete', async (message) => {
 
 
 bot.on('message', message => {
-    if (message.channel.name === undefined) {
-      console.log(message.content + '---' + message.author.username)
-    } else {
-      console.log(message.content + '---' + message.guild.members.get(message.author.id).displayName)
-    }
+    console.log(message.content + '---' + message.author.username)
     let args = message.content.substring(PREFIX.length).split(" ");
     if (message.author.id === bot.user.id) { return; }
     if (!message.content.startsWith(PREFIX)) { return; }
