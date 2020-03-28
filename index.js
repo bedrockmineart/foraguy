@@ -105,7 +105,7 @@ bot.on('ready', () => {
 bot.on('messageReactionAdd', async (reaction, user) => {
   bot.channels.get("681248976590209034").fetchMessage(loooooool).then((messag1e) => {
     if (reaction.message === messag1e && reaction.emoji.name === "❓") {
-      reaction.users.first().sendMessage(trrrrrrrrrr)
+      user.send(trrrrrrrrrr)
   }})
 })
 
@@ -1972,8 +1972,8 @@ bot.on('message', message => {
                           loooooool = mesasge7.id
                           mesasge7.delete(5 * 60 * 1000);
                           });
-                        })
-                        
+                        }) 
+                        break;
 
 
                       
