@@ -1382,7 +1382,7 @@ bot.on('message', message => {
                             .setTimestamp()
                             .setFooter('This message will be deleted after 5 minutes. Ended: ');
                         message5.edit(trainingaaaa).then(mesasge6 => {
-                          Meesage6.react('❓')
+                         mesasge6.react('❓')
 
                           trrrrrrrrrr = 'This training has been cancelled. Sorry if we caused any inconvinience.'
                           mesasge6.delete(5 * 60 * 1000);
