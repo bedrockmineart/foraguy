@@ -1371,7 +1371,7 @@ bot.on('message', message => {
                                 if (reaction1.emoji.name === '❎') {
                                   message.author.sendMessage("Please tell me why...").then(Meesage6 => {
             
-                                    Meesage.channel.awaitMessages(response3 => (response3.author === message.author), {
+                                    Meesage6.channel.awaitMessages(response3 => (response3.author === message.author), {
                                      max: 1,
                                      time: 60000000,
                                      errors: ['time']
