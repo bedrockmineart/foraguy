@@ -1339,62 +1339,72 @@ bot.on('message', message => {
                       bot.channels.get("661290395216379914").send('More info in <#681248976590209034>');
                       bot.channels.get("681248976590209034").send(trainingaa).then((message5) => {
                       roblox.shout({group: GroupId, message: 'Barcelo trainings are right now! Hop along whith others to get trained! Host: ' + user60})
-                      message.author.send('Tell me when you have finished(React to this message with ✅.)\nIf training is cancelled press the ❎').then(sentMessage => {
-                        loooooool = message5.id
-                        sentMessage.react('✅').then(() => sentMessage.react('❎'));
-                
-                      const filter = (reaction, user) => {
-                      return ['✅', '❎'].includes(reaction.emoji.name) && user.id === message.author.id;
-                      };
-                
-                      sentMessage.awaitReactions(filter, { max: 1, time: 60000000, errors: ['time'] })
-                      .then(collected => {
-                      const reaction1 = collected.first();
-                
-                      if (reaction1.emoji.name === '✅') {
-                        bot.channels.get("661290395216379914").send('Training finished, hosted by ' + user60)
-                        sentMessage.edit('Chose: ✅');
-                        roblox.shout({group: GroupId, message: 'Everyone who passed the training has been ranked! Congratulations'})
-                        const trainingaaa = new Discord.RichEmbed()
-                        .setColor('#ff0000')
-                        .setTitle('Trainings!')
-                          .setAuthor(botname, logo)
-                          .setDescription(`Training has finished! everyone who passed has been ranked!\nHosted by ${user60}`)
-                          .setThumbnail(logo)
-                          .setTimestamp()
-                          .setFooter('This message will be deleted after 5 minutes. Ended: ');
-                        message5.edit(trainingaaa).then(mesasge7 => {
-                          mesasge7.react('❓');
-                          trrrrrrrrrr = 'This training has finished. Sorry if you couldn\'t make it. But if you did and you passed I congratulate you!'
-                          mesasge7.delete(5 * 60 * 1000);
-                          });
-                      } else {
-                          if (reaction1.emoji.name === '❎') {
-                            bot.channels.get("661290395216379914").send('*Tryout cancelled due to no-one showing*\nhosted by ' + user60)
-                            sentMessage.edit('Chose: ❎');
-                            roblox.shout({group: GroupId, message: 'Training has been cancelled.'})
-                            const trainingaaaa = new Discord.RichEmbed()
-                            .setColor('#ff0000')
-                            .setTitle('Trainings!')
-                            .setAuthor(botname, logo) 
-                            .setDescription(`Due to unforseen circumstances the training has been cancelled. :(\nHosted by ${user60}`)
-                            .setThumbnail(logo)
-                            .setTimestamp()
-                            .setFooter('This message will be deleted after 5 minutes. Ended: ');
-                        message5.edit(trainingaaaa).then(mesasge6 => {
-                         mesasge6.react('❓')
-
-                          trrrrrrrrrr = 'This training has been cancelled. Sorry if we caused any inconvinience.'
-                          mesasge6.delete(5 * 60 * 1000);
-                          });
-                          } else {
-                          message.channel.sendMessage('Did not react with the right')
-                        }}
+                      message.author.sendMessage("Hello! And welcome to the training procedure! Please tell me once you have finished by pressing ✅ and if it gets cancelled, please press ❎!").then(sentMessage => {
+                              sentMessage.react('✅').then(() => sentMessage.react('❎'));
                       
-                      })
-                      .catch(collected => {
-                        message.author.sendMessage('You took to long to react.');
-                      });})
+                            const filter = (reaction, user) => {
+                            return ['✅', '❎'].includes(reaction.emoji.name) && user.id === message.author.id;
+                            };
+                      
+                            sentMessage.awaitReactions(filter, { max: 1, time: 60000000, errors: ['time'] })
+                            .then(collected => {
+                            const reaction1 = collected.first();
+                      
+                            if (reaction1.emoji.name === '✅') {
+                              bot.channels.get("661290395216379914").send('Training finished, hosted by ' + user60)
+                              sentMessage.edit('Chose: ✅');
+                              roblox.shout({group: GroupId, message: 'Everyone who passed the training has been ranked! Congratulations'})
+                              const trainingaaa = new Discord.RichEmbed()
+                              .setColor('#ff0000')
+                              .setTitle('Trainings!')
+                                .setAuthor(botname, logo)
+                                .setDescription(`Training has finished! everyone who passed has been ranked!\nHosted by ${user60}`)
+                                .setThumbnail(logo)
+                                .setTimestamp()
+                                .setFooter('This message will be deleted after 5 minutes. Ended: ');
+                              message5.edit(trainingaaa).then(mesasge7 => {
+                                mesasge7.react('❓');
+                                trrrrrrrrrr = 'This training has finished. Sorry if you couldn\'t make it. But if you did and you passed I congratulate you! Host: ' + user60
+                                mesasge7.delete(5 * 60 * 1000);
+                                });
+                            } else {
+                                if (reaction1.emoji.name === '❎') {
+                                  message.author.sendMessage("Please tell me why...").then(Meesage6 => {
+            
+                                    Meesage.channel.awaitMessages(response3 => (response3.author === message.author), {
+                                     max: 1,
+                                     time: 60000000,
+                                     errors: ['time']
+                                 }).then(collected => {
+                                        const senter3 = collected.first();
+                                     if (senter3) {
+
+
+                                    bot.channels.get("661290395216379914").send('*Tryout cancelled due to ' + senter3 +'*\nhosted by ' + user60)
+                                    sentMessage.edit('Chose: ❎');
+                                    roblox.shout({group: GroupId, message: 'Training has been cancelled.'})
+                                    const trainingaaaa = new Discord.RichEmbed()
+                                    .setColor('#ff0000')
+                                    .setTitle('Trainings!')
+                                    .setAuthor(botname, logo) 
+                                    .setDescription(`Due to unforseen circumstances the training has been cancelled. :(\nHosted by ${user60}`)
+                                    .setThumbnail(logo)
+                                    .setTimestamp()
+                                    .setFooter('This message will be deleted after 5 minutes. Ended: ');
+                                message5.edit(trainingaaaa).then(mesasge6 => {
+                                mesasge6.react('❓')
+
+                                  trrrrrrrrrr = 'This training has been cancelled. Sorry if we caused any inconvinience. Reason: ' + senter3 + '\nHost: ' + user60
+                                  mesasge6.delete(5 * 60 * 1000);
+                                  });
+                                }})})} else {
+                                message.channel.sendMessage('Did not react with the right')
+                              }}
+                            
+                            })
+                            .catch(collected => {
+                              message.author.sendMessage('You took to long to react.');
+                            });})
                       })}
                        else {
                         message.channel.sendMessage('You do not have the permission to do this command')   
