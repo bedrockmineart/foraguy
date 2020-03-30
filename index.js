@@ -1363,7 +1363,7 @@ bot.on('message', message => {
                                 .setTimestamp()
                                 .setFooter('This message will be deleted after 5 minutes. Ended: ');
                               message5.edit(trainingaaa).then(mesasge7 => {
-                                loooooool = message5
+                                loooooool = message5.id
                                 mesasge7.react('❓');
                                 trrrrrrrrrr = 'This training has finished. Sorry if you couldn\'t make it. But if you did and you passed I congratulate you! Host: ' + user60
                                 mesasge7.delete(5 * 60 * 1000);
@@ -1393,7 +1393,7 @@ bot.on('message', message => {
                                     .setTimestamp()
                                     .setFooter('This message will be deleted after 5 minutes. Ended: ');
                                 message5.edit(trainingaaaa).then(mesasge6 => {
-                                  loooooool = message5
+                                  loooooool = message5.id
                                 mesasge6.react('❓')
 
                                   trrrrrrrrrr = 'This training has been cancelled. Sorry if we caused any inconvinience. Reason: ' + senter3 + '\nHost: ' + user60
