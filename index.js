@@ -1321,7 +1321,7 @@ bot.on('message', message => {
                         .setColor('#ff0000')
                         .setTitle('Trainings!')
                           .setAuthor(botname, logo)
-                          .setDescription(`Hello everyone!\n\nBarcelo Trainings!! \n Are you still awaiting Training? Then come along to this training.\n Slocked?\nSlock in 10-15 minutes\n\n**LINK:**\n\nhttps://www.roblox.com/games/897546096/Barcelo-Training-Center-V1`)
+                          .setDescription(`Hello everyone!\n\nBarcelo Trainings!! \n Are you still awaiting Training? Then come along to this training.\n Slocked?\nSlock in 10-15 minutes\n\n**LINK:**\nhttps://www.roblox.com/games/897546096/Barcelo-Training-Center-V1`)
                           .setThumbnail(logo)
                           .setImage('https://cdn.discordapp.com/attachments/661290411540742154/687752603219525748/unknown.png')
                           .setTimestamp()
@@ -1358,11 +1358,12 @@ bot.on('message', message => {
                               .setColor('#ff0000')
                               .setTitle('Trainings!')
                                 .setAuthor(botname, logo)
-                                .setDescription(`Training has finished! everyone who passed has been ranked!\nHosted by ${user60}`)
+                                .setDescription(`Training has finished! Everyone who passed has been ranked!\nHosted by ${user60}`)
                                 .setThumbnail(logo)
                                 .setTimestamp()
                                 .setFooter('This message will be deleted after 5 minutes. Ended: ');
                               message5.edit(trainingaaa).then(mesasge7 => {
+                                loooooool = message5
                                 mesasge7.react('❓');
                                 trrrrrrrrrr = 'This training has finished. Sorry if you couldn\'t make it. But if you did and you passed I congratulate you! Host: ' + user60
                                 mesasge7.delete(5 * 60 * 1000);
@@ -1392,6 +1393,7 @@ bot.on('message', message => {
                                     .setTimestamp()
                                     .setFooter('This message will be deleted after 5 minutes. Ended: ');
                                 message5.edit(trainingaaaa).then(mesasge6 => {
+                                  loooooool = message5
                                 mesasge6.react('❓')
 
                                   trrrrrrrrrr = 'This training has been cancelled. Sorry if we caused any inconvinience. Reason: ' + senter3 + '\nHost: ' + user60
