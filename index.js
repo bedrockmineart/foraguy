@@ -1282,7 +1282,7 @@ bot.on('message', message => {
              case 'delete':
               if(message.channel.name == 'chat-logs')  { return }
               if(message.channel.name == undefined)  { return }
-              if(message.member.roles.has(admin) || message.member.roles.has("687688446927700011")) {
+              if(message.member.roles.has(admin) || message.member.roles.has("687688446927700011") || message.member.hasPermission("ADMINISTRATOR")) {
               message.delete();
               if (!args[1]) return message.reply('Error please define number')
               message.channel.bulkDelete(args[1])
@@ -1292,7 +1292,7 @@ bot.on('message', message => {
               case 'talk':
                 if(message.channel.name == 'chat-logs')  { return }
                 if(message.channel.name == undefined)  { return }
-                if(message.member.roles.has(admin) || message.member.roles.has("687688446927700011")) {
+                if(message.member.roles.has(admin) || message.member.roles.has("687688446927700011") || message.member.hasPermission("ADMINISTRATOR")) {
                   if (!args[1]) { return }
                    else {
                     message.delete();
@@ -1419,7 +1419,7 @@ bot.on('message', message => {
                     case 'important':
                       if(message.channel.name == 'chat-logs')  { return }
                       if(message.channel.name == undefined)  { return }
-                      if(message.member.roles.has(admin)) {
+                      if(message.member.roles.has(admin) || message.member.hasPermission("ADMINISTRATOR")) {
                         if (!args[1]) { return }
                          else {
                           message.delete();
@@ -1447,7 +1447,7 @@ bot.on('message', message => {
                       case 'reply':
                         if(message.channel.name == 'chat-logs')  { return }
                         if(message.channel.name == undefined)  { return }
-                        if(message.member.roles.has(admin)) {
+                        if(message.member.roles.has(admin) || message.member.hasPermission("ADMINISTRATOR")) {
                         var mention = message.mentions.users.first();
                         const lol1 = args[1].length;
                         if (mention == null) { return; }
@@ -1515,7 +1515,7 @@ bot.on('message', message => {
                       case 'pass':
                         if(message.channel.name == 'chat-logs')  { return }
                         if(message.channel.name == undefined)  { return }
-                        if(message.member.roles.has(admin)) {
+                        if(message.member.roles.has(admin) || message.member.hasPermission("ADMINISTRATOR")) {
                           message.delete();
                           var metion = message.mentions.users.first();
                           if (metion == null) { return; }
@@ -1615,7 +1615,7 @@ bot.on('message', message => {
                       case 'shout': 
                       if(message.channel.name == 'chat-logs')  { return }
                       if(message.channel.name == undefined)  { return }
-                      if(message.member.roles.has("676206157815218177")) {
+                      if(message.member.roles.has("676206157815218177") || message.member.hasPermission("ADMINISTRATOR")) {
                             const msg = message;
                               ShoutMessage = message.content.slice(7)
                               if (ShoutMessage) {
