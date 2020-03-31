@@ -113,19 +113,34 @@ bot.on('ready', () => {
     var interval = setInterval (function () {
       if (ssssshouts === true) {
       var idk697 = fs.readFileSync(`${process.cwd()}/Trainings.txt`, 'utf8');
+      var idk333 = fs.readFileSync(`${process.cwd()}/shifts.txt`, 'utf8');
       if (idk697 && idk333) {
         fs.readFile('./Trainings.txt', 'utf8', (err, data) => {
         var hhhhh = data.split('\n').length
         hhhhh = Math.round(hhhhh - 1)
-        fs.readFile('./Trainings.txt', 'utf8', (err, data) => {
+        fs.readFile('./shifts.txt', 'utf8', (err, data) => {
           var Ihopeu = data.split('\n').length
           Ihopeu = Math.round(Ihopeu - 1)
         })})} else {
-          if (Idk333) {
+          if (!Idk333 && !idk697) {
+            var Ihopeu = '0'
             var hhhhh = '0'
           } else {
-            var Ihopeu = '0'
-          }
+            if (!Idk333) {
+              var Ihopeu = '0'
+              var idk697 = fs.readFileSync(`${process.cwd()}/Trainings.txt`, 'utf8');
+                fs.readFile('./Trainings.txt', 'utf8', (err, data) => {
+                var hhhhh = data.split('\n').length
+                hhhhh = Math.round(hhhhh - 1)
+                })
+            } else {
+              var hhhhh = '0'
+              var idk333 = fs.readFileSync(`${process.cwd()}/shifts.txt`, 'utf8');
+                fs.readFile('./shifts.txt', 'utf8', (err, data) => {
+                  var Ihopeu = data.split('\n').length
+                  Ihopeu = Math.round(Ihopeu - 1)
+                })
+            }}
           
         }
   
