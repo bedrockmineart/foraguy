@@ -3,6 +3,7 @@ let roblox = require('noblox.js');
 const bot = new Discord.Client();
 const fs = require("fs");
 bot.msgs = require ("./msgs.json")
+const { Sequelize } = require('sequelize');
 
 
 
@@ -113,7 +114,7 @@ bot.on('ready', () => {
     var interval = setInterval (function () {
       if (ssssshouts === true) {
       var idk697 = fs.readFileSync(`${process.cwd()}/Trainings.txt`, 'utf8');
-      var idk333 = fs.readFileSync(`${process.cwd()}/shifts.txt`, 'utf8');
+      var idk333 = fs.readFileSync(`${process.cwd()}/Shifts.txt`, 'utf8');
       if (idk697 && idk333) {
         fs.readFile('./Trainings.txt', 'utf8', (err, data) => {
         var hhhhh = data.split('\n').length
@@ -128,15 +129,13 @@ bot.on('ready', () => {
           } else {
             if (!Idk333) {
               var Ihopeu = '0'
-              var idk697 = fs.readFileSync(`${process.cwd()}/Trainings.txt`, 'utf8');
                 fs.readFile('./Trainings.txt', 'utf8', (err, data) => {
                 var hhhhh = data.split('\n').length
                 hhhhh = Math.round(hhhhh - 1)
                 })
             } else {
               var hhhhh = '0'
-              var idk333 = fs.readFileSync(`${process.cwd()}/shifts.txt`, 'utf8');
-                fs.readFile('./shifts.txt', 'utf8', (err, data) => {
+                fs.readFile('./Shifts.txt', 'utf8', (err, data) => {
                   var Ihopeu = data.split('\n').length
                   Ihopeu = Math.round(Ihopeu - 1)
                 })
@@ -1640,21 +1639,24 @@ bot.on('message', message => {
                       case 'promote':
                         if(message.channel.name == 'chat-logs')  { return }
                         if(message.channel.name == undefined)  { return }
-                      if(message.member.roles.has("676206157815218177")) {
-                        var username2 = args[1]
-                        if (username2){
-                          message.channel.send(`Checking ROBLOX for ${username2}`)
-                          roblox.getIdFromUsername(username2)
+                        if(message.member.roles.has("676206157815218177") || message.member.hasPermission("ADMINISTRATOR")) {
+                        var mention = message.mentions.users.first();
+                        if (mention == null) { message.author.sendMessage("Please mention the user. If the user is not in disord, please tell them to join.") }
+                        let str = message.channel.guild.members.get(mention.id).displayName;
+                        let username2 = str.split(" ");
+                        if (username2[0]){
+                          message.channel.send(`Checking ROBLOX for ${username2[0]}`)
+                          roblox.getIdFromUsername(username2[0])
                         .then(function(id){
                           roblox.getRankInGroup(GroupId, id)
                           .then(function(rank){
                             if(maximumRank <= rank){
                               message.channel.send(`${id} is rank ${rank} and not promotable.`)
                             } else {
-                              message.channel.send(`${username2} is able to be promoted.`)
+                              message.channel.send(`${username2[0]} is able to be promoted.`)
                               roblox.promote(GroupId, id)
                               .then(function(roles){
-                                message.channel.send(`Succesfully promoted ${username2} to 1 rank above their Previous rank`)
+                                message.channel.send(`Succesfully promoted ${username2[0]} to 1 rank above their Previous rank`)
                               })
                             }
                           })
