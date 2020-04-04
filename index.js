@@ -2088,8 +2088,8 @@ bot.on('message', message => {
                                       setdatadata("G" + spicedsp[1], spicedsp[2])
                                       setTimeout(function(){
                                         const dddd = new Discord.RichEmbed().setTitle("Verification").setAuthor(value).setDescription(`You have been verified!`).setFooter("If at any point you are stuck please use the bot and ask the question 'Verification'")
-                                        message.guild.members.get(USER_ID).addRole('695668006923141150');
-                                        message.guild.members.get(USER_ID).removeRole('695668121842745454');
+                                        message.guild.members.get(USER_ID).addRole('695668006923141150').catch(console.error);
+                                        message.guild.members.get(USER_ID).removeRole('695668121842745454').catch(console.error);
                                         hmmmm.edit(dddd)
                                       }, 3000);
                                     })
@@ -2109,9 +2109,89 @@ bot.on('message', message => {
                             setdatadata("B3", value1 + 1)
                             setdatadata("F" + value1, value)
                             setdatadata("G" + value1, args[2])
+                            message.guild.members.get(userrr.id).addRole('695668006923141150').catch(console.error);
                           })
                         })}
+                        break;
+                      case 'ban':
+                        if (!message.guild.member(message.author).hasPermission('BAN_MEMBERS')) { return message.channel.send('You do not have the permission for banning users"  !'); }
+                        if (message.mentions.users.size === 0) { return message.channel.send('You need to ping a user !'); }
+                        let banMember = message.guild.member(message.mentions.users.first());
+                        if (!banMember) { return message.channel.send('User not found!'); }
 
+                                banMember.ban().catch(console.error).then((member) => {
+                                    message.channel.send(member.displayName + " has left the server")
+                                    message.channel.send(member.displayName + " has been successfully banned by " + message.author);
+                                    let warnchannel = bot.channels.get("690496511829737494")
+                                    const muteembed = new Discord.RichEmbed()
+                                    .setTitle("Someone has been Banned")
+                                    .addField("Who?", member.displayName)
+                                    .addField("Where?", message.channel.name)
+                                    .addField("By who?", message.author.username)
+                                    warnchannel.sendMessage(muteembed)
+                                })
+                      break;
+                      case 'kick':
+                        if (!message.guild.member(message.author).hasPermission('KICK_MEMBERS')) { return message.channel.send('You do not have the permission for kicking users"  !'); }
+                        if (message.mentions.users.size === 0) { return message.channel.send('You need to ping a user !'); }
+                        let banMember = message.guild.member(message.mentions.users.first());
+                        if (!banMember) { return message.channel.send('User not found!'); }
+                        if (banMember.kickable == false) {return message.channel.send("Not kickable.")}
+
+                                banMember.kick().catch(console.error).then((member) => {
+                                    message.channel.send(member.displayName + " has left the server")
+                                    message.channel.send(member.displayName + " has been successfully kicked by " + message.author);
+                                    let warnchannel = bot.channels.get("690496511829737494")
+                                    const muteembed = new Discord.RichEmbed()
+                                    .setTitle("Someone has been kicked")
+                                    .addField("Who?", member.displayName)
+                                    .addField("Where?", message.channel.name)
+                                    .addField("By who?", message.author.username)
+                                    warnchannel.sendMessage(muteembed)
+                                })
+                      break;
+                      case 'warn':
+                        if (!message.guild.member(message.author).hasPermission('KICK_MEMBERS')) { return message.channel.send('You do not have the permission for warning users"  !'); }
+                        if (message.mentions.users.size === 0) { return message.channel.send('You need to ping a user !'); }
+                        let banMember = message.guild.member(message.mentions.users.first());
+                        if (!banMember) { return message.channel.send('User not found!'); }
+                        if (banMember.roles.has("696036215098441820")) {
+                          banMember.addRole("696036215614603306").catch(console.error);
+                          let warnchannel = bot.channels.get("690496511829737494")
+                                    const muteembed = new Discord.RichEmbed()
+                                    .setTitle("Someone has been warned")
+                                    .addField("Who?", member.displayName)
+                                    .addField("Where?", message.channel.name)
+                                    .addField("By who?", message.author.username)
+                                    .addField("Warning number?", "2nd")
+                                    warnchannel.sendMessage(muteembed)
+                                    banMember.send("You have been warned for your second time! Don't let this happen again because next time it is a kick. 2/3 warnings")
+                        } else {
+                          if(banMember.roles.has("696036215614603306")) {
+                            let warnchannel = bot.channels.get("690496511829737494")
+                                    const muteembed = new Discord.RichEmbed()
+                                    .setTitle("Someone has been warned")
+                                    .addField("Who?", member.displayName)
+                                    .addField("Where?", message.channel.name)
+                                    .addField("By who?", message.author.username)
+                                    .addField("Warning number?", "3rd and being kicked")
+                                    warnchannel.sendMessage(muteembed)
+                                    banMember.send("You have been warned for your first time! You are being kicked. 3/3 warnings")
+                                    banMember.kick().catch(console.error);
+                          } else {
+                            banMember.addRole("696036215098441820").catch(console.error);
+                            let warnchannel = bot.channels.get("690496511829737494")
+                                    const muteembed = new Discord.RichEmbed()
+                                    .setTitle("Someone has been warned")
+                                    .addField("Who?", member.displayName)
+                                    .addField("Where?", message.channel.name)
+                                    .addField("By who?", message.author.username)
+                                    .addField("Warning number?", "1st")
+                                    warnchannel.sendMessage(muteembed)
+                                    banMember.send("You have been warned for your first time! Don't let this happen again. 1/3 warnings")
+                            
+                          }
+                        }
                       
 
                         
