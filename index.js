@@ -2099,6 +2099,7 @@ bot.on('message', message => {
                         } 
                         } break;
                       case 'overideverify':
+                        if (message.member.roles.has("695998308128129286")) {
                         const userrr = message.mentions.users.first();
                         roblox.getUsernameFromId(args[2]).then(value => {
                           retrievedata("B3").then(value1 => {
@@ -2109,7 +2110,7 @@ bot.on('message', message => {
                             setdatadata("F" + value1, value)
                             setdatadata("G" + value1, args[2])
                           })
-                        })
+                        })}
 
                       
 
