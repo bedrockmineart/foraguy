@@ -179,7 +179,6 @@ bot.on('ready', () => {
 bot.on('ready', () => {
   bot.channels.get("682276634698579982").fetchMessage("682276665115541638").then((message) => {
     var interval = setInterval (function () {
-      var idk695 = fs.readFileSync(`${process.cwd()}/Applications.txt`, 'utf8');
       if (decider === 1 || decider === 2 || decider === 3) {
         if (decider === 1) {
           idk695 = 'Both Moderation and Admin applications are open!'
