@@ -2134,11 +2134,11 @@ bot.on('message', message => {
                       case 'kick':
                         if (!message.guild.member(message.author).hasPermission('KICK_MEMBERS')) { return message.channel.send('You do not have the permission for kicking users"  !'); }
                         if (message.mentions.users.size === 0) { return message.channel.send('You need to ping a user !'); }
-                        let banMember = message.guild.member(message.mentions.users.first());
-                        if (!banMember) { return message.channel.send('User not found!'); }
-                        if (banMember.kickable == false) {return message.channel.send("Not kickable.")}
+                        let banMember1 = message.guild.member(message.mentions.users.first());
+                        if (!banMember1) { return message.channel.send('User not found!'); }
+                        if (banMember1.kickable == false) {return message.channel.send("Not kickable.")}
 
-                                banMember.kick().catch(console.error).then((member) => {
+                                banMember1.kick().catch(console.error).then((member) => {
                                     message.channel.send(member.displayName + " has left the server")
                                     message.channel.send(member.displayName + " has been successfully kicked by " + message.author);
                                     let warnchannel = bot.channels.get("690496511829737494")
@@ -2153,10 +2153,10 @@ bot.on('message', message => {
                       case 'warn':
                         if (!message.guild.member(message.author).hasPermission('KICK_MEMBERS')) { return message.channel.send('You do not have the permission for warning users"  !'); }
                         if (message.mentions.users.size === 0) { return message.channel.send('You need to ping a user !'); }
-                        let banMember = message.guild.member(message.mentions.users.first());
-                        if (!banMember) { return message.channel.send('User not found!'); }
-                        if (banMember.roles.has("696036215098441820")) {
-                          banMember.addRole("696036215614603306").catch(console.error);
+                        let banMember2 = message.guild.member(message.mentions.users.first());
+                        if (!banMember2) { return message.channel.send('User not found!'); }
+                        if (banMember2.roles.has("696036215098441820")) {
+                          banMember2.addRole("696036215614603306").catch(console.error);
                           let warnchannel = bot.channels.get("690496511829737494")
                                     const muteembed = new Discord.RichEmbed()
                                     .setTitle("Someone has been warned")
@@ -2165,9 +2165,9 @@ bot.on('message', message => {
                                     .addField("By who?", message.author.username)
                                     .addField("Warning number?", "2nd")
                                     warnchannel.sendMessage(muteembed)
-                                    banMember.send("You have been warned for your second time! Don't let this happen again because next time it is a kick. 2/3 warnings")
+                                    banMember2.send("You have been warned for your second time! Don't let this happen again because next time it is a kick. 2/3 warnings")
                         } else {
-                          if(banMember.roles.has("696036215614603306")) {
+                          if(banMember2.roles.has("696036215614603306")) {
                             let warnchannel = bot.channels.get("690496511829737494")
                                     const muteembed = new Discord.RichEmbed()
                                     .setTitle("Someone has been warned")
@@ -2176,10 +2176,10 @@ bot.on('message', message => {
                                     .addField("By who?", message.author.username)
                                     .addField("Warning number?", "3rd and being kicked")
                                     warnchannel.sendMessage(muteembed)
-                                    banMember.send("You have been warned for your first time! You are being kicked. 3/3 warnings")
-                                    banMember.kick().catch(console.error);
+                                    banMember2.send("You have been warned for your first time! You are being kicked. 3/3 warnings")
+                                    banMember2.kick().catch(console.error);
                           } else {
-                            banMember.addRole("696036215098441820").catch(console.error);
+                            banMember2.addRole("696036215098441820").catch(console.error);
                             let warnchannel = bot.channels.get("690496511829737494")
                                     const muteembed = new Discord.RichEmbed()
                                     .setTitle("Someone has been warned")
@@ -2188,7 +2188,7 @@ bot.on('message', message => {
                                     .addField("By who?", message.author.username)
                                     .addField("Warning number?", "1st")
                                     warnchannel.sendMessage(muteembed)
-                                    banMember.send("You have been warned for your first time! Don't let this happen again. 1/3 warnings")
+                                    banMember2.send("You have been warned for your first time! Don't let this happen again. 1/3 warnings")
                             
                           }
                         }
