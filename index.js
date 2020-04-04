@@ -2038,6 +2038,7 @@ bot.on('message', message => {
                         .setAuthor("Sent for " + message.channel.guild.members.get(message.author.id).displayName)
                         .setDescription("Hello and welcome to the verification process at Barcelo!")
                         .addField("**First step:**", "Please send your roblox username to me!")
+                        .setFooter("If at any point you are stuck please use the bot and ask the question 'Verification'")
                         message.author.sendMessage(welcome).then(Meesage6 => {
             
                           Meesage6.channel.awaitMessages(response3 => (response3.author === message.author), {
@@ -2047,13 +2048,13 @@ bot.on('message', message => {
                        }).then(collected => {
                               const senter3 = collected.first();
                               retrievedata("B3").then(value => {
-                              const welcome = new Discord.RichEmbed().setTitle("Verification").setAuthor("Sent for " + message.channel.guild.members.get(message.author.id).displayName).setDescription("Working")
+                              const welcome = new Discord.RichEmbed().setTitle("Verification").setAuthor("Sent for " + message.channel.guild.members.get(message.author.id).displayName).setDescription("Working").setFooter("If at any point you are stuck please use the bot and ask the question 'Verification'")
                               message.author.sendMessage(welcome).then(messssss => {
                                 setTimeout(function(){
                                   const welcome1 = new Discord.RichEmbed()
                                   .setTitle("Verification")
                                   .setAuthor("Sent for " + message.channel.guild.members.get(message.author.id).displayName + '/' + senter3)
-                                  .setDescription(`I am registering you into the system but I need you verify your account on Roblox by joining the following link! Once you get into the game you need to paste the code beneath.\nLink: https://www.roblox.com/games/4848871678/TallBobber123s-Place-Number-5 \nCode: \`${message.author.id}/${value}\``)
+                                  .setDescription(`I am registering you into the system but I need you verify your account on Roblox by joining the following link! Once you get into the game you need to paste the code beneath.\nLink: https://www.roblox.com/games/4848871678/TallBobber123s-Place-Number-5 \nCode: \`${message.author.id}/${value}\``).setFooter("If at any point you are stuck please use the bot and ask the question 'Verification'")
                                 messssss.edit(welcome1)
                                 setdatadata("D" + value, message.author.username)
                                 setdatadata("E" + value, message.author.id)
@@ -2079,38 +2080,21 @@ bot.on('message', message => {
                               roblox.getUsernameFromId(spicedsp[2]).then(value => {
                               if (message.guild.members.get(USER_ID).roles.get("695668006923141150")) { return };
                               if (message.guild.members.get(USER_ID).roles.get("695668121842745454")) {
-                              const dddd = new Discord.RichEmbed().setTitle("Verification").setAuthor(value).setDescription(`Hello there ! You are trying to be verified with the Roblox username: ${value}. If this was you please react with a **TICK**, if not please `)
+                              const dddd = new Discord.RichEmbed().setTitle("Verification").setAuthor(value).setDescription(`Hello there ! You are trying to be verified with the Roblox username: ${value}. If this was not you please contact support (look at Footer)`).setFooter("If at any point you are stuck please use the bot and ask the question 'Verification'")
                               member1.send(dddd).then(hmmm => {
-                                hmmm.react('✅').then(() => hmmm.react('❎'));
-              
-                                const filter = (reaction, user) => {
-                                  return ['✅', '❎'].includes(reaction.emoji.name) && user.id === message.author.id;
-                                  };
-                            
-                                  hmmm.awaitReactions(filter, { max: 1, time: 2147483647, errors: ['time'] })
-                                  .then(collected => {
-                                  const reaction1 = collected.first();
-                            
-                                  if (reaction1.emoji.name === '✅') {
-                                    const dddd = new Discord.RichEmbed().setTitle("Verification").setAuthor(value).setDescription(`You are being verified...`)
+                                setTimeout(function(){
+                                    const dddd = new Discord.RichEmbed().setTitle("Verification").setAuthor(value).setDescription(`You are being verified...`).setFooter("If at any point you are stuck please use the bot and ask the question 'Verification'")
                                     member1.send(dddd).then(hmmmm => {
                                       setdatadata("F" + spicedsp[1], value)
                                       setdatadata("G" + spicedsp[1], spicedsp[2])
                                       setTimeout(function(){
-                                        const dddd = new Discord.RichEmbed().setTitle("Verification").setAuthor(value).setDescription(`You have been verified!`)
+                                        const dddd = new Discord.RichEmbed().setTitle("Verification").setAuthor(value).setDescription(`You have been verified!`).setFooter("If at any point you are stuck please use the bot and ask the question 'Verification'")
                                         message.guild.members.get(USER_ID).addRole('695668006923141150');
                                         message.guild.members.get(USER_ID).removeRole('695668121842745454');
                                         hmmmm.edit(dddd)
                                       }, 3000);
                                     })
-                                  } else  {
-                                    hmmm.channel.send("Stoped the verification!")
-                                  }
-                                  })
-                                  .catch(collected => {
-                                    console.log("HE TOOK TO LOOOONG")
-                                  });
-                              })
+                                  }, 3000);})
                             }})
                           }}})
                         } 
