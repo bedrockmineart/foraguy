@@ -2,8 +2,8 @@ const Discord = require('discord.js');
 let roblox = require('noblox.js');
 const bot = new Discord.Client();
 const fs = require("fs");
-bot.msgs = require ("./msgs.json")
-const { Sequelize } = require('sequelize');
+const { GoogleSpreadsheet } = require('google-spreadsheet');
+const { promisify } = require('util');
 
 
 
@@ -26,6 +26,34 @@ var ssssshouts = false
 var announcement = '.'
 var loooooool = "681540364926320644"
 var trrrrrrrrrr = 'Sorry but I\'m not quite sure how you got here...'
+
+async function retrievedata(area) {
+  // spreadsheet key is the long id in the sheets URL
+  const doc = new GoogleSpreadsheet('1NNsdEscPgYOAW2tmuOtHYy4sNPJGmSwojwocQSpzOiE');
+
+  await doc.useServiceAccountAuth(require('./client_secret.json'));
+  
+  await doc.loadInfo(); // loads document properties and worksheets
+  const sheet = doc.sheetsByIndex[0];
+  await sheet.loadCells(area + ':' + area); // loads a range of cells
+  const b2 = sheet.getCellByA1(area);
+  const space = b2.value;
+  return b2.value
+}
+
+async function setdatadata(area, setter) {
+  // spreadsheet key is the long id in the sheets URL
+  const doc = new GoogleSpreadsheet('1NNsdEscPgYOAW2tmuOtHYy4sNPJGmSwojwocQSpzOiE');
+
+  await doc.useServiceAccountAuth(require('./client_secret.json'));
+  
+  await doc.loadInfo(); // loads document properties and worksheets
+  const sheet = doc.sheetsByIndex[0];
+  await sheet.loadCells(area + ':' + area); // loads a range of cells
+  const b2 = sheet.getCellByA1(area);
+  b2.value = setter
+  await sheet.saveUpdatedCells();
+}
 
 
 //admin const/variable
@@ -1360,7 +1388,7 @@ bot.on('message', message => {
                             return ['✅', '❎'].includes(reaction.emoji.name) && user.id === message.author.id;
                             };
                       
-                            sentMessage.awaitReactions(filter, { max: 1, time: 60000000, errors: ['time'] })
+                            sentMessage.awaitReactions(filter, { max: 1, time: 2147483647, errors: ['time'] })
                             .then(collected => {
                             const reaction1 = collected.first();
                       
@@ -1388,7 +1416,7 @@ bot.on('message', message => {
             
                                     Meesage6.channel.awaitMessages(response3 => (response3.author === message.author), {
                                      max: 1,
-                                     time: 60000000,
+                                     time: 2147483647,
                                      errors: ['time']
                                  }).then(collected => {
                                         const senter3 = collected.first();
@@ -1463,11 +1491,10 @@ bot.on('message', message => {
                         if(message.channel.name == undefined)  { return }
                         if(message.member.roles.has(admin) || message.member.hasPermission("ADMINISTRATOR")) {
                         var mention = message.mentions.users.first();
-                        const lol1 = args[1].length;
                         if (mention == null) { return; }
                         const user54 = message.author.username
                         message.delete();
-                        mentionMessage = message.content.slice (7 + lol1);
+                        mentionMessage = message.content.slice (7 + args[1].length);
                         const lolololl1115 = new Discord.RichEmbed()
                                   .setColor('#00ff00')
                                   .setTitle('Reply has been sent from ' + user54)
@@ -1823,6 +1850,7 @@ bot.on('message', message => {
                       )
                       break;
                       case 'fact':
+                        if(message.channel.name == undefined)  { return }
                         if (message.guild.id === "661271791636971520"){
                         var rando2m333 = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
                         if (rando2m333 == 1) {
@@ -1887,12 +1915,12 @@ bot.on('message', message => {
                                   return ['✅', '❎'].includes(reaction.emoji.name) && user.id === message.author.id;
                                   };
                             
-                                  sentMessage.awaitReactions(filter, { max: 1, time: 60000000, errors: ['time'] })
+                                  sentMessage.awaitReactions(filter, { max: 1, time: 2147483647, errors: ['time'] })
                                   .then(collected => {
                                   const reaction1 = collected.first();
                             
                                   if (reaction1.emoji.name === '✅') {
-                                    var gitinittttt = "User reporting: " + message.author + "\nUser id: " + senter3 + "\nReason: " + senter4 + "Proof: Please contact " + message.author + " for proof!"
+                                    var gitinittttt = "User reporting: " + message.author + "\nUser id: " + senter3 + "\nReason: " + senter4 + "\nProof: Please contact " + message.author + " for proof!"
                                     const questionnnnn = new Discord.RichEmbed()
                                       .setColor('#ff0000').setTitle('New report').setAuthor(botname, logo).setDescription(gitinittttt).setTimestamp().setFooter('Average response it 5-10 minutes');
                                     bot.channels.get("681558326781149301").send(questionnnnn)
@@ -2003,7 +2031,92 @@ bot.on('message', message => {
                           });
                         }) 
                         break;
-
+                      case 'verify':
+                        if(message.channel.name == undefined)  { return }
+                        if (message.guild.id === "661271791636971520"){
+                          if (message.member.roles.has("695668121842745454") || message.member.roles.has("695668006923141150")) { return };
+                        const welcome = new Discord.RichEmbed()
+                        .setTitle("Verification")
+                        .setAuthor("Sent for " + message.channel.guild.members.get(message.author.id).displayName)
+                        .setDescription("Hello and welcome to the verification process at Barcelo!")
+                        .addField("**First step:**", "Please send your roblox username to me!")
+                        message.author.sendMessage(welcome).then(Meesage6 => {
+            
+                          Meesage6.channel.awaitMessages(response3 => (response3.author === message.author), {
+                           max: 1,
+                           time: 60000000,
+                           errors: ['time']
+                       }).then(collected => {
+                              const senter3 = collected.first();
+                              retrievedata("B3").then(value => {
+                              const welcome = new Discord.RichEmbed().setTitle("Verification").setAuthor("Sent for " + message.channel.guild.members.get(message.author.id).displayName).setDescription("Working")
+                              message.author.sendMessage(welcome).then(messssss => {
+                                setTimeout(function(){
+                                  const welcome1 = new Discord.RichEmbed()
+                                  .setTitle("Verification")
+                                  .setAuthor("Sent for " + message.channel.guild.members.get(message.author.id).displayName + '/' + senter3)
+                                  .setDescription(`I am registering you into the system but I need you verify your account on Roblox by joining the following link! Once you get into the game you need to paste the code beneath.\nLink: https://www.roblox.com/games/4848871678/TallBobber123s-Place-Number-5 \nCode: \`${message.author.id}/${value}\``)
+                                messssss.edit(welcome1)
+                                setdatadata("D" + value, message.author.username)
+                                setdatadata("E" + value, message.author.id)
+                                setdatadata("B3", value + 1)
+                                let role = message.guild.roles.find(r => r.name === "BarceloGettingVerified");
+                                message.member.addRole(role).catch(console.error);
+                              }, 3000);})
+                              })})})}
+                              break;
+                      case 'verificationdone':
+                        if(message.channel.name == undefined)  { return }
+                        if(message.channel.name == "bots-talking")  {
+                          let spicedsp = message.content.slice(18).split("/");
+                          let guild = bot.guilds.get('661271791636971520');
+                          if (spicedsp[0] && spicedsp[1] && spicedsp[2]) {
+                            USER_ID = spicedsp[0];
+                            retrievedata("E" + spicedsp[1]).then(value1 => {
+                            if (value1 === USER_ID) {
+                            if (guild.member(USER_ID)) {
+                              const user1 = bot.fetchUser(USER_ID)
+                              const member1 = message.guild.members.get(USER_ID)
+                              console.log(spicedsp[2])
+                              roblox.getUsernameFromId(spicedsp[2]).then(value => {
+                              if (message.guild.members.get(USER_ID).roles.get("695668006923141150")) { return };
+                              if (message.guild.members.get(USER_ID).roles.get("695668121842745454")) {
+                              const dddd = new Discord.RichEmbed().setTitle("Verification").setAuthor(value).setDescription(`Hello there ! You are trying to be verified with the Roblox username: ${value}. If this was you please react with a **TICK**, if not please `)
+                              member1.send(dddd).then(hmmm => {
+                                hmmm.react('✅').then(() => hmmm.react('❎'));
+              
+                                const filter = (reaction, user) => {
+                                  return ['✅', '❎'].includes(reaction.emoji.name) && user.id === message.author.id;
+                                  };
+                            
+                                  hmmm.awaitReactions(filter, { max: 1, time: 2147483647, errors: ['time'] })
+                                  .then(collected => {
+                                  const reaction1 = collected.first();
+                            
+                                  if (reaction1.emoji.name === '✅') {
+                                    const dddd = new Discord.RichEmbed().setTitle("Verification").setAuthor(value).setDescription(`You are being verified...`)
+                                    member1.send(dddd).then(hmmmm => {
+                                      setdatadata("F" + spicedsp[1], value)
+                                      setdatadata("G" + spicedsp[1], spicedsp[2])
+                                      setTimeout(function(){
+                                        const dddd = new Discord.RichEmbed().setTitle("Verification").setAuthor(value).setDescription(`You have been verified!`)
+                                        message.guild.members.get(USER_ID).addRole('695668006923141150');
+                                        message.guild.members.get(USER_ID).removeRole('695668121842745454');
+                                        hmmmm.edit(dddd)
+                                      }, 3000);
+                                    })
+                                  } else  {
+                                    hmmm.channel.send("Stoped the verification!")
+                                  }
+                                  })
+                                  .catch(collected => {
+                                    console.log("HE TOOK TO LOOOONG")
+                                  });
+                              })
+                            }})
+                          }}})
+                        } 
+                        }
 
                       
 
