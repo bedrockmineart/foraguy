@@ -2076,7 +2076,6 @@ bot.on('message', message => {
                             if (guild.member(USER_ID)) {
                               const user1 = bot.fetchUser(USER_ID)
                               const member1 = message.guild.members.get(USER_ID)
-                              console.log(spicedsp[2])
                               roblox.getUsernameFromId(spicedsp[2]).then(value => {
                               if (message.guild.members.get(USER_ID).roles.get("695668006923141150")) { return };
                               if (message.guild.members.get(USER_ID).roles.get("695668121842745454")) {
@@ -2098,7 +2097,19 @@ bot.on('message', message => {
                             }})
                           }}})
                         } 
-                        }
+                        } break;
+                      case 'overideverify':
+                        const userrr = message.mentions.users.first();
+                        roblox.getUsernameFromId(args[2]).then(value => {
+                          retrievedata("B3").then(value1 => {
+                            message.channel.send("Adding to Database!")
+                            setdatadata("D" + value1, userrr.username)
+                            setdatadata("E" + value1, userrr.id)
+                            setdatadata("B3", value1 + 1)
+                            setdatadata("F" + value1, value)
+                            setdatadata("G" + value1, args[2])
+                          })
+                        })
 
                       
 
