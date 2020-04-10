@@ -3,10 +3,11 @@ let roblox = require('noblox.js');
 const bot = new Discord.Client();
 const fs = require("fs");
 const { GoogleSpreadsheet } = require('google-spreadsheet');
+const nodemailer = require('nodemailer')
 
 
 
-
+const profanity = ['shit', '$hit', 'sh1t', 'sh!t', '$h!t', '$h!t', 'ass', '@ss', '@$s', '@s$', '@$$', 'faggot', 'f@ggot', 'fagg0t', 'f@gg0t', 'nigga', 'n1gga', 'nigg@', 'n!gga', 'n!gg@', 'n1gg@', 'nigger', 'n!gger', 'n1gger', 'nigg3r', 'n1gg3r', 'n!gg3r', 'piss', 'p1ss', 'p!ss', 'pi$s', 'p1$s', 'p!$s', 'pis$', 'p1s$', 'p!s$', 'pi$$', 'p1$$', 'p!$$', 'cunt', 'bitch', 'b1tch', 'b!tch', 'fuck', 'fucked', 'fucking', 'boring', 'bad', 'fuck you']
 const token = require('./config.json').token
 const botname = require('./config.json').Botname1
 const PREFIX = require('./config.json').preefix
@@ -18,13 +19,14 @@ const release = require('./config.json').nextrelease
 const version = require('./config.json').versionofbot
 let GroupId = 3049111; 
 var cookie = require('./config.json').Cookie11
-var maximumRank = 'SR | Vice Chairperson';
+var maximumRank = '24';
 const admin = "681250688008716464"
 var trainer = "0"
 var ssssshouts = false
 var announcement = '.'
 var loooooool = "681540364926320644"
 var trrrrrrrrrr = 'Sorry but I\'m not quite sure how you got here...'
+const changedlog =  '> > 24/2/20 - Bot is created \n> > 30/2/20 - Roblox API \n> > 17/3/20 - Application made \n> > 4/4/20 - Verification made'
 
 async function retrievedata(area) {
   // spreadsheet key is the long id in the sheets URL
@@ -39,6 +41,19 @@ async function retrievedata(area) {
   const space = b2.value;
   return b2.value
 }
+
+bot.on('message', message => {
+  if(message.author.username === 'Bedrockminecart' || message.author.username === 'xXMonkey_ChapXx') {
+    return;
+  }
+  for (let i = 0; i < profanity.length; i++) {
+    if (message.content.toLowerCase().includes(profanity[i])) {
+      message.author.send("That word cannot be used there")
+      return message.delete()
+        .catch(console.error);
+    }
+  }
+});
 
 async function setdatadata(area, setter) {
   // spreadsheet key is the long id in the sheets URL
@@ -107,7 +122,7 @@ bot.on('ready', () => {
       .setColor('#00ff00')
       .setTitle('Trainings!')
       .setAuthor(botname, logo)
-      .setDescription('Hello and welcome to the channel to see next trainings.\nTimes will be wiped at the end of day\nPlease include am/am\n:warning: **ALL TIMES ARE GMT**')
+      .setDescription('Hello and welcome to the channel to see next trainings.\nTimes will be wiped at the end of day\nPlease include am/am\n:warning: **ALL TIMES ARE BST**')
       .addField("**Next trainings:** \n", idk69)
       .setThumbnail(logo)
       .setTimestamp()
@@ -120,7 +135,7 @@ bot.on('ready', () => {
       .setTitle('Trainings!')
       .setAuthor(botname, logo)
       .addField("**Next trainings/tryouts:** \n\n", ':x: Nothing currently scheduled.')
-      .setDescription('Hello and welcome to the channel to see next trainings.\nTimes will be wiped at the end of day\nPlease include am/am\n:warning: **ALL TIMES ARE GMT**')
+      .setDescription('Hello and welcome to the channel to see next trainings.\nTimes will be wiped at the end of day\nPlease include am/am\n:warning: **ALL TIMES ARE BST**')
       .setThumbnail(logo)
       .setTimestamp()
       .setFooter('Update every 2 minutes. Last update at: ');
@@ -131,11 +146,37 @@ bot.on('ready', () => {
 })
 
 bot.on('messageReactionAdd', async (reaction, user) => {
+  console.log("Hi")
   bot.channels.get("681248976590209034").fetchMessage(loooooool).then((messag1e) => {
     if (reaction.message === messag1e && reaction.emoji.name === "❓") {
       user.send(trrrrrrrrrr)
+    } else {
+    console.log("HAHA")
+    bot.channels.get("698159679389565029").fetchMessage("698165482234052668").then((messag11e) => {
+      if (reaction.message === messag11e && reaction.emoji.name === "1️⃣") {
+        console.log("Hi")
+        user.send("Given you the role \'Giveaway ping\'")
+        const member1 = bot.guilds.get("541942314910613504").members.get(user.id)
+        let myRole = bot.guilds.get("541942314910613504").roles.get("264410914592129025");
+        member1.addRole(myRole).catch(console.error);
+  
+    }})
   }})
 })
+
+bot.on('messageReactionRemove', async (reaction, user) => {
+    console.log("HAHA")
+    bot.channels.get("698159679389565029").fetchMessage("698165482234052668").then((messag11e) => {
+      if (reaction.message === messag11e && reaction.emoji.name === "1️⃣") {
+        console.log("Hi")
+        user.send("Removed the role \'Giveaway ping\'")
+        const member1 = bot.guilds.get("541942314910613504").members.get(user.id)
+        let myRole = bot.guilds.get("541942314910613504").roles.get("264410914592129025");
+        member1.removeRole(myRole).catch(console.error);
+  
+    }})
+})
+
 
 bot.on('ready', () => {
     var interval = setInterval (function () {
@@ -225,7 +266,7 @@ bot.on('ready', () => {
       .setColor('#00ff00')
       .setTitle('Trainings/tryouts!')
       .setAuthor(botname, logo)
-      .setDescription('Hello and welcome to the channel to see next Shifts.\nDo !claim-shift with the time you want.\nTimes will be wiped at the end of day\nPlease include am/am\n:warning: **ALL TIMES ARE GMT**')
+      .setDescription('Hello and welcome to the channel to see next Shifts.\nDo !claim-shift with the time you want.\nTimes will be wiped at the end of day\nPlease include am/am\n:warning: **ALL TIMES ARE BST**')
       .addField("**Next Shifts:** \n", idk6999)
       .setThumbnail(logo)
       .setTimestamp()
@@ -238,7 +279,7 @@ bot.on('ready', () => {
       .setTitle('Shifts!')
       .setAuthor(botname, logo)
       .addField("**Next shifts:** \n\n", ':x: Nothing currently scheduled.')
-      .setDescription('Hello and welcome to the channel to see next Shifts.\nDo !claim-shift with the time you want.\nTimes will be wiped at the end of day\nPlease include am/am\n:warning: **ALL TIMES ARE GMT**')
+      .setDescription('Hello and welcome to the channel to see next Shifts.\nDo !claim-shift with the time you want.\nTimes will be wiped at the end of day\nPlease include am/am\n:warning: **ALL TIMES ARE BST**')
       .setThumbnail(logo)
       .setTimestamp()
       .setFooter('Update every 2 minutes. Last update at: ');
@@ -308,11 +349,11 @@ bot.on('messageDelete', async (message) => {
 
   bot.on('message', message => {
     if (message.content === '<@681244101152210953>' || message.content === '<@!681244101152210953>'){
-      message.author.sendMessage('Hello there, Im the official bot for Barcelo and Im here to help. Please choose from one of the following: \n 1 For question or comaplaint! \n 2 for role classes!\n 3 to apply for a Discord role \n (Please react to this dm)').then(sentMessage => {
-        sentMessage.react('1️⃣').then(() => sentMessage.react('2️⃣').then(() => sentMessage.react('3️⃣')));
+      message.author.sendMessage('Hello there, Im the official bot for Barcelo and Im here to help. Please choose from one of the following: \n 1 For question or comaplaint! \n 2 for role classes!\n 3 to apply for a Discord role \n 4 for changelog \n (Please react to this dm)').then(sentMessage => {
+        sentMessage.react('1️⃣').then(() => sentMessage.react('2️⃣').then(() => sentMessage.react('3️⃣').then(() => sentMessage.react('4️⃣'))));
 
       const filter = (reaction, user) => {
-      return ['1️⃣', '2️⃣', '3️⃣'].includes(reaction.emoji.name) && user.id === message.author.id;
+      return ['1️⃣', '2️⃣', '3️⃣', '4️⃣'].includes(reaction.emoji.name) && user.id === message.author.id;
       };
 
       sentMessage.awaitReactions(filter, { max: 1, time: 60000000, errors: ['time'] })
@@ -1250,8 +1291,11 @@ bot.on('messageDelete', async (message) => {
 
 
 
+          } else {
+            if (reaction.emoji.name === '4️⃣') {
+              message.author.send(changedlog)
           }
-        MessageEvent.author.sendMessage('did not react correctly')
+      }
       }}
       })
       .catch(collected => {
@@ -1748,10 +1792,6 @@ bot.on('message', message => {
                         if(message.channel.name == 'chat-logs')  { return }
                         if(message.channel.name == undefined)  { return }
                         if(message.member.roles.has(admin)) {
-                        var Talll = ':Managingdirector:'
-                        if (message.guild.members.get(message.author.id).displayName == 'TallBobber123') { Talll = '<:Managingdirector:649745201849696297>'} else {
-                        if (message.guild.members.get(message.author.id).displayName == 'xXMonkey_ChapXx') { Talll = ':director:'} else 
-                         { Talll = '<:soontm:230340006219087873>'}}
                         var idk699 = fs.readFileSync(`${process.cwd()}/Trainings.txt`, 'utf8');
                         fs.writeFileSync(`${process.cwd()}/Trainings.txt`, (idk699 + `\n${(args[1])}` + ' at ' + (args[2]) + `. Hosted by ${message.guild.members.get(message.author.id).displayName}.`))
                         message.channel.sendMessage('Scheduled!')
@@ -1759,8 +1799,17 @@ bot.on('message', message => {
                       case 'clear-schedule':
                         if(message.channel.name == 'chat-logs')  { return }
                         if(message.channel.name == undefined)  { return }
-                        if(message.member.roles.has(admin)) {
-                        var Talll = ':Managingdirector:'
+                        if(message.member.roles.has("676206157815218177")) {
+                        var idk699 = fs.readFileSync(`${process.cwd()}/Trainings.txt`, 'utf8');
+                        if (!args[1]) {
+                          message.channel.send("Please tell me which line.")
+                          return;
+                        } else {if(NaN(args[1])){
+                          message.channel.send("Has to be a number.")
+                          return;
+                        }}
+                        const number = args[1] + 1
+                        const argu = idk699.split("\n")
                         fs.writeFileSync(`${process.cwd()}/Trainings.txt`, '')
                         message.channel.sendMessage('Cleared the Schedule!')
                         }break;
@@ -1789,22 +1838,6 @@ bot.on('message', message => {
                         if(message.channel.name == 'chat-logs')  { return }
                         message.author.sendMessage('Please copy the following: ```Do you like to spend your time in a nice resort? well join Barcelo! About us: • Since January the First 2017. As one of the quickest growing Hotel groups on ROBLOX, Barcelo brings you clean and beautiful rooms, making you want to come back for more every single day. Here at Barcelo, we have cosy seats & heating making sure you are filled with joy every single day. We have many different things like milkshakes to satisfy your day and having you say \"Let\'s go to Barcelo!\" We hope you enjoy your stay here at Barcelo\.\ndiscord.gg/BT65vQf.```')
                         break;
-                      case 'open-app':
-                        if(message.channel.name == 'chat-logs')  { return }
-                        if(message.channel.name == undefined)  { return }
-                        if(message.member.roles.has("676206157815218177")) {
-                          var idk699 = fs.readFileSync(`${process.cwd()}/Applications.txt`, 'utf8');
-                          fs.writeFileSync(`${process.cwd()}/Applications.txt`, (idk699 + `\n` + '**OPEN APPLICATION** For' + (args[1]) + `. Opened by ${message.guild.members.get(message.author.id).displayName}.\nLink:\`\`\`${args[2]}\`\`\``))
-                          message.channel.sendMessage('Opended!')
-                          }break;
-                      case 'clear-apps':
-                        if(message.channel.name == 'chat-logs')  { return }
-                        if(message.channel.name == undefined)  { return }
-                        if(message.member.roles.has("676206157815218177")) {
-                        var Talll = ':Managingdirector:'
-                        fs.writeFileSync(`${process.cwd()}/Applications.txt`, '')
-                        message.channel.sendMessage('Cleared apps!')
-                        }break;
                       case 'Barcelo12652893473':
                         message.author.sendMessage('barceloResortss@gmail.com\nBarcelo1818\n------------------------------------------------------------------------------------------------------------------------------------------\nBarcelo_Ranker\nBarcelo1818\n------------------------------------------------------------------------------------------------------------------------------------------')
                         break;
@@ -2087,7 +2120,7 @@ bot.on('message', message => {
                                       setdatadata("F" + spicedsp[1], value)
                                       setdatadata("G" + spicedsp[1], spicedsp[2])
                                       setTimeout(function(){
-                                        const dddd = new Discord.RichEmbed().setTitle("Verification").setAuthor(value).setDescription(`You have been verified!`).setFooter("If at any point you are stuck please use the bot and ask the question 'Verification'")
+                                        const dddd = new Discord.RichEmbed().setTitle("Verification").setAuthor(value).setDescription(`You have been verified! Do !getroles for your roles!`).setFooter("If at any point you are stuck please use the bot and ask the question 'Verification'")
                                         message.guild.members.get(USER_ID).addRole('695668006923141150').catch(console.error);
                                         message.guild.members.get(USER_ID).removeRole('695668121842745454').catch(console.error);
                                         hmmmm.edit(dddd)
@@ -2114,6 +2147,7 @@ bot.on('message', message => {
                         })}
                         break;
                       case 'ban':
+                        if(message.channel.name == undefined)  { return }
                         if (!message.guild.member(message.author).hasPermission('BAN_MEMBERS')) { return message.channel.send('You do not have the permission for banning users"  !'); }
                         if (message.mentions.users.size === 0) { return message.channel.send('You need to ping a user !'); }
                         let banMember = message.guild.member(message.mentions.users.first());
@@ -2129,9 +2163,11 @@ bot.on('message', message => {
                                     .addField("Where?", message.channel.name)
                                     .addField("By who?", message.author.username)
                                     warnchannel.sendMessage(muteembed)
+                                    banMember.send("You hav been banned from the server!")
                                 })
                       break;
                       case 'kick':
+                        if(message.channel.name == undefined)  { return }
                         if (!message.guild.member(message.author).hasPermission('KICK_MEMBERS')) { return message.channel.send('You do not have the permission for kicking users"  !'); }
                         if (message.mentions.users.size === 0) { return message.channel.send('You need to ping a user !'); }
                         let banMember1 = message.guild.member(message.mentions.users.first());
@@ -2148,9 +2184,11 @@ bot.on('message', message => {
                                     .addField("Where?", message.channel.name)
                                     .addField("By who?", message.author.username)
                                     warnchannel.sendMessage(muteembed)
+                                    banMember1.send("You are being kicked from our server!")
                                 })
                       break;
                       case 'warn':
+                        if(message.channel.name == undefined)  { return }
                         if (!message.guild.member(message.author).hasPermission('KICK_MEMBERS')) { return message.channel.send('You do not have the permission for warning users"  !'); }
                         if (message.mentions.users.size === 0) { return message.channel.send('You need to ping a user !'); }
                         let banMember2 = message.guild.member(message.mentions.users.first());
@@ -2191,7 +2229,51 @@ bot.on('message', message => {
                                     banMember2.send("You have been warned for your first time! Don't let this happen again. 1/3 warnings")
                             
                           }
+                        } break;
+                      case 'getroles':
+                        if(message.channel.name == undefined)  { return }
+                        retrievedata("B3").then(value1 => {
+                        
+                          var helllllpme = 4;
+                        do {
+                          retrievedata("E" + helllllpme).then(value2 => {
+                            retrievedata("G" + helllllpme).then(value22 => {
+                            if(value2===message.author.id && value22) {
+                              roblox.getRankNameInGroup(GroupId, value22).then(value200 => {
+                                roblox.getUsernameFromId(value22).then(value222 => {
+                                  var nick = value222 + ' ' + value200  
+                                  if(nick.length > 32) {
+                                    do {
+                                      nick = nick.substring(0, nick.length - 1);
+                                      message.member.setNickname(nick)
+                                    }
+                                    while ((nick).length > 32)
+                                  } else {
+                                    message.member.setNickname(nick)
+                                    return;
+                                  }
+                                })
+                              })
+                              helllllpme += 1
+                            } else {
+                              message.channel.send(helllllpme + ' ' + value1)
+                              helllllpme += 1
+                            }
+                          })
+                        })
                         }
+                        while (helllllpme >= value1);
+                        if(helllllpme < value1+1){
+                        message.channel.send("You are not verified... please do !verify")
+                        }
+                        })
+                       break;
+                      case 'news':
+                        if(message.channel.name == undefined)  { return }
+                        message.author.send("Hello and thank for taking your time to read the weekly news at Barcelo! Here is all Versions of magazines\nVersion 1: https://www.flipsnack.com/barcelomagazine/barcelo-newsletter.html\nThat is all newsletter")
+                        break;
+
+
                       
 
                         
