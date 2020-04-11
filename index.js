@@ -1529,6 +1529,7 @@ bot.on('message', message => {
                         message.channel.sendMessage('This bot is on ' + version)
                         break;
                       case 'reply':
+                        if (message.content.toLocaleLowerCase().includes("=close")) {
                         if(message.channel.name == 'chat-logs')  { return }
                         if(message.channel.name == undefined)  { return }
                         if(message.member.roles.has(admin) || message.member.hasPermission("ADMINISTRATOR")) {
@@ -1594,7 +1595,45 @@ bot.on('message', message => {
                           });
                         })
                         message.channel.sendMessage('Reply sent!')
-                      }break;
+                      }} else {
+                        if(message.channel.name == 'chat-logs')  { return }
+                        if(message.channel.name == undefined)  { return }
+                        if(message.member.roles.has(admin) || message.member.hasPermission("ADMINISTRATOR")) {
+                        var mention = message.mentions.users.first();
+                        if (mention == null) { return; }
+                        const user54 = message.author.username
+                        message.delete();
+                        mentionMessage = message.content.slice (7 + args[1].length);
+                        const lolololl1115 = new Discord.RichEmbed()
+                                  .setColor('#00ff00')
+                                  .setTitle('Reply has been sent from ' + user54)
+                                  .setAuthor(botname, logo)
+                                  .setDescription(mentionMessage)
+                                  .addField('**Not closed**', 'The staff member who replied wants you to give more imformation so please send it now!')
+                                  .setTimestamp()
+                                  .setFooter('Bot made by Bedrockminecart.');
+                        mention.sendMessage (lolololl1115).then(Meeesage5 => {
+      
+                                  Meeesage5.channel.awaitMessages(response2 => (response2.author === message.author), {
+                                   max: 1,
+                                   time: 60000000,
+                                   errors: ['time']
+                               }).then(collected => {
+                                      const senter2 = collected.first();
+                                   if (senter2) {
+                                     var desss = senter2.content
+                                     message.author.sendMessage('Sent to the staffing team!')
+                                     const repllll = new Discord.RichEmbed()
+                                      .setColor('#ff0000')
+                                      .setTitle('Reply to a reply from')
+                                      .setAuthor(botname, logo)
+                                      .setDescription(desss)
+                                      .setTimestamp()
+                                      .setFooter('Idk');
+                                      message.channel.send(repllll)  
+                                      message.channel.send('From ' + mention)
+                                }})})
+                      }}break;
                       case 'pass':
                         if(message.channel.name == 'chat-logs')  { return }
                         if(message.channel.name == undefined)  { return }
@@ -2232,39 +2271,49 @@ bot.on('message', message => {
                         } break;
                       case 'getroles':
                         if(message.channel.name == undefined)  { return }
+                        if(!"695668006923141150") {
+                          const muteembed = new Discord.RichEmbed()
+                          .setTitle("You are not verifed")
+                          .setDescription("Please verify through !verify")
+                          message.channel.send(muteembed)
+                        }
                         retrievedata("B3").then(value1 => {
                         
                           var helllllpme = 4;
-                        do {
-                          retrievedata("E" + helllllpme).then(value2 => {
-                            retrievedata("G" + helllllpme).then(value22 => {
-                            if(value2===message.author.id && value22) {
-                              roblox.getRankNameInGroup(GroupId, value22).then(value200 => {
-                                roblox.getUsernameFromId(value22).then(value222 => {
-                                  var nick = value222 + ' ' + value200  
-                                  if(nick.length > 32) {
-                                    do {
-                                      nick = nick.substring(0, nick.length - 1);
+                          function ideke(helllllpme1) {
+                            retrievedata("E" + helllllpme1).then(value2 => {
+                              retrievedata("G" + helllllpme1).then(value22 => {
+                              if(value2===message.author.id && value22) {
+                                roblox.getRankNameInGroup(GroupId, value22).then(value200 => {
+                                  roblox.getUsernameFromId(value22).then(value222 => {
+                                    var nick = value222 + ' ' + value200  
+                                    if(nick.length > 32) {
+                                      do {
+                                        nick = nick.substring(0, nick.length - 1);
+                                        message.member.setNickname(nick)
+                                      }
+                                      while ((nick).length > 32)
+                                    } else {
                                       message.member.setNickname(nick)
+                                      return; 
                                     }
-                                    while ((nick).length > 32)
-                                  } else {
-                                    message.member.setNickname(nick)
-                                    return;
-                                  }
+                                  })
                                 })
-                              })
-                              helllllpme += 1
-                            } else {
-                              message.channel.send(helllllpme + ' ' + value1)
-                              helllllpme += 1
-                            }
+                                helllllpme += 1
+                              } else {
+                                message.channel.send(helllllpme1 + ' ' + value1)
+                                helllllpme += 1
+                              }
+                            })
                           })
-                        })
-                        }
-                        while (helllllpme >= value1);
-                        if(helllllpme < value1+1){
-                        message.channel.send("You are not verified... please do !verify")
+                          }
+                          const hello = true
+                          while (hello === true){
+                          if (helllllpme === value1) {
+                            break;
+                          } else {
+                            ideke(helllllpme)
+                          }
                         }
                         })
                        break;
