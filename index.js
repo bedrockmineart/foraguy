@@ -1595,44 +1595,6 @@ bot.on('message', message => {
                           });
                         })
                         message.channel.sendMessage('Reply sent!')
-                      }} else {
-                        if(message.channel.name == 'chat-logs')  { return }
-                        if(message.channel.name == undefined)  { return }
-                        if(message.member.roles.has(admin) || message.member.hasPermission("ADMINISTRATOR")) {
-                        var mention = message.mentions.users.first();
-                        if (mention == null) { return; }
-                        const user54 = message.author.username
-                        message.delete();
-                        mentionMessage = message.content.slice (7 + args[1].length);
-                        const lolololl1115 = new Discord.RichEmbed()
-                                  .setColor('#00ff00')
-                                  .setTitle('Reply has been sent from ' + user54)
-                                  .setAuthor(botname, logo)
-                                  .setDescription(mentionMessage)
-                                  .addField('**Not closed**', 'The staff member who replied wants you to give more imformation so please send it now!')
-                                  .setTimestamp()
-                                  .setFooter('Bot made by Bedrockminecart.');
-                        mention.sendMessage (lolololl1115).then(Meeesage5 => {
-      
-                                  Meeesage5.channel.awaitMessages(response2 => (response2.author === message.author), {
-                                   max: 1,
-                                   time: 60000000,
-                                   errors: ['time']
-                               }).then(collected => {
-                                      const senter2 = collected.first();
-                                   if (senter2) {
-                                     var desss = senter2.content
-                                     message.author.sendMessage('Sent to the staffing team!')
-                                     const repllll = new Discord.RichEmbed()
-                                      .setColor('#ff0000')
-                                      .setTitle('Reply to a reply from')
-                                      .setAuthor(botname, logo)
-                                      .setDescription(desss)
-                                      .setTimestamp()
-                                      .setFooter('Idk');
-                                      message.channel.send(repllll)  
-                                      message.channel.send('From ' + mention)
-                                }})})
                       }}break;
                       case 'pass':
                         if(message.channel.name == 'chat-logs')  { return }
