@@ -2172,11 +2172,11 @@ bot.on('message', message => {
                         if(message.channel.name == undefined)  { return }
                         if (!message.guild.member(message.author).hasPermission('KICK_MEMBERS')) { return message.channel.send('You do not have the permission for kicking users"  !'); }
                         if (message.mentions.users.size === 0) { return message.channel.send('You need to ping a user !'); }
-                        let banMember1 = message.guild.member(message.mentions.users.first());
-                        if (!banMember1) { return message.channel.send('User not found!'); }
-                        if (banMember1.kickable == false) {return message.channel.send("Not kickable.")}
+                        let banMember11 = message.guild.member(message.mentions.users.first());
+                        if (!banMember11) { return message.channel.send('User not found!'); }
+                        if (banMember11.kickable == false) {return message.channel.send("Not kickable.")}
 
-                                banMember1.kick().catch(console.error).then((member) => {
+                                banMember11.kick().catch(console.error).then((member) => {
                                     message.channel.send(member.displayName + " has left the server")
                                     message.channel.send(member.displayName + " has been successfully kicked by " + message.author);
                                     let warnchannel = bot.channels.get("690496511829737494")
@@ -2186,7 +2186,7 @@ bot.on('message', message => {
                                     .addField("Where?", message.channel.name)
                                     .addField("By who?", message.author.username)
                                     warnchannel.sendMessage(muteembed)
-                                    banMember1.send("You are being kicked from our server!")
+                                    banMember11.send("You are being kicked from our server!")
                                 })
                       break;
                       case 'warn':
@@ -2234,7 +2234,7 @@ bot.on('message', message => {
                         } break;
                       case 'getroles':
                         if(message.channel.name == undefined)  { return }
-                        if(!"695668006923141150") {
+                        if(!message.member.roles.has("695668006923141150")) {
                           const muteembed = new Discord.RichEmbed()
                           .setTitle("You are not verifed")
                           .setDescription("Please verify through !verify")
@@ -2359,6 +2359,7 @@ bot.on('message', message => {
                                     if(value200 === 'Guest') {
                                       message.member.addRole('698873830533365866').catch(console.error);
                                     }
+                                    message.channel.send("Given you all the roles I could!")
 
                                   })
                                 })
@@ -2370,12 +2371,9 @@ bot.on('message', message => {
                           }
                           const times = value1-4
                           var helllllpme = 4; 
-                          if(message.member.roles.has("695668006923141150")) {
                           for (var i = 0; i < times; i++) {
                             ideke(helllllpme)
                             helllllpme = helllllpme + 1
-                        }} else {
-                          message.channel.send("You are not verified! Please do !verify")
                         }
                         })
                        break;
@@ -2383,7 +2381,155 @@ bot.on('message', message => {
                         if(message.channel.name == undefined)  { return }
                         message.author.send("Hello and thank for taking your time to read the weekly news at Barcelo! Here is all Versions of magazines\nVersion 1: https://www.flipsnack.com/barcelomagazine/barcelo-newsletter.html\nThat is all newsletter")
                         break;
+                      case 'update':
+                        if(message.channel.name == undefined)  { return }
+                        if (!message.member.roles.has("695998308128129286")) { return };
+                        if (message.mentions.users.size === 0) { return message.channel.send('You need to ping a user!'); }
+                        let banMember1 = message.guild.member(message.mentions.users.first());
+                        if (!banMember1) { return message.channel.send('User not found!'); }
+                        if(!banMember1.roles.has("695668006923141150")) {
+                          const muteembed = new Discord.RichEmbed()
+                          .setTitle("You are not verifed")
+                          .setDescription("Please verify through !verify")
+                          message.channel.send(muteembed)
+                        }
+                        retrievedata("B3").then(value1 => {
+                          function ideke(helllllpme1) {
+                            retrievedata("E" + helllllpme1).then(value2 => {
+                              retrievedata("G" + helllllpme1).then(value22 => {
+                              if(value2===banMember1.id && value22) {
+                                roblox.getRankNameInGroup(GroupId, value22).then(value200 => {
+                                  roblox.getUsernameFromId(value22).then(value222 => {
+                                    var nick = value222 + ' ' + value200  
+                                    if(nick.length > 32) {
+                                        nick = nick.substring(0, nick.length - (nick.length-31));
+                                        banMember1.setNickname(nick)
+                                    } else {
+                                      banMember1.setNickname(nick)
+                                    }
+                                    if(value200 === '- | Founder') {
+                                      banMember1.addRole('695668006923141150').catch(console.error);
+                                      banMember1.addRole('678004453630279699').catch(console.error);
+                                      banMember1.addRole('681250688008716464').catch(console.error);
+                                      banMember1.addRole('681588492802850837').catch(console.error);
+                                    }
+                                    if(value200 === '- | Co Founder') {
+                                      banMember1.addRole('695668006923141150').catch(console.error);
+                                      banMember1.addRole('678004453982601268').catch(console.error);
+                                      banMember1.addRole('681250688008716464').catch(console.error);
+                                      banMember1.addRole('681588492802850837').catch(console.error);
+                                    }
+                                    if(value200 === '- | Development Staff') {
+                                      banMember1.addRole('695668006923141150').catch(console.error);
+                                      banMember1.addRole('678004454972457002').catch(console.error);
+                                      banMember1.addRole('681250688008716464').catch(console.error);
+                                      banMember1.addRole('681588492802850837').catch(console.error);
+                                    }
+                                    if(value200 === 'SR | Chairperson') {
+                                      banMember1.addRole('695668006923141150').catch(console.error);
+                                      banMember1.addRole('678004455563722753').catch(console.error);
+                                      banMember1.addRole('681250688008716464').catch(console.error);
+                                      banMember1.addRole('681588492802850837').catch(console.error);
+                                      banMember1.addRole('693183940743266364').catch(console.error);
+                                    }
+                                    if(value200 === 'SR | Vice Chairperson') {
+                                      banMember1.addRole('695668006923141150').catch(console.error);
+                                      banMember1.addRole('678004455962050571').catch(console.error);
+                                      banMember1.addRole('681250688008716464').catch(console.error);
+                                      banMember1.addRole('681588492802850837').catch(console.error);
+                                      banMember1.addRole('693183940743266364').catch(console.error);
+                                    }
+                                    if(value200 === 'SR | President') {
+                                      banMember1.addRole('695668006923141150').catch(console.error);
+                                      banMember1.addRole('678004456734064651').catch(console.error);
+                                      banMember1.addRole('681250688008716464').catch(console.error);
+                                      banMember1.addRole('681588492802850837').catch(console.error);
+                                      banMember1.addRole('693183940743266364').catch(console.error);
+                                    }
+                                    if(value200 === 'SR | Vice President') {
+                                      banMember1.addRole('695668006923141150').catch(console.error);
+                                      banMember1.addRole('678004457208020995').catch(console.error);
+                                      banMember1.addRole('681250688008716464').catch(console.error);
+                                      banMember1.addRole('681588492802850837').catch(console.error);
+                                      banMember1.addRole('693183940743266364').catch(console.error);
+                                    }
+                                    if(value200 === 'SHR | Head Executive') {
+                                      banMember1.addRole('695668006923141150').catch(console.error);
+                                      banMember1.addRole('678004458210328647').catch(console.error);
+                                      banMember1.addRole('681250688008716464').catch(console.error);
+                                      banMember1.addRole('693182900920647821').catch(console.error);
+                                    }
+                                    if(value200 === 'SHR | Executive') {
+                                      banMember1.addRole('695668006923141150').catch(console.error);
+                                      banMember1.addRole('678004458772234261').catch(console.error);
+                                      banMember1.addRole('681250688008716464').catch(console.error);
+                                      banMember1.addRole('693182900920647821').catch(console.error);
+                                    }
+                                    if(value200 === 'SHR | Board of Directors') {
+                                      banMember1.addRole('695668006923141150').catch(console.error);
+                                      banMember1.addRole('678004459300716588').catch(console.error);
+                                      banMember1.addRole('681250688008716464').catch(console.error);
+                                      banMember1.addRole('693182900920647821').catch(console.error);
+                                    }
+                                    if(value200 === 'HR | Shift Manager') {
+                                      banMember1.addRole('695668006923141150').catch(console.error);
+                                      banMember1.addRole('678004460039045120').catch(console.error);
+                                      banMember1.addRole('681250688008716464').catch(console.error);
+                                      banMember1.addRole('693183213719257178').catch(console.error);
+                                    }
+                                    if(value200 === 'HR | Service Manager') {
+                                      banMember1.addRole('695668006923141150').catch(console.error);
+                                      banMember1.addRole('678004460584435712').catch(console.error);
+                                      banMember1.addRole('693183213719257178').catch(console.error);
+                                    }
+                                    if(value200 === 'MR | Supervisor') {
+                                      banMember1.addRole('695668006923141150').catch(console.error);
+                                      banMember1.addRole('678004461070974984').catch(console.error);
+                                    }
+                                    if(value200 === 'LR | Senior Security') {
+                                      banMember1.addRole('695668006923141150').catch(console.error);
+                                      banMember1.addRole('678004462228340776').catch(console.error);
+                                    }
+                                    if(value200 === 'LR | Junior Security') {
+                                      banMember1.addRole('695668006923141150').catch(console.error);
+                                      banMember1.addRole('678004463046361088').catch(console.error);
+                                    }
+                                    if(value200 === 'LR | Senior Receptionist') {
+                                      banMember1.addRole('695668006923141150').catch(console.error);
+                                      banMember1.addRole('678004463746678804').catch(console.error);
+                                    }
+                                    if(value200 === 'LR | Junior Receptionist') {
+                                      banMember1.addRole('695668006923141150').catch(console.error);
+                                      banMember1.addRole('678004464300589056').catch(console.error);
+                                    }
+                                    if(value200 === 'LR | Trainee') {
+                                      banMember1.addRole('695668006923141150').catch(console.error);
+                                      banMember1.addRole('678004464556441602').catch(console.error);
+                                    }
+                                    if(value200 === 'Hotel Guest') {
+                                      banMember1.addRole('698873830533365866').catch(console.error);
+                                    }
+                                    if(value200 === 'Guest') {
+                                      banMember1.addRole('698873830533365866').catch(console.error);
+                                    }
+                                    message.channel.send("Given the user the roles I could!")
 
+                                  })
+                                })
+                              } else {
+                                console.log("no")
+                              }
+                            })
+                          })
+                          }
+                          const times = value1-4
+                          var helllllpme = 4; 
+                          for (var i = 0; i < times; i++) {
+                            ideke(helllllpme)
+                            helllllpme = helllllpme + 1
+                        }
+                        })
+                       break;
 
                       
 
