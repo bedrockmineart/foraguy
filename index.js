@@ -2340,43 +2340,124 @@ bot.on('message', message => {
                                       message.member.addRole('678004460584435712').catch(console.error);
                                       message.member.addRole('693183213719257178').catch(console.error);
                                       message.member.addRole('678003216977494032').catch(console.error);
+                                      message.member.removeRole('681250688008716464').catch(console.error);
                                     }
                                     if(value200 === 'MR | Supervisor') {
                                       message.member.addRole('695668006923141150').catch(console.error);
                                       message.member.addRole('678004461070974984').catch(console.error);
                                       message.member.addRole('678003216977494032').catch(console.error);
+                                      message.member.removeRole('681250688008716464').catch(console.error);
                                     }
                                     if(value200 === 'LR | Senior Security') {
                                       message.member.addRole('695668006923141150').catch(console.error);
                                       message.member.addRole('678004462228340776').catch(console.error);
                                       message.member.addRole('678003216977494032').catch(console.error);
+                                      message.member.removeRole('681250688008716464').catch(console.error);
                                     }
                                     if(value200 === 'LR | Junior Security') {
                                       message.member.addRole('695668006923141150').catch(console.error);
                                       message.member.addRole('678004463046361088').catch(console.error);
                                       message.member.addRole('678003216977494032').catch(console.error);
+                                      message.member.removeRole('681250688008716464').catch(console.error);
                                     }
                                     if(value200 === 'LR | Senior Receptionist') {
                                       message.member.addRole('695668006923141150').catch(console.error);
                                       message.member.addRole('678004463746678804').catch(console.error);
                                       message.member.addRole('678003216977494032').catch(console.error);
+                                      message.member.removeRole('681250688008716464').catch(console.error);
                                     }
                                     if(value200 === 'LR | Junior Receptionist') {
                                       message.member.addRole('695668006923141150').catch(console.error);
                                       message.member.addRole('678004464300589056').catch(console.error);
                                       message.member.addRole('678003216977494032').catch(console.error);
+                                      message.member.removeRole('681250688008716464').catch(console.error);
                                     }
                                     if(value200 === 'LR | Trainee') {
                                       message.member.addRole('695668006923141150').catch(console.error);
                                       message.member.addRole('678004464556441602').catch(console.error);
                                       message.member.addRole('678003216977494032').catch(console.error);
+                                      message.member.removeRole('681250688008716464').catch(console.error);
                                     }
                                     if(value200 === 'Hotel Guest') {
                                       message.member.addRole('698873830533365866').catch(console.error);
+                                      message.member.removeRole('678003216977494032').catch(console.error);
+                                      message.member.removeRole('681250688008716464').catch(console.error);
                                     }
                                     if(value200 === 'Guest') {
                                       message.member.addRole('698873830533365866').catch(console.error);
+                                      message.member.removeRole('678003216977494032').catch(console.error);
+                                      message.member.removeRole('681250688008716464').catch(console.error);
                                     }
+                                    if(!value200 === 'Guest' || !value200 === 'Hotel Guest') {
+                                      message.member.removeRole('698873830533365866').catch(console.error);
+                                    }
+                                    if(!value200 === 'LR | Trainee') {
+                                      message.member.removeRole('678004464556441602').catch(console.error);
+                                    }
+                                    if(!value200 === 'LR | Junior Receptionist') {
+                                      message.member.removeRole('678004464300589056').catch(console.error);
+                                    }
+                                    if(!value200 === 'LR | Senior Receptionist') {
+                                      message.member.removeRole('678004463746678804').catch(console.error);
+                                    }
+                                    if(!value200 === 'LR | Junior Security') {
+                                      message.member.removeRole('678004463046361088').catch(console.error);
+                                    }
+                                    if(!value200 === 'LR | Senior Security') {
+                                      message.member.removeRole('678004462228340776').catch(console.error);
+                                    }
+                                    if(!value200 === 'MR | Supervisor') {
+                                      message.member.removeRole('678004461070974984').catch(console.error);
+                                    }
+                                    if(!value200 === 'HR | Service Manager') {
+                                      message.member.removeRole('678004460584435712').catch(console.error);
+                                    }
+                                    if(!value200 === 'HR | Shift Manager') {
+                                      message.member.removeRole('678004460039045120').catch(console.error);
+                                    }
+                                    if(!value200 === 'HR | Shift Manager' || !value200 === 'HR | Service Manager') {
+                                      message.member.removeRole('693183213719257178').catch(console.error);
+                                    }
+                                    if(!value200 === 'SHR | Board of Directors') {
+                                      message.member.removeRole('678004459300716588').catch(console.error);
+                                    }
+                                    if(!value200 === 'SHR | Executive') {
+                                      message.member.removeRole('678004458772234261').catch(console.error);
+                                    }
+                                    if(!value200 === 'SHR | Head Executive') {
+                                      message.member.removeRole('678004458210328647').catch(console.error);
+                                    }
+                                    if(!value200 === 'SHR | Head Executive' || !value200 === 'SHR | Executive' || !value200 === 'SHR | Board of Directors') {
+                                      message.member.removeRole('693182900920647821').catch(console.error);
+                                    }
+                                    if(!value200 === 'SR | Vice President') {
+                                      message.member.removeRole('678004457208020995').catch(console.error);
+                                    }
+                                    if(!value200 === 'SR | President') {
+                                      message.member.removeRole('678004456734064651').catch(console.error);
+                                    }
+                                    if(!value200 === 'SR | Vice Chairperson') {
+                                      message.member.removeRole('678004455962050571').catch(console.error);
+                                    }
+                                    if(!value200 === 'SR | Chairperson') {
+                                      message.member.removeRole('678004455563722753').catch(console.error);
+                                    }
+                                    if(!value200 === 'SR | Vice President' || !value200 === 'SR | President' || !value200 === 'SR | Vice Chairperson' || !value200 === 'SR | Chairperson' || !value200 === '- | Development Staff' || !value200 === '- | Co Founder' || !value200 === '- | Founder') {
+                                      message.member.removeRole('681588492802850837').catch(console.error);
+                                      if(!value200 === 'SR | Vice President' || !value200 === 'SR | President' || !value200 === 'SR | Vice Chairperson' || !value200 === 'SR | Chairperson') {
+                                        message.member.removeRole('693183940743266364').catch(console.error);
+                                      }
+                                    }
+                                    if(!value200 === '- | Development Staff') {
+                                      message.member.removeRole('678004454972457002').catch(console.error);
+                                    }
+                                    if(!value200 === '- | Co Founder') {
+                                      message.member.removeRole('678004453982601268').catch(console.error);
+                                    }
+                                    if(!value200 === '- | Founder') {
+                                      message.member.removeRole('678004453630279699').catch(console.error);
+                                    }
+                                    
                                     message.channel.send("Given you all the roles I could!")
 
                                   })
@@ -2511,42 +2592,122 @@ bot.on('message', message => {
                                       banMember1.addRole('678004460584435712').catch(console.error);
                                       banMember1.addRole('693183213719257178').catch(console.error);
                                       banMember1.addRole('678003216977494032').catch(console.error);
+                                      banMember1.removeRole('681250688008716464').catch(console.error);
                                     }
                                     if(value200 === 'MR | Supervisor') {
                                       banMember1.addRole('695668006923141150').catch(console.error);
                                       banMember1.addRole('678004461070974984').catch(console.error);
                                       banMember1.addRole('678003216977494032').catch(console.error);
+                                      banMember1.removeRole('681250688008716464').catch(console.error);
                                     }
                                     if(value200 === 'LR | Senior Security') {
                                       banMember1.addRole('695668006923141150').catch(console.error);
                                       banMember1.addRole('678004462228340776').catch(console.error);
                                       banMember1.addRole('678003216977494032').catch(console.error);
+                                      banMember1.removeRole('681250688008716464').catch(console.error);
                                     }
                                     if(value200 === 'LR | Junior Security') {
                                       banMember1.addRole('695668006923141150').catch(console.error);
                                       banMember1.addRole('678004463046361088').catch(console.error);
                                       banMember1.addRole('678003216977494032').catch(console.error);
+                                      banMember1.removeRole('681250688008716464').catch(console.error);
                                     }
                                     if(value200 === 'LR | Senior Receptionist') {
                                       banMember1.addRole('695668006923141150').catch(console.error);
                                       banMember1.addRole('678004463746678804').catch(console.error);
                                       banMember1.addRole('678003216977494032').catch(console.error);
+                                      banMember1.removeRole('681250688008716464').catch(console.error);
                                     }
                                     if(value200 === 'LR | Junior Receptionist') {
                                       banMember1.addRole('695668006923141150').catch(console.error);
                                       banMember1.addRole('678004464300589056').catch(console.error);
                                       banMember1.addRole('678003216977494032').catch(console.error);
+                                      banMember1.removeRole('681250688008716464').catch(console.error);
                                     }
                                     if(value200 === 'LR | Trainee') {
                                       banMember1.addRole('695668006923141150').catch(console.error);
                                       banMember1.addRole('678004464556441602').catch(console.error);
                                       banMember1.addRole('678003216977494032').catch(console.error);
+                                      message.member.removeRole('681250688008716464').catch(console.error);
                                     }
                                     if(value200 === 'Hotel Guest') {
                                       banMember1.addRole('698873830533365866').catch(console.error);
+                                      message.member.removeRole('678003216977494032').catch(console.error);
+                                      message.member.removeRole('681250688008716464').catch(console.error);
                                     }
                                     if(value200 === 'Guest') {
                                       banMember1.addRole('698873830533365866').catch(console.error);
+                                      banMember1.removeRole('678003216977494032').catch(console.error);
+                                      banMember1.removeRole('681250688008716464').catch(console.error);
+                                    }
+                                    if(!value200 === 'Guest' || !value200 === 'Hotel Guest') {
+                                      banMember1.removeRole('698873830533365866').catch(console.error);
+                                    }
+                                    if(!value200 === 'LR | Trainee') {
+                                      banMember1.removeRole('678004464556441602').catch(console.error);
+                                    }
+                                    if(!value200 === 'LR | Junior Receptionist') {
+                                      banMember1.removeRole('678004464300589056').catch(console.error);
+                                    }
+                                    if(!value200 === 'LR | Senior Receptionist') {
+                                      banMember1.removeRole('678004463746678804').catch(console.error);
+                                    }
+                                    if(!value200 === 'LR | Junior Security') {
+                                      banMember1.removeRole('678004463046361088').catch(console.error);
+                                    }
+                                    if(!value200 === 'LR | Senior Security') {
+                                      banMember1.removeRole('678004462228340776').catch(console.error);
+                                    }
+                                    if(!value200 === 'MR | Supervisor') {
+                                      banMember1.removeRole('678004461070974984').catch(console.error);
+                                    }
+                                    if(!value200 === 'HR | Service Manager') {
+                                      banMember1.removeRole('678004460584435712').catch(console.error);
+                                    }
+                                    if(!value200 === 'HR | Shift Manager') {
+                                      banMember1.removeRole('678004460039045120').catch(console.error);
+                                    }
+                                    if(!value200 === 'HR | Shift Manager' || !value200 === 'HR | Service Manager') {
+                                      banMember1.removeRole('693183213719257178').catch(console.error);
+                                    }
+                                    if(!value200 === 'SHR | Board of Directors') {
+                                      banMember1.removeRole('678004459300716588').catch(console.error);
+                                    }
+                                    if(!value200 === 'SHR | Executive') {
+                                      banMember1.removeRole('678004458772234261').catch(console.error);
+                                    }
+                                    if(!value200 === 'SHR | Head Executive') {
+                                      banMember1.removeRole('678004458210328647').catch(console.error);
+                                    }
+                                    if(!value200 === 'SHR | Head Executive' || !value200 === 'SHR | Executive' || !value200 === 'SHR | Board of Directors') {
+                                      banMember1.removeRole('693182900920647821').catch(console.error);
+                                    }
+                                    if(!value200 === 'SR | Vice President') {
+                                      banMember1.removeRole('678004457208020995').catch(console.error);
+                                    }
+                                    if(!value200 === 'SR | President') {
+                                      banMember1.removeRole('678004456734064651').catch(console.error);
+                                    }
+                                    if(!value200 === 'SR | Vice Chairperson') {
+                                      banMember1.removeRole('678004455962050571').catch(console.error);
+                                    }
+                                    if(!value200 === 'SR | Chairperson') {
+                                      banMember1.removeRole('678004455563722753').catch(console.error);
+                                    }
+                                    if(!value200 === 'SR | Vice President' || !value200 === 'SR | President' || !value200 === 'SR | Vice Chairperson' || !value200 === 'SR | Chairperson' || !value200 === '- | Development Staff' || !value200 === '- | Co Founder' || !value200 === '- | Founder') {
+                                      banMember1.removeRole('681588492802850837').catch(console.error);
+                                      if(!value200 === 'SR | Vice President' || !value200 === 'SR | President' || !value200 === 'SR | Vice Chairperson' || !value200 === 'SR | Chairperson') {
+                                        banMember1.removeRole('693183940743266364').catch(console.error);
+                                      }
+                                    }
+                                    if(!value200 === '- | Development Staff') {
+                                      banMember1.removeRole('678004454972457002').catch(console.error);
+                                    }
+                                    if(!value200 === '- | Co Founder') {
+                                      banMember1.removeRole('678004453982601268').catch(console.error);
+                                    }
+                                    if(!value200 === '- | Founder') {
+                                      banMember1.removeRole('678004453630279699').catch(console.error);
                                     }
                                     message.channel.send("Given the user the roles I could!")
 
