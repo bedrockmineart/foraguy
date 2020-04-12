@@ -3,7 +3,6 @@ let roblox = require('noblox.js');
 const bot = new Discord.Client();
 const fs = require("fs");
 const { GoogleSpreadsheet } = require('google-spreadsheet');
-const nodemailer = require('nodemailer')
 
 
 
@@ -145,36 +144,12 @@ bot.on('ready', () => {
 })
 
 bot.on('messageReactionAdd', async (reaction, user) => {
-  console.log("Hi")
   bot.channels.get("681248976590209034").fetchMessage(loooooool).then((messag1e) => {
     if (reaction.message === messag1e && reaction.emoji.name === "❓") {
       user.send(trrrrrrrrrr)
-    } else {
-    console.log("HAHA")
-    bot.channels.get("698159679389565029").fetchMessage("698165482234052668").then((messag11e) => {
-      if (reaction.message === messag11e && reaction.emoji.name === "1️⃣") {
-        console.log("Hi")
-        user.send("Given you the role \'Giveaway ping\'")
-        const member1 = bot.guilds.get("541942314910613504").members.get(user.id)
-        let myRole = bot.guilds.get("541942314910613504").roles.get("264410914592129025");
-        member1.addRole(myRole).catch(console.error);
-  
     }})
-  }})
 })
 
-bot.on('messageReactionRemove', async (reaction, user) => {
-    console.log("HAHA")
-    bot.channels.get("698159679389565029").fetchMessage("698165482234052668").then((messag11e) => {
-      if (reaction.message === messag11e && reaction.emoji.name === "1️⃣") {
-        console.log("Hi")
-        user.send("Removed the role \'Giveaway ping\'")
-        const member1 = bot.guilds.get("541942314910613504").members.get(user.id)
-        let myRole = bot.guilds.get("541942314910613504").roles.get("264410914592129025");
-        member1.removeRole(myRole).catch(console.error);
-  
-    }})
-})
 
 
 bot.on('ready', () => {
@@ -349,7 +324,15 @@ bot.on('messageDelete', async (message) => {
 
   bot.on('message', message => {
     if (message.content === '<@681244101152210953>' || message.content === '<@!681244101152210953>'){
-      message.author.send('Hello there, Im the official bot for Barcelo and Im here to help. Please choose from one of the following: \n 1 For question or comaplaint! \n 2 for role classes!\n 3 to apply for a Discord role \n 4 for changelog \n (Please react to this dm)').then(sentMessage => {
+      const starte = new Discord.RichEmbed()
+      .setTitle("React!")
+      .setDescription("Please react with one of the following")
+      .addField("**1**", "One takes you to our questions and complaints area")
+      .addField("**2**", "Tells you what roles do what!")
+      .addField("**3**", "To apply for an open **Discord** Role")
+      .addField("**4**", "Bot updates/changelog")
+      .setFooter("Thanks for playing Barcelo!")
+      message.author.send(starte).then(sentMessage => {
         sentMessage.react('1️⃣').then(() => sentMessage.react('2️⃣').then(() => sentMessage.react('3️⃣').then(() => sentMessage.react('4️⃣'))));
 
       const filter = (reaction, user) => {
@@ -1595,7 +1578,48 @@ bot.on('message', message => {
                           });
                         })
                         message.channel.sendMessage('Reply sent!')
-                      }}break;
+                      }} else {
+                        if(message.channel.name == 'chat-logs')  { return }
+                        if(message.channel.name == undefined)  { return }
+                        if(message.member.roles.has(admin) || message.member.hasPermission("ADMINISTRATOR")) {
+                        var mention = message.mentions.users.first();
+                        if (mention == null) { return; }
+                        const user54 = message.author.username
+                        message.delete();
+                        mentionMessage = message.content.slice (7 + args[1].length);
+                        const lolololl1115 = new Discord.RichEmbed()
+                                  .setColor('#00ff00')
+                                  .setTitle('Reply has been sent from ' + user54)
+                                  .setAuthor(botname, logo)
+                                  .setDescription(mentionMessage)
+                                  .addField('**Answered incorectly?**', 'If you think you have been answered incorrectly please **DO NOT** press the tick, Please press the :x:')
+                                  .setTimestamp()
+                                  .addField('**Answered correctly?**', "Then press the tick!")
+                                  .setFooter('Bot made by Bedrockminecart.');
+                        mention.sendMessage (lolololl1115).then(Meeesage5 => {
+      
+                                  Meeesage5.channel.awaitMessages(response2 => (response2.author === message.author), {
+                                   max: 1,
+                                   time: 60000000,
+                                   errors: ['time']
+                               }).then(collected => {
+                                      const senter2 = collected.first();
+                                   if (senter2) {
+                                     var desss = senter2.content
+                                     message.author.sendMessage('Sent to the staffing team!')
+                                     const repllll = new Discord.RichEmbed()
+                                      .setColor('#ff0000')
+                                      .setTitle('Reply to a reply from')
+                                      .setAuthor(botname, logo)
+                                      .setDescription(desss)
+                                      .setTimestamp()
+                                      .setFooter('Idk');
+                                      message.channel.send(repllll)  
+                                      message.channel.send('From ' + mention)
+                                }})})
+                        }
+                        message.channel.sendMessage('Reply sent!')
+                      }break;
                       case 'pass':
                         if(message.channel.name == 'chat-logs')  { return }
                         if(message.channel.name == undefined)  { return }
@@ -2054,14 +2078,6 @@ bot.on('message', message => {
                         const ur = message.content.slice(10)
                         message.channel.send('Set it to Important anouncement: ' + ur)
                         announcement = 'Important anouncement: ' + ur
-                        break;
-                      case 'test':
-                        message.channel.sendMessage("Yo").then(message5 => {
-                        message5.edit("lol").then(mesasge7 => {
-                          loooooool = mesasge7.id
-                          mesasge7.delete(5 * 60 * 1000);
-                          });
-                        }) 
                         break;
                       case 'verify':
                         if(message.channel.name == undefined)  { return }
@@ -2727,6 +2743,8 @@ bot.on('message', message => {
                         }
                         })
                        break;
+                       case 'test':
+                        message.author.sendMessage("HEllo@!").catch(console.log);
 
                       
 
