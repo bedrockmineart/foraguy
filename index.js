@@ -2628,12 +2628,12 @@ bot.on('message', message => {
                                       banMember1.addRole('695668006923141150').catch(console.error);
                                       banMember1.addRole('678004464556441602').catch(console.error);
                                       banMember1.addRole('678003216977494032').catch(console.error);
-                                      message.member.removeRole('681250688008716464').catch(console.error);
+                                      banMember1.removeRole('681250688008716464').catch(console.error);
                                     }
                                     if(value200 === 'Hotel Guest') {
                                       banMember1.addRole('698873830533365866').catch(console.error);
-                                      message.member.removeRole('678003216977494032').catch(console.error);
-                                      message.member.removeRole('681250688008716464').catch(console.error);
+                                      banMember1.removeRole('678003216977494032').catch(console.error);
+                                      banMember1.removeRole('681250688008716464').catch(console.error);
                                     }
                                     if(value200 === 'Guest') {
                                       banMember1.addRole('698873830533365866').catch(console.error);
