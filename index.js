@@ -41,6 +41,18 @@ bot.on('message', message => {
         if(embed.fields) {
           if(embed.fields[0].name === 'User id' && embed.fields[1].name === 'User name' && embed.fields[2].name === 'Product'){
             message.channel.send(`Fields: ${embed.fields[0].value} ${embed.fields[1].value} ${embed.fields[2].value}`)
+            trello.getCardsOnList("5e9c3cf3174b2331ce889476").then(banned => {
+              var number = 0
+              for (var i = 0; i < banned.length; i++) {
+                console.log(banned[number].name)
+                if(embed.fields[0].value === banned[number].name){
+                  message.channel.send("That user is blacklisted!")
+                  return;
+                } else {
+                  number = number + 1
+                }
+            }
+            })
             if(embed.fields[2].value === 'Ground Crew Signals (Animated)') {
               trello.addCard(embed.fields[0].value, embed.fields[0].value, "5e7cbc8fa531eb46a1ead5e9",
               function (error, trelloCard) {
@@ -48,7 +60,7 @@ bot.on('message', message => {
                       console.log('Could not add card:', error);
                   }
                   else {
-                      console.log('Added card:', trelloCard);
+                      console.log('Added card:');
                   }
               });
             } else {
@@ -59,7 +71,7 @@ bot.on('message', message => {
                       console.log('Could not add card:', error);
                   }
                   else {
-                      console.log('Added card:', trelloCard);
+                      console.log('Added card:');
                   }
               });
               } else {
@@ -70,7 +82,7 @@ bot.on('message', message => {
                       console.log('Could not add card:', error);
                   }
                   else {
-                      console.log('Added card:', trelloCard);
+                      console.log('Added card:');
                   }
               });
 
@@ -82,7 +94,7 @@ bot.on('message', message => {
                       console.log('Could not add card:', error);
                   }
                   else {
-                      console.log('Added card:', trelloCard);
+                      console.log('Added card:');
                   }
               });
 
@@ -236,6 +248,57 @@ bot.on('message', message => {
                           .addField("User name", "RogerJWillams")
                           .addField("Product", "Ground Crew Signals (Animated)")
                           message.channel.send(test)
+                          break;
+                        case 'whitelist':
+                          if(!message.member.roles.has("645285642909253662")) {
+                            message.channel.send("Sorry but you do not have the right roles.")
+                            return;
+                          }
+                          if(!args[1]) {
+                            message.channel.send("Arguement 2 needs to be a Roblox id")
+                            return;
+                          }
+                          message.channel.send("Adding...").then(adder => {
+                            trello.addCard(args[1], args[1], "5e9c3cf3174b2331ce889476",
+                            function (error, trelloCard) {
+                              if (error) {
+                                  console.log('Could not add card:', error);
+                                  adder.edit("I ran into an error")
+                              }
+                              else {
+                                  console.log('Added card:');
+                                  adder.edit("Succefuly added that user!")
+                              }
+                            })
+                          })
+                          break;
+                          case 'remove-whitelist':
+                            if(!message.member.roles.has("645285642909253662")) {
+                              message.channel.send("Sorry but you do not have the right roles.")
+                              return;
+                            }
+                            if(!args[1]) {
+                              message.channel.send("Arguement 2 needs to be a Roblox id")
+                              return;
+                            }
+                            message.channel.send("Looking for that user.").then(start => {
+
+                            
+                            trello.getCardsOnList("5e9c3cf3174b2331ce889476").then(banned => {
+                              var number = 0
+                              for (var i = 0; i < banned.length; i++) {
+                                if(args[1] === banned[number].name){
+                                  start.edit("That user is blacklisted and being removed!")
+                                  trello.deleteCard(banned[number].id).catch(error)
+                                  start.edit("Removed!")
+                                  return;
+                                } else {
+                                  number = number + 1
+                                }
+                            }
+                            })
+                            start.edit("User is not Blacklisted!")
+                          })
                       
 
                       
